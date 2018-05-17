@@ -1,37 +1,31 @@
 # Financial-Data-Analyze
-42030001 Spring2017 JavaEE by hongfei FAN @ SSE, TJU
 
-## Intrduction
 
-We would like to achieve a lightweight stock data display and analysis web platform based on Sina Finance. However, we will discard some redundant information, coupled with some new technology, like Data Mining, Machine Learning and Warehouse.
 
-### Main Functions
 
-- Market condition, which consist of stocks of SH and SZ market, and Self-stocking as well.
-- News tracking part take in charge of some hot spot news and mine of market.
-- Winner List shows daily detail of the stock market.
-- Fundamental Data shows ﬁve plates.
+### TODO
 
-You can find more information about our platform [Here](https://github.com/FoxerLee/Financial-Data-Analyze/blob/master/Doc/Document.pdf)
+**代码部分**
 
-## Framework
+- [ ] 实时数据爬虫重构
+- [ ] 历史数据爬虫重构
+- [ ] 雪球部分 — 投资者教育板块（主要是静态）（下周）
+  - [ ] 数据
+  - [ ] 界面（左边的下拉框、列表、详细文章）
+  - [x] 后端
+- [ ] 雪球部分 — 模拟交易
+  - [ ] 数据
+  - [ ] 界面
+  - [ ] 后端
 
-- Front-end: HTML5 & Angular.js
-- Back-end: Spring Boot & Mybatis
-- Database: MySQL5.6.25
+**文档部分**
 
-<div  align="center"> 
-
-<img src="http://ac-deijvnqa.clouddn.com/f6f5688ec47c69e76a06.png" style="zoom:50%" />
-
-</div>
-
-## Screenshots
-
-[Here](https://github.com/FoxerLee/Financial-Data-Analyze/blob/master/Doc/PPT.pdf)
-
-## Data Sources
-
-**tushare**
-- Document: http://tushare.org/index.html
-- Github: https://github.com/waditu/tushare
+- [ ] 项目方案书（部分已完成）（修改、下周）
+- [ ] 需求分析（部分已完成）（修改、下周）
+- [ ] 系统设计说明书（？）
+- [ ] 编程规范（下周）
+- [x] 开发计划
+- [ ] 测试计划
+- [ ] 发布计划（？）
+- [ ] 测试报告
+- [ ] 操作说明书
