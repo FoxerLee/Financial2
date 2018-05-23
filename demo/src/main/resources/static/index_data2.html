@@ -8,7 +8,10 @@
 
     <!-- Custom Theme files -->
     <!--theme-style-->
+
     <link href="css/style_cc.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/nav.css" rel="stylesheet" type="text/css" media="all" />
     <!--<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />-->
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,34 +30,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="logo">
             <a ng-click="check_out()">登出</a>
         </div>
-        <div class="top-nav">
-            <ul >
-                <li><b class="white"></b></li>
-
-                <li ><a href="index_data2.html" >大数据展示</a ></li>
-                <li><a href="news.html" class="black" > 新闻资讯</a ></li>
-                <li><a href="ranking.html" class="black1"> 龙虎榜</a ></li>
-                <li><a href="fundamentals.html" class="black1"> 基本面数据</a ></li>
-                <li><a href="work.html" class="black2" > 个人主页</a ></li>
-                <li>
-
-                </li>
-
-                <div class="your-top">
+        <div class="navigator">
+            <ul>
+                <li class="your-top2">
                     <form method="get" id="search_form" onkeypress="form_query()" action="/detail.html">
-                        <div class="cf">
                             <label class="search-bar">
-                                <input id="keyword" placeholder="请输入股票代码" name="code" type="text" value="" class="input-search" >
-                                <a id="search" class="btn-search">
-                                    <i class="icon-search"></i>
-                                </a>
+                                <input id="keyword" placeholder="请输入股票代码" name="code" type="text" value="" >
                                 <a href="javascript:;" class="btn-more"></a>
                             </label>
-                        </div>
                     </form>
 
                     <div class="clear"> </div>
-                </div>
+                </li>
+                <li>
+                    <a class="black" href="#">大数据展示</a>
+                </li>
+                <li>
+                    <a class="black" href="#">新闻资讯</a>
+                </li>
+                <li>
+                    <a class="black" href="#">龙虎榜</a>
+                </li>
+                <li>
+                    <a class="black" href="#">基本面数据</a>
+                </li>
+                <li>
+                    <a class="black" href="#">个人主页</a>
+                </li>
+                <li>
+                    <a class="black" href="#">投资知识</a>
+                    <ul>
+                        <li class="height_test"><a href="#">风险提示</a></li>
+                        <li class="height_test"><a href="#">法律法规</a></li>
+                        <li class="height_test"><a href="#">新手入门</a></li>
+                        <li class="height_test"><a href="#">进阶知识</a></li>
+                    </ul>
+                </li>
 
             </ul>
         </div>
@@ -132,6 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     window.location.href = "login.html";
                 else{
                     var temp = angular.fromJson(response.data);
+                    //alert(JSON.stringify(temp));
                     $scope.industry = [
                         {name: " ", turnover_p: 0, price: 0, price_range: 0, style: "cc6"}
                     ];
@@ -337,6 +349,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 window.location.href = "login.html";
                             else{
                                 var temp2 = angular.fromJson(response.data);
+                                //alert(JSON.stringify(temp2));
                                 $scope.single = [
                                     {code:" ",name: " ", style: "cc6"}
                                 ];
