@@ -123,6 +123,83 @@ body a{
 .top-nav ul li {
   list-style:none;
 }
+.top-nav ul li:hover a {/*这是一个css伪类，将鼠标移上去的时候字体和背景都会变色，移开又会变回来 */
+  outline: none;
+  display: block;
+  text-align: right;
+  text-decoration: none;/*不对文本设置效果 */
+  color: #ffffff;/*文字颜色 */
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  padding-right: 0.7em;
+  background: #9cbfab;/*背景颜色 */
+  line-height: 50px;/*这是一个技巧，这里将height和line-height设置为一样的高度文字就会水平竖直居中 */
+  font-size: 1.2em;
+}
+.top-nav ul li:hover a .black{
+  background: rgb(51,58,62);
+  background: -moz-linear-gradient(top,  rgba(51,58,62,1) 0%, rgba(46,54,58,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,58,62,1)), color-stop(100%,rgba(46,54,58,1)));
+  background: -webkit-linear-gradient(top,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+  background: -o-linear-gradient(top,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+  background: linear-gradient(to bottom,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+}
+.top-nav ul li ul {/*这里是为了将导航栏里的内容隐藏*/
+  display: none;
+}
+.top-nav ul li:hover ul  {/*这里就是弹出的下拉菜单了*/
+  display: block;
+  position: relative;
+  left: 0;
+  /*top: 81px;
+  width: 300px*/;
+}
+
+/*.height_test{
+  height: 60px;
+}*/
+
+.nav-top ul li:hover ul li a {/*这里当然是定义下拉菜单里的a标签了*/
+  text-align: right;
+  display: block;
+  background: #4d4d51;
+  color: #ffffff;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  padding-right: 0.7em;
+  font-size: 1.2em;
+}
+
+.top-nav ul li:hover ul li a.black{
+  background: rgb(51,58,62);
+  background: -moz-linear-gradient(top,  rgba(51,58,62,1) 0%, rgba(46,54,58,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,58,62,1)), color-stop(100%,rgba(46,54,58,1)));
+  background: -webkit-linear-gradient(top,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+  background: -o-linear-gradient(top,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+  background: linear-gradient(to bottom,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+}
+
+.top-nav ul li:hover ul li a:hover {/*这个是伪类，上面有说*/
+  text-align: right;
+  background: #23aeac;
+  color: #ffffff;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  padding-right: 0.7em;
+  font-size: 1.2em;
+}
+
+.top-nav ul li:hover ul li a:hover .black{
+  background: rgb(51,58,62);
+  background: -moz-linear-gradient(top,  rgba(51,58,62,1) 0%, rgba(46,54,58,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,58,62,1)), color-stop(100%,rgba(46,54,58,1)));
+  background: -webkit-linear-gradient(top,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+  background: -o-linear-gradient(top,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+  background: linear-gradient(to bottom,  rgba(51,58,62,1) 0%,rgba(46,54,58,1) 100%);
+}
 .top-nav ul li  a {
   display:block;
   outline: none;
@@ -430,7 +507,7 @@ p.footer-class a:hover{
   background-size: 100% 100%;
   top: 0px;
   margin: 0;
-  min-height: 243px;
+  min-height: 88px;
 }
 .b-animate-go:hover .b-from-left{
   left:0;
@@ -1370,7 +1447,7 @@ ul.archive-grid li a:hover{
     margin: 0 2px 0 0;
   }
   .header-left {
-    min-height: 2000px;
+    min-height: 864px;
   }
   p.footer-class {
     font-size: 0.8em;

@@ -55,7 +55,7 @@
 }
 .navigator ul li:hover ul  {/*这里就是弹出的下拉菜单了*/
   display: block;
-  position: absolute;
+  position: relative;
   left: 0;
   top: 81px;
   width: 300px;
