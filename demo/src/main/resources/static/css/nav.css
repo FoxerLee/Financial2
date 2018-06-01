@@ -31,8 +31,8 @@
   display: block;
   text-align: center;
   text-decoration: none;/*不对文本设置效果 */
-  width: 336px;/*每一块的宽度*/
-  height: 80px;/*每一块的高度*/
+  /*width: 336px;!*每一块的宽度*!*/
+  /*height: 80px;!*每一块的高度*!*/
   color: #ffffff;/*文字颜色 */
   padding-top: 1.0em;
   padding-bottom: 1.5em;
