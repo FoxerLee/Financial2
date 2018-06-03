@@ -1,0 +1,249 @@
+<html>
+<head>
+    <title>newstrategy</title>
+    <!-- jQuery-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <!--<link href="css/nav.css" rel="stylesheet" type="text/css" media="all" />-->
+
+
+    <!--<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />-->
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Kappe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--fonts-->
+    <!--//fonts-->
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="vendors/ion.rangeSlider/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="vendors/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+
+
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.min.css" rel="stylesheet">
+
+    <link href="css/style_cc.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+<div class="header" ng-app="myApp" ng-controller="siteCtrl">
+
+    <div class="header-left">
+        <div class="logo">
+            <a ng-click="check_out()">登出</a>
+        </div>
+        <div class="top-nav">
+            <ul >
+                <li><b class="white"></b></li>
+
+                <li ><a href="index_data2.html" class="black">大数据展示</a ></li>
+                <li><a href="news.html" class="black1" > 新闻资讯</a ></li>
+                <li><a href="ranking.html" class="black1"> 龙虎榜</a ></li>
+                <li><a href="fundamentals.html" class="black1"> 基本面数据</a ></li>
+                <li><a href="work.html" class="black2" > 个人主页</a ></li>
+                <li>
+                    <a href="knowledge_test.html" class="black2" > 投资知识</a >
+                    <ul>
+                        <li class="black"><a href="#">风险提示</a></li>
+                        <li class="black"><a href="#">法律法规</a></li>
+                        <li class="black"><a href="#">新手入门</a></li>
+                        <li class="black"><a href="#">进阶知识</a></li>
+                    </ul>
+                </li>
+                <li>
+
+                </li>
+
+                <div class="your-top">
+                    <form method="get" id="search_form" onkeypress="form_query()" action="/detail.html">
+                        <div class="cf">
+                            <label class="search-bar">
+                                <input id="keyword" placeholder="请输入股票代码" name="code" type="text" value="" class="input-search" >
+                                <a id="search" class="btn-search">
+                                    <i class="icon-search"></i>
+                                </a>
+                                <a href="javascript:;" class="btn-more"></a>
+                            </label>
+                        </div>
+                    </form>
+
+                    <div class="clear"> </div>
+                </div>
+
+            </ul>
+        </div>
+    </div>
+    <!---->
+    <!---->
+
+    <!---->
+    <div class="content ng-scope" >
+        <div class="work">
+            <div class="heat-map-title">&nbsp;&nbsp;&nbsp;新建策略&nbsp;&nbsp;
+                <button class="button-borderless" id="predict"><a href="allstrategy.html">看看别人怎么玩儿</a></button>
+
+            </div>
+        <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>基本信息</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">策略名称 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="name" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="intro" class="control-label col-md-3 col-sm-3 col-xs-12">主理人简介</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="intro" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                            </div>
+                        </div>
+
+
+
+                    </form>
+                </div>
+
+                    <div class="x_title">
+                        <h2>添加股票 </h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="ex1">股票代码</label>
+                                <input type="text" id="ex1" class="form-control" placeholder=" ">
+                            </div>
+                            <div class="form-group">
+                                <label for="ex2">股数</label>
+                                <input type="email" id="ex2" class="form-control" placeholder=" ">
+                            </div>
+
+                            <button type="submit" class="btn btn-default">添加</button>
+                        </form>
+                        <br />
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="ex3">股票代码</label>
+                                <input type="text" id="ex3" class="form-control" placeholder=" ">
+                            </div>
+                            <div class="form-group">
+                                <label for="ex4">股数</label>
+                                <input type="email" id="ex4" class="form-control" placeholder=" ">
+                            </div>
+
+                            <button type="submit" class="btn btn-default">添加</button>
+                        </form>
+                        <br />
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="ex5">股票代码</label>
+                                <input type="text" id="ex5" class="form-control" placeholder=" ">
+                            </div>
+                            <div class="form-group">
+                                <label for="ex6">股数</label>
+                                <input type="email" id="ex6" class="form-control" placeholder=" ">
+                            </div>
+
+                            <button type="submit" class="btn btn-default">添加</button>
+                        </form>
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button class="btn btn-primary" type="button">Cancel</button>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+
+        </div>>
+    </div>
+</div>
+<!-- jQuery -->
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="vendors/nprogress/nprogress.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="vendors/iCheck/icheck.min.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="vendors/moment/min/moment.min.js"></script>
+<script src="vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap-wysiwyg -->
+<script src="vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+<script src="vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+<script src="vendors/google-code-prettify/src/prettify.js"></script>
+<!-- jQuery Tags Input -->
+<script src="vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+<!-- Switchery -->
+<script src="vendors/switchery/dist/switchery.min.js"></script>
+<!-- Select2 -->
+<script src="vendors/select2/dist/js/select2.full.min.js"></script>
+<!-- Parsley -->
+<script src="vendors/parsleyjs/dist/parsley.min.js"></script>
+<!-- Autosize -->
+<script src="vendors/autosize/dist/autosize.min.js"></script>
+<!-- jQuery autocomplete -->
+<script src="vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+<!-- starrr -->
+<script src="vendors/starrr/dist/starrr.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="build/js/custom.min.js"></script>
+
+
+</body>
+</html>
