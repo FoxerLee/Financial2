@@ -1,13 +1,9 @@
-package edu.tongji.demo.ServiceImpl;
+package edu.tongji.demo.serviceimpl;
 
-import edu.tongji.demo.DAO.*;
-import edu.tongji.demo.Model.Connect;
-import edu.tongji.demo.Model.DataRealTime;
-import edu.tongji.demo.Model.SelfStocking;
-import edu.tongji.demo.Model.WarehouseData;
-import edu.tongji.demo.Service.StockService;
+import edu.tongji.demo.dao.*;
+import edu.tongji.demo.model.*;
+import edu.tongji.demo.service.StockService;
 import net.sf.json.JSONObject;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -187,8 +183,8 @@ public class StockServiceImpl implements StockService {
         }
     }
 
-    @Override
-    public Integer getPredict(String code){
-        return connectMapper.getPredict(code);
-    }
+//    @Override
+//    public Integer getPredict(String code){
+//        return connectMapper.getPredict(code);
+//    }
 }

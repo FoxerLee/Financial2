@@ -1,7 +1,7 @@
-package edu.tongji.demo.Controller;
+package edu.tongji.demo.controller;
 
-import edu.tongji.demo.Model.UserInfo;
-import edu.tongji.demo.Service.UserService;
+import edu.tongji.demo.model.UserInfo;
+import edu.tongji.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

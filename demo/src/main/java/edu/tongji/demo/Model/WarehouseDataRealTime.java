@@ -1,6 +1,5 @@
-package edu.tongji.demo.Model;
+package edu.tongji.demo.model;
 
-import java.util.Date;
 
 public class WarehouseDataRealTime {
     private Integer id;

@@ -1,6 +1,6 @@
-package edu.tongji.demo.DAO;
+package edu.tongji.demo.dao;
 
-import edu.tongji.demo.Model.Connect;
+import edu.tongji.demo.model.Connect;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -21,6 +21,6 @@ public interface ConnectMapper {
     @Select("select name from stock_connect where code = \'${code}\'")
     String getName(@Param(value = "code")String code);
 
-    @Select("select res from stock_connect where code = \'${code}\'")
-    Integer getPredict(@Param(value = "code")String code);
+//    @Select("select res from stock_connect where code = \'${code}\'")
+//    Integer getPredict(@Param(value = "code")String code);
 }

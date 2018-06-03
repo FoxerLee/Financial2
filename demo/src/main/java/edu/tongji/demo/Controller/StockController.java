@@ -1,9 +1,8 @@
-package edu.tongji.demo.Controller;
+package edu.tongji.demo.controller;
 
-import edu.tongji.demo.Service.IndustryService;
-import edu.tongji.demo.Service.StockService;
-import edu.tongji.demo.Service.UserService;
-import edu.tongji.demo.Security.Verification;
+import edu.tongji.demo.service.IndustryService;
+import edu.tongji.demo.service.StockService;
+import edu.tongji.demo.security.Verification;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -130,9 +129,10 @@ public class StockController {
 
     @GetMapping(value = "/predict")
     public Object getPredicton(@RequestParam(value = "code", defaultValue = "000001")String code){
-        if (!Verification.verify())
-            return "400";
-        return stockService.getPredict(code);
+//        if (!Verification.verify())
+//            return "400";
+//        return stockService.getPredict(code);
+        return null;
     }
 
 }

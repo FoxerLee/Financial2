@@ -1,4 +1,4 @@
-package edu.tongji.demo.Model;
+package edu.tongji.demo.model;
 
 public class ProfileData {
     private Integer id;

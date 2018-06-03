@@ -1,4 +1,4 @@
-package edu.tongji.demo.Service;
+package edu.tongji.demo.service;
 
 public interface NewsService {
 
