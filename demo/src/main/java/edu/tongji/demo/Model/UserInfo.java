@@ -1,4 +1,4 @@
-package edu.tongji.demo.Model;
+package edu.tongji.demo.model;
 
 public class UserInfo {
     private Integer user_id;

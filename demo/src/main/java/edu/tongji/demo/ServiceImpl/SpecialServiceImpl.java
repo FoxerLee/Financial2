@@ -1,8 +1,8 @@
-package edu.tongji.demo.ServiceImpl;
+package edu.tongji.demo.serviceimpl;
 
-import edu.tongji.demo.DAO.SpecialDataMapper;
-import edu.tongji.demo.Model.*;
-import edu.tongji.demo.Service.SpecialService;
+import edu.tongji.demo.dao.SpecialDataMapper;
+import edu.tongji.demo.model.*;
+import edu.tongji.demo.service.SpecialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

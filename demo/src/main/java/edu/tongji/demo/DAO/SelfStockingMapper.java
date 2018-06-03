@@ -1,6 +1,6 @@
-package edu.tongji.demo.DAO;
+package edu.tongji.demo.dao;
 
-import edu.tongji.demo.Model.SelfStocking;
+import edu.tongji.demo.model.SelfStocking;
 import org.apache.ibatis.annotations.*;
 
 import java.util.ArrayList;

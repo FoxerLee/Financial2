@@ -2528,15 +2528,15 @@ var easing = {
 
 /**
  * 动画主控制器
- * @ServiceImpl target 动画对象，可以是数组，如果是数组的话会批量分发onframe等事件
- * @ServiceImpl life(1000) 动画时长
- * @ServiceImpl delay(0) 动画延迟时间
- * @ServiceImpl loop(true)
- * @ServiceImpl gap(0) 循环的间隔时间
- * @ServiceImpl onframe
- * @ServiceImpl easing(optional)
- * @ServiceImpl ondestroy(optional)
- * @ServiceImpl onrestart(optional)
+ * @serviceimpl target 动画对象，可以是数组，如果是数组的话会批量分发onframe等事件
+ * @serviceimpl life(1000) 动画时长
+ * @serviceimpl delay(0) 动画延迟时间
+ * @serviceimpl loop(true)
+ * @serviceimpl gap(0) 循环的间隔时间
+ * @serviceimpl onframe
+ * @serviceimpl easing(optional)
+ * @serviceimpl ondestroy(optional)
+ * @serviceimpl onrestart(optional)
  *
  * TODO pause
  */
@@ -4035,7 +4035,7 @@ if (typeof window !== 'undefined') {
 
 /**
  * config默认配置项
- * @exports zrender/ServiceImpl
+ * @exports zrender/serviceimpl
  * @author Kener (@Kener-林峰, kener.linfeng@gmail.com)
  */
 
@@ -14247,8 +14247,8 @@ Path.prototype = {
  * @param {string} props.type Path type
  * @param {Function} props.init Initialize
  * @param {Function} props.buildPath Overwrite buildPath method
- * @param {Object} [props.style] Extended default style ServiceImpl
- * @param {Object} [props.shape] Extended default shape ServiceImpl
+ * @param {Object} [props.style] Extended default style serviceimpl
+ * @param {Object} [props.shape] Extended default shape serviceimpl
  */
 Path.extend = function (defaults$$1) {
     var Sub = function (opts) {
@@ -16882,7 +16882,7 @@ var itemStyleMixin = {
 var mixin$1 = mixin;
 
 /**
- * @alias module:echarts/model/Model
+ * @alias module:echarts/model/model
  * @constructor
  * @param {Object} option
  * @param {module:echarts/model/Model} [parentModel]
@@ -16923,7 +16923,7 @@ Model.prototype = {
     constructor: Model,
 
     /**
-     * Model 的初始化函数
+     * model 的初始化函数
      * @param {Object} option
      */
     init: null,
@@ -17017,7 +17017,7 @@ Model.prototype = {
     /**
      * @param {Function} getParentMethod
      *        param {Array.<string>|string} path
-     *        return {module:echarts/model/Model}
+     *        return {module:echarts/model/model}
      */
     customizeGetParent: function (getParentMethod) {
         set$1(this, 'getParent', getParentMethod);
@@ -17059,7 +17059,7 @@ function getParent(model, path) {
     return getParentMethod ? getParentMethod.call(model, path) : model.parentModel;
 }
 
-// Enable Model.extend.
+// Enable model.extend.
 enableClassExtend(Model);
 
 mixin$1(Model, lineStyleMixin);
@@ -17286,7 +17286,7 @@ var dataFormatMixin = {
 };
 
 /**
- * DAO to exists for merge.
+ * dao to exists for merge.
  *
  * @public
  * @param {Array.<Object>|Array.<module:echarts/model/Component>} exists
@@ -17295,7 +17295,7 @@ var dataFormatMixin = {
  *                          index of which is the same as exists.
  */
 function mappingToExists(exists, newCptOptions) {
-    // DAO by the order by original option (but not order of
+    // dao by the order by original option (but not order of
     // new option) in merge mode. Because we should ensure
     // some specified index (like xAxisIndex) is consistent with
     // original option, which is easy to understand, espatially in
@@ -17307,7 +17307,7 @@ function mappingToExists(exists, newCptOptions) {
         return {exist: obj};
     });
 
-    // DAO by id or name if specified.
+    // dao by id or name if specified.
     each$3(newCptOptions, function (cptOption, index) {
         if (!isObject$2(cptOption)) {
             return;
@@ -17764,7 +17764,7 @@ function enableSubTypeDefaulter(entity) {
 
 /**
  * Topological travel on Activity Network (Activity On Vertices).
- * Dependencies is defined in Model.prototype.dependencies, like ['xAxis', 'yAxis'].
+ * Dependencies is defined in model.prototype.dependencies, like ['xAxis', 'yAxis'].
  *
  * If 'xAxis' or 'yAxis' is absent in componentTypeList, just ignore it in topology.
  *
@@ -19276,7 +19276,7 @@ function initBase(baseOption) {
     this._componentsMap = createHashMap({series: []});
 
     /**
-     * DAO between filtered series list and raw series list.
+     * dao between filtered series list and raw series list.
      * key: filtered series indices, value: raw series indices.
      * @type {Array.<nubmer>}
      * @private
@@ -23925,7 +23925,7 @@ listProto.downSample = function (dimension, rate, sampleValue, sampleIndex) {
  *
  * @param {number} idx
  */
-// FIXME Model proxy ?
+// FIXME model proxy ?
 listProto.getItemModel = function (idx) {
     var hostModel = this.hostModel;
     idx = this.indices[idx];
@@ -34920,7 +34920,7 @@ var parseGeoJson = function (geoJson) {
 
 /**
  * Simple view coordinate system
- * DAO given x, y to transformd view x, y
+ * dao given x, y to transformd view x, y
  */
 
 var v2ApplyTransform$1 = applyTransform;
@@ -37772,7 +37772,7 @@ SeriesModel.extend({
 
     /**
      * Init a tree data structure from data in option series
-     * @param  {Object} option  the object used to ServiceImpl echarts view
+     * @param  {Object} option  the object used to serviceimpl echarts view
      * @return {module:echarts/data/List} storage initial data
      */
     getInitialData: function (option) {
@@ -47918,7 +47918,7 @@ var SankeySeries = SeriesModel.extend({
     /**
      * Init a graph data structure from data in option series
      *
-     * @param  {Object} option  the object used to ServiceImpl echarts view
+     * @param  {Object} option  the object used to serviceimpl echarts view
      * @return {module:echarts/data/List} storage initial data
      */
     getInitialData: function (option) {
@@ -49734,7 +49734,7 @@ SeriesModel.extend({
         // When to show the effect, option: 'render'|'emphasis'
         showEffectOn: 'render',
 
-        // Ripple effect ServiceImpl
+        // Ripple effect serviceimpl
         rippleEffect: {
             period: 4,
             // Scale of ripple
@@ -49956,7 +49956,7 @@ effectSymbolProto.updateData = function (data, idx) {
         this._effectCfg = effectCfg;
     }
     else {
-        // Not keep old effect ServiceImpl
+        // Not keep old effect serviceimpl
         this._effectCfg = null;
 
         this.stopEffectAnimation();
@@ -55280,7 +55280,7 @@ var prepareCustoms = {
 };
 
 // ------
-// Model
+// model
 // ------
 
 extendSeriesModel({
@@ -55826,7 +55826,7 @@ registerPreprocessor(function (option) {
 });
 
 // ------
-// Model
+// model
 // ------
 
 var GraphicModel = extendComponentModel({
@@ -62741,7 +62741,7 @@ extendComponentView({
  * @author dxh
  */
 
-// Model
+// model
 extendComponentModel({
 
     type: 'title',
@@ -66055,7 +66055,7 @@ var VisualMapModel = extendComponentModel({
             }
 
             // Compatible with previous logic, always give a defautl color, otherwise
-            // simple ServiceImpl with no inRange and outOfRange will not work.
+            // simple serviceimpl with no inRange and outOfRange will not work.
             // Originally we use visualMap.color as the default color, but setOption at
             // the second time the default color will be erased. So we change to use
             // constant DEFAULT_COLOR.
@@ -67524,7 +67524,7 @@ var PiecewiseModel = VisualMapModel.extend({
      * this._pieceList:
      *     The order is always [low, ..., high].
      *
-     * DAO from location to low-high:
+     * dao from location to low-high:
      *     If !option.inverse
      *     When vertical, top is high.
      *     When horizontal, right is high.

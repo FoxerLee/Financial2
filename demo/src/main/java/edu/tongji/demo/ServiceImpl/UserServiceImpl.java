@@ -1,8 +1,8 @@
-package edu.tongji.demo.ServiceImpl;
+package edu.tongji.demo.serviceimpl;
 
-import edu.tongji.demo.DAO.UserInfoMapper;
-import edu.tongji.demo.Model.UserInfo;
-import edu.tongji.demo.Service.UserService;
+import edu.tongji.demo.dao.UserInfoMapper;
+import edu.tongji.demo.model.UserInfo;
+import edu.tongji.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

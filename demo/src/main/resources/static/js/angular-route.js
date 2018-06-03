@@ -112,7 +112,7 @@ function $RouteProvider() {
    *
    *    Object properties:
    *
-   *    - `controller` – `{(string|function()=}` – Controller fn that should be associated with
+   *    - `controller` – `{(string|function()=}` – controller fn that should be associated with
    *      newly created scope or the name of a {@link angular.Module#controller registered
    *      controller} if passed as a string.
    *    - `controllerAs` – `{string=}` – An identifier name for a reference to the controller.
@@ -496,7 +496,7 @@ function $RouteProvider() {
      * @eventType broadcast on root scope
      * @description
      * The `reloadOnSearch` property has been set to false, and we are reusing the same
-     * instance of the Controller.
+     * instance of the controller.
      *
      * @param {Object} angularEvent Synthetic event object
      * @param {Route} current Current/previous route information.

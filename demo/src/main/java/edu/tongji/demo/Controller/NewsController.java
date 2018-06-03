@@ -1,7 +1,7 @@
-package edu.tongji.demo.Controller;
+package edu.tongji.demo.controller;
 
-import edu.tongji.demo.Service.NewsService;
-import edu.tongji.demo.Security.Verification;
+import edu.tongji.demo.service.NewsService;
+import edu.tongji.demo.security.Verification;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

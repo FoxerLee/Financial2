@@ -1,6 +1,4 @@
-package edu.tongji.demo.Model;
-
-import java.util.Date;
+package edu.tongji.demo.model;
 
 public class Research {
     private Integer id;
