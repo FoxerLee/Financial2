@@ -184,8 +184,8 @@ public class StockServiceImpl implements StockService {
         }
     }
 
-    @Override
-    public Integer getPredict(String code){
-        return connectMapper.getPredict(code);
-    }
+//    @Override
+//    public Integer getPredict(String code){
+//        return connectMapper.getPredict(code);
+//    }
 }

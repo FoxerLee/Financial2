@@ -18,5 +18,5 @@ public interface StockService {
 
     String getStockNameByCode(String code);
 
-    Integer getPredict(String code);
+//    Integer getPredict(String code);
 }
