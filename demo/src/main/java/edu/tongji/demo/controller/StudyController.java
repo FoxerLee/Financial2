@@ -1,7 +1,7 @@
-package edu.tongji.demo.controller;
+package edu.tongji.demo.Controller;
 
-import edu.tongji.demo.model.IntroductionFile;
-import edu.tongji.demo.service.StudyService;
+import edu.tongji.demo.Model.IntroductionFile;
+import edu.tongji.demo.Service.StudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
