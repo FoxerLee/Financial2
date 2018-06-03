@@ -1,4 +1,4 @@
-package edu.tongji.demo.dao;
+package edu.tongji.demo.DAO;
 
 import edu.tongji.demo.Model.IntroductionFile;
 import org.apache.ibatis.annotations.Mapper;
