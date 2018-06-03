@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>news</title>
+    <!-- jQuery-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular.js"></script>
+
+
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="css/style_cc.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style_foxer.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Kappe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--fonts-->
+    <!--<link href='http://fonts.useso.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>-->
+    <!--//fonts-->
+</head>
+<body>
+<div class="header" ng-app="myApp" ng-controller="siteCtrl">
+    <div class="header-left">
+        <div class="logo">
+            <a ng-click="check_out()">登出</a>
+        </div>
+        <div class="top-nav">
+            <ul >
+                <li><b class="white"></b></li>
+
+                <li ><a href="index_data2.html" class="black1">大数据展示</a ></li>
+                <li><a href="news.html" class="black" > 新闻资讯</a ></li>
+                <li><a href="ranking.html" class="black1"> 龙虎榜</a ></li>
+                <li><a href="fundamentals.html" class="black1"> 基本面数据</a ></li>
+                <li><a href="work.html" class="black2" > 个人主页</a ></li>
+                <li>
+                    <a href="knowledge.html" class="black2" > 投资知识</a >
+                    <ul>
+                        <li class="black"><a href="#">风险提示</a></li>
+                        <li class="black"><a href="#">法律法规</a></li>
+                        <li class="black"><a href="#">新手入门</a></li>
+                        <li class="black"><a href="#">进阶知识</a></li>
+                    </ul>
+                </li>
+                <li>
+
+                </li>
+
+                <div class="your-top">
+                    <form method="get" id="search_form" onkeypress="form_query()" action="/detail.html">
+                        <div class="cf">
+                            <label class="search-bar">
+                                <input id="keyword" placeholder="请输入股票代码" name="code" type="text" value="" class="input-search" >
+                                <a id="search" class="btn-search">
+                                    <i class="icon-search"></i>
+                                </a>
+                                <a href="javascript:" class="btn-more"></a>
+                            </label>
+                        </div>
+                    </form>
+
+                    <div class="clear"> </div>
+                </div>
+
+            </ul>
+        </div>
+    </div>
+    <!---->
+
+
+    <div class="content" ng-app="myApp" ng-controller="siteCtrl">
+        <div class="work" >
+            <p class="heat-map-title" >&nbsp;&nbsp;&nbsp;法律法规</p>
+            <br />
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                <tr>
+                    <td scope="col" style="vertical-align:middle; text-align:center;" >分类</td>
+                    <td scope="col" style="vertical-align:middle; text-align:center;" >标题</td>
+                    <td scope="col" style="vertical-align:middle; text-align:center;" >详情</td>
+
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">企业债券管理条例</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">深圳证券交易所债券交易实施细则 (2017 年修订)</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">公开发行公司债券申请文件（2015 年修订）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">上海证券交易所债券交易实施细则</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">上海证券交易所公司债券上市规则（2015年修订）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">深圳证券交易所公司债券上市规则（2015年修订）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">公司债券发行与交易管理办法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">上海证券交易所个人投资者行为指引</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">公开发行公司债券募集说明书（2015 年修订）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国国库券条例</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国证券投资基金法（上）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国证券投资基金法（下）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货</td>
+                    <td style="vertical-align:middle; text-align:center;">证券期货投资者适当性管理办法（2017</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货</td>
+                    <td style="vertical-align:middle; text-align:center;">期货交易管理条例</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货</td>
+                    <td style="vertical-align:middle; text-align:center;">期货市场违法行为的刑事责任</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货</td>
+                    <td style="vertical-align:middle; text-align:center;">期货交易所管理办法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货</td>
+                    <td style="vertical-align:middle; text-align:center;">期货公司监督管理办法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货</td>
+                    <td style="vertical-align:middle; text-align:center;">期货从业人员管理办法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国证券法（下）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票</td>
+                    <td style="vertical-align:middle; text-align:center;">证监会：《上市公司股东、董监高减持股份的若干规定》</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票</td>
+                    <td style="vertical-align:middle; text-align:center;">上市公司股权激励管理办法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票</td>
+                    <td style="vertical-align:middle; text-align:center;">关于改革完善并严格实施上市公司退市制度的若干意见</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国证券法（上）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票</td>
+                    <td style="vertical-align:middle; text-align:center;">上市公司重大资产重组管理办法（2016年修订）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票</td>
+                    <td style="vertical-align:middle; text-align:center;">上市公司收购管理办法（2014年修订）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国行政诉讼法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国保险法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国物权法（上）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国商业银行法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国民法通则</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国个人所得税法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国会计法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国物权法（下）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国刑法（四）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国企业所得税法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国票据法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国刑法（一）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国国家赔偿法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国中外合资经营企业法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国银行业监督管理法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国刑法（五）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国合同法（上）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国中国人民银行法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国刑法（三）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国合同法（下）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国刑法（二）</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">其他法律</td>
+                    <td style="vertical-align:middle; text-align:center;">中华人民共和国宪法</td>
+                    <td style="vertical-align:middle; text-align:center;">🔎</td>
+                </tr>
+
+
+
+
+                <script>
+                    var app = angular.module('myApp', []);
+                    app.controller('siteCtrl', function($scope, $http) {
+                        $http.get("http://localhost:8080/research/personal")
+                            .then(function (response) {
+                                if (response === 400)
+                                    window.location.href =  "login.html";
+                                $scope.research = response.data;
+                            });
+                        $scope.check_out = function () {
+                            window.location.href =  "login.html";
+                        }
+                    });
+
+                </script>
+
+            </table>
+            <!-- 分页 end --
+        <!-- end main -->
+            <div class="clear"> </div>
+        </div>
+        <div class="clear"> </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+</script>

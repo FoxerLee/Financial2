@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <a id="search" class="btn-search">
                                     <i class="icon-search"></i>
                                 </a>
-                                <a href="javascript:" class="btn-more"></a>
+                                <a href="javascript:;" class="btn-more"></a>
                             </label>
                         </div>
                     </form>
@@ -75,51 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
     <div class="content" ng-app="myApp" ng-controller="siteCtrl">
-        <div class="work" >
-        <p class="heat-map-title" >&nbsp;&nbsp;&nbsp;新闻资讯</p>
-            <br />
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
-                    <tr>
-                        <td scope="col" style="vertical-align:middle; text-align:center;" >标题</td>
-                        <td scope="col" style="vertical-align:middle; text-align:center;" >发布日期</td>
-                        <td scope="col" style="vertical-align:middle; text-align:center;" >研究者</td>
-                        <td scope="col" style="vertical-align:middle; text-align:center;" >研究机构</td>
-                        <td scope="col" style="vertical-align:middle; text-align:center;" >详情</td>
-
-                    </tr>
-                <tr ng-repeat="x in research">
-
-                    <td style="vertical-align:middle; text-align:center;">{{x.title}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{x.date}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{x.researcher}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{x.inst}}</td>
-                    <td style="vertical-align:middle; text-align:center;"><a  href="{{x.url}}" target="_blank">🔎</a></td>
-
-                </tr>
-
-
-                <script>
-               var app = angular.module('myApp', []);
-               app.controller('siteCtrl', function($scope, $http) {
-                   $http.get("http://localhost:8080/research/personal")
-                       .then(function (response) {
-                           if (response === 400)
-                               window.location.href =  "login.html";
-                           $scope.research = response.data;
-                       });
-                   $scope.check_out = function () {
-                       window.location.href =  "login.html";
-                   }
-               });
-
-               </script>
-
-                </table>
-                <!-- 分页 end --
-            <!-- end main -->
-            <div class="clear"> </div>
-        </div>
+        
     <div class="clear"> </div>
     </div>
 </div>
@@ -127,4 +83,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </html>
 <script>
 
+    function getQueryStringArgs(){
+        var qs = (location.search.length>0?location.search.substring(1):"");
+        var args = {};
+        var items = qs.length?qs.split("&"):[];
+        var item = null;
+        var name = null;
+        var value = null;
+        len = items.length;
+        for (var i = 0; i < len; i++) {
+            item = items[i].split("=");
+            name = decodeURIComponent(item[0]);
+            value = decodeURIComponent(item[1]);
+            if (name.length) {
+                args[name] = value;
+            }
+        }
+        return args;
+    }
+    var args = getQueryStringArgs();
+    var name = args["name"];
+    var app = angular.module('myApp', []);
+    app.controller('siteCtrl', function($scope, $http) {
+        $scope.name = name;
+        $http.get("http://localhost:8080/study/introduction?name=" + name)
+            .then(function (response) {
+                if (response.data === 400)
+                    window.location.href =  "login.html";
+                $scope.knowledge = response.data;
+            });
+    }
 </script>
