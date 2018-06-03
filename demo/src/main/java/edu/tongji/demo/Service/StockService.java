@@ -1,6 +1,6 @@
-package edu.tongji.demo.Service;
+package edu.tongji.demo.service;
 
-import edu.tongji.demo.Model.Connect;
+import edu.tongji.demo.model.Connect;
 
 import java.util.ArrayList;
 
@@ -18,5 +18,5 @@ public interface StockService {
 
     String getStockNameByCode(String code);
 
-    Integer getPredict(String code);
+//    Integer getPredict(String code);
 }

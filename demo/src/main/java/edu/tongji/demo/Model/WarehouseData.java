@@ -1,6 +1,9 @@
-package edu.tongji.demo.Model;
+package edu.tongji.demo.model;
+<<<<<<< HEAD
+=======
 
 import java.util.Date;
+>>>>>>> master
 
 public class WarehouseData {
     private Integer id;

@@ -1,4 +1,4 @@
-package edu.tongji.demo.Security;
+package edu.tongji.demo.security;
 
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

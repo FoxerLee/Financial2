@@ -1,8 +1,8 @@
-package edu.tongji.demo.ServiceImpl;
+package edu.tongji.demo.serviceimpl;
 
-import edu.tongji.demo.DAO.SelfStockingMapper;
-import edu.tongji.demo.Service.SelfStockService;
-import edu.tongji.demo.Service.UserService;
+import edu.tongji.demo.dao.SelfStockingMapper;
+import edu.tongji.demo.service.SelfStockService;
+import edu.tongji.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
