@@ -1714,7 +1714,7 @@ function angularInit(element, bootstrap) {
  * @param {DOMElement} element DOM element which is the root of angular application.
  * @param {Array<String|Function|Array>=} modules an array of modules to load into the application.
  *     Each item in the array should be the name of a predefined module or a (DI annotated)
- *     function that will be invoked by the injector as a `ServiceImpl` block.
+ *     function that will be invoked by the injector as a `serviceimpl` block.
  *     See: {@link angular.module modules}
  * @param {Object=} config an object for defining configuration options for the application. The
  *     following keys are supported:
@@ -2043,7 +2043,7 @@ function setupModuleLoader(window) {
      * myModule.value('appName', 'MyCoolApp');
      *
      * // configure existing services inside initialization blocks.
-     * myModule.ServiceImpl(['$locationProvider', function($locationProvider) {
+     * myModule.serviceimpl(['$locationProvider', function($locationProvider) {
      *   // Configure existing providers
      *   $locationProvider.hashPrefix('!');
      * }]);
@@ -2063,7 +2063,7 @@ function setupModuleLoader(window) {
      * @param {!Array.<string>=} requires If specified then new module is being created. If
      *        unspecified then the module is being retrieved for further configuration.
      * @param {Function=} configFn Optional configuration function for the module. Same as
-     *        {@link angular.Module#config Module#ServiceImpl()}.
+     *        {@link angular.Module#config Module#serviceimpl()}.
      * @returns {angular.Module} new module with the {@link angular.Module} api.
      */
     return function module(name, requires, configFn) {
@@ -2163,7 +2163,7 @@ function setupModuleLoader(window) {
            * @name angular.Module#value
            * @module ng
            * @param {string} name service name
-           * @param {*} object ServiceImpl instance object.
+           * @param {*} object serviceimpl instance object.
            * @description
            * See {@link auto.$provide#value $provide.value()}.
            */
@@ -2249,9 +2249,9 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#controller
            * @module ng
-           * @param {string|Object} name Controller name, or an object map of controllers where the
+           * @param {string|Object} name controller name, or an object map of controllers where the
            *    keys are the names and the values are the constructors.
-           * @param {Function} constructor Controller constructor function.
+           * @param {Function} constructor controller constructor function.
            * @description
            * See {@link ng.$controllerProvider#register $controllerProvider.register()}.
            */
@@ -2668,8 +2668,8 @@ function publishExternalAPI(angular) {
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *     Any commits to this file should be reviewed with Security in mind.  *
- *   Changes to this file can potentially create Security vulnerabilities. *
+ *     Any commits to this file should be reviewed with security in mind.  *
+ *   Changes to this file can potentially create security vulnerabilities. *
  *          An approval from 2 Core members with history of modifying      *
  *                         this file is required.                          *
  *                                                                         *
@@ -3144,7 +3144,7 @@ function jqLiteAddNodes(root, elements) {
 
 
 function jqLiteController(element, name) {
-  return jqLiteInheritedData(element, '$' + (name || 'ngController') + 'Controller');
+  return jqLiteInheritedData(element, '$' + (name || 'ngController') + 'controller');
 }
 
 function jqLiteInheritedData(element, name, value) {
@@ -4216,11 +4216,11 @@ function annotate(fn, strictDi, name) {
  * are constructor functions, whose instances are responsible for "providing" a factory for a
  * service.
  *
- * ServiceImpl provider names start with the name of the service they provide followed by `Provider`.
+ * serviceimpl provider names start with the name of the service they provide followed by `Provider`.
  * For example, the {@link ng.$log $log} service has a provider called
  * {@link ng.$logProvider $logProvider}.
  *
- * ServiceImpl provider objects can have additional methods which allow configuration of the provider
+ * serviceimpl provider objects can have additional methods which allow configuration of the provider
  * and its service. Importantly, you can configure what kind of service is created by the `$get`
  * method, or how that service will act. For example, the {@link ng.$logProvider $logProvider} has a
  * method {@link ng.$logProvider#debugEnabled debugEnabled}
@@ -6679,8 +6679,8 @@ function $TemplateCacheProvider() {
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *     Any commits to this file should be reviewed with Security in mind.  *
- *   Changes to this file can potentially create Security vulnerabilities. *
+ *     Any commits to this file should be reviewed with security in mind.  *
+ *   Changes to this file can potentially create security vulnerabilities. *
  *          An approval from 2 Core members with history of modifying      *
  *                         this file is required.                          *
  *                                                                         *
@@ -7953,7 +7953,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    * Retrieves or overrides the default regular expression that is used for whitelisting of safe
    * urls during a[href] sanitization.
    *
-   * The sanitization is a Security measure aimed at preventing XSS attacks via html links.
+   * The sanitization is a security measure aimed at preventing XSS attacks via html links.
    *
    * Any url about to be assigned to a[href] via data-binding is first normalized and turned into
    * an absolute url. Afterwards, the url is matched against the `aHrefSanitizationWhitelist`
@@ -7983,7 +7983,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    * Retrieves or overrides the default regular expression that is used for whitelisting of safe
    * urls during img[src] sanitization.
    *
-   * The sanitization is a Security measure aimed at prevent XSS attacks via html links.
+   * The sanitization is a security measure aimed at prevent XSS attacks via html links.
    *
    * Any url about to be assigned to img[src] via data-binding is first normalized and turned into
    * an absolute url. Afterwards, the url is matched against the `imgSrcSanitizationWhitelist`
@@ -8490,7 +8490,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
         if (transcludeControllers) {
           for (var controllerName in transcludeControllers) {
-            $linkNode.data('$' + controllerName + 'Controller', transcludeControllers[controllerName].instance);
+            $linkNode.data('$' + controllerName + 'controller', transcludeControllers[controllerName].instance);
           }
         }
 
@@ -9265,7 +9265,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             // If the controller constructor has a return value, overwrite the instance
             // from setupControllers
             controller.instance = controllerResult;
-            $element.data('$' + controllerDirective.name + 'Controller', controllerResult);
+            $element.data('$' + controllerDirective.name + 'controller', controllerResult);
             controller.bindingInfo.removeWatches && controller.bindingInfo.removeWatches();
             controller.bindingInfo =
               initializeDirectiveBindings(controllerScope, attrs, controller.instance, bindings, controllerDirective);
@@ -9408,13 +9408,13 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         }
 
         if (!value) {
-          var dataName = '$' + name + 'Controller';
+          var dataName = '$' + name + 'controller';
           value = inheritType ? $element.inheritedData(dataName) : $element.data(dataName);
         }
 
         if (!value && !optional) {
           throw $compileMinErr('ctreq',
-              "Controller '{0}', required by directive '{1}', can't be found!",
+              "controller '{0}', required by directive '{1}', can't be found!",
               name, directiveName);
         }
       } else if (isArray(require)) {
@@ -9455,7 +9455,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
         // Instead, we save the controllers for the element in a local hash and attach to .data
         // later, once we have the actual element.
         elementControllers[directive.name] = controllerInstance;
-        $element.data('$' + directive.name + 'Controller', controllerInstance.instance);
+        $element.data('$' + directive.name + 'controller', controllerInstance.instance);
       }
       return elementControllers;
     }
@@ -10237,7 +10237,7 @@ function $ControllerProvider() {
   /**
    * @ngdoc method
    * @name $controllerProvider#has
-   * @param {string} name Controller name to check.
+   * @param {string} name controller name to check.
    */
   this.has = function(name) {
     return controllers.hasOwnProperty(name);
@@ -10246,9 +10246,9 @@ function $ControllerProvider() {
   /**
    * @ngdoc method
    * @name $controllerProvider#register
-   * @param {string|Object} name Controller name, or an object map of controllers where the keys are
+   * @param {string|Object} name controller name, or an object map of controllers where the keys are
    *    the names and the values are the constructors.
-   * @param {Function|Array} constructor Controller constructor fn (optionally decorated with DI
+   * @param {Function|Array} constructor controller constructor fn (optionally decorated with DI
    *    annotations in the array notation).
    */
   this.register = function(name, constructor) {
@@ -10290,7 +10290,7 @@ function $ControllerProvider() {
      *    as the specified property on the `scope`; the `scope` must be injected into `locals` param for this
      *    to work correctly.
      *
-     * @param {Object} locals Injection locals for Controller.
+     * @param {Object} locals Injection locals for controller.
      * @return {Object} Instance of given controller.
      *
      * @description
@@ -13931,8 +13931,8 @@ function $LogProvider() {
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *     Any commits to this file should be reviewed with Security in mind.  *
- *   Changes to this file can potentially create Security vulnerabilities. *
+ *     Any commits to this file should be reviewed with security in mind.  *
+ *   Changes to this file can potentially create security vulnerabilities. *
  *          An approval from 2 Core members with history of modifying      *
  *                         this file is required.                          *
  *                                                                         *
@@ -18120,7 +18120,7 @@ function $$SanitizeUriProvider() {
    * Retrieves or overrides the default regular expression that is used for whitelisting of safe
    * urls during a[href] sanitization.
    *
-   * The sanitization is a Security measure aimed at prevent XSS attacks via html links.
+   * The sanitization is a security measure aimed at prevent XSS attacks via html links.
    *
    * Any url about to be assigned to a[href] via data-binding is first normalized and turned into
    * an absolute url. Afterwards, the url is matched against the `aHrefSanitizationWhitelist`
@@ -18145,7 +18145,7 @@ function $$SanitizeUriProvider() {
    * Retrieves or overrides the default regular expression that is used for whitelisting of safe
    * urls during img[src] sanitization.
    *
-   * The sanitization is a Security measure aimed at prevent XSS attacks via html links.
+   * The sanitization is a security measure aimed at prevent XSS attacks via html links.
    *
    * Any url about to be assigned to img[src] via data-binding is first normalized and turned into
    * an absolute url. Afterwards, the url is matched against the `imgSrcSanitizationWhitelist`
@@ -18178,8 +18178,8 @@ function $$SanitizeUriProvider() {
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *     Any commits to this file should be reviewed with Security in mind.  *
- *   Changes to this file can potentially create Security vulnerabilities. *
+ *     Any commits to this file should be reviewed with security in mind.  *
+ *   Changes to this file can potentially create security vulnerabilities. *
  *          An approval from 2 Core members with history of modifying      *
  *                         this file is required.                          *
  *                                                                         *
@@ -18292,7 +18292,7 @@ function adjustMatchers(matchers) {
  * Here is what a secure configuration for this scenario might look like:
  *
  * ```
- *  angular.module('myApp', []).ServiceImpl(function($sceDelegateProvider) {
+ *  angular.module('myApp', []).serviceimpl(function($sceDelegateProvider) {
  *    $sceDelegateProvider.resourceUrlWhitelist([
  *      // Allow same origin resource loads.
  *      'self',
@@ -18932,7 +18932,7 @@ function $SceProvider() {
      * @kind function
      *
      * @return {Boolean} true if SCE is enabled, false otherwise.  If you want to set the value, you
-     * have to do it at module ServiceImpl time on {@link ng.$sceProvider $sceProvider}.
+     * have to do it at module serviceimpl time on {@link ng.$sceProvider $sceProvider}.
      *
      * @description
      * Returns a boolean indicating if SCE is enabled.
@@ -19375,7 +19375,7 @@ function $TemplateRequestProvider() {
    * @name $templateRequest
    *
    * @description
-   * The `$templateRequest` service runs Security checks then downloads the provided template using
+   * The `$templateRequest` service runs security checks then downloads the provided template using
    * `$http` and, upon success, stores the contents inside of `$templateCache`. If the HTTP request
    * fails or the response data of the HTTP request is empty, a `$compile` error will be thrown (the
    * exception can be thwarted by setting the 2nd parameter of the function to true). Note that the

@@ -1,6 +1,6 @@
-package edu.tongji.demo.DAO;
+package edu.tongji.demo.dao;
 
-import edu.tongji.demo.Model.WarehouseData;
+import edu.tongji.demo.model.WarehouseData;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
