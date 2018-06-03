@@ -1,8 +1,8 @@
-package edu.tongji.demo.serviceimpl;
+package edu.tongji.demo.ServiceImpl;
 
-import edu.tongji.demo.dao.WinnerListMapper;
-import edu.tongji.demo.model.WinnerList;
-import edu.tongji.demo.service.WinnerService;
+import edu.tongji.demo.DAO.WinnerListMapper;
+import edu.tongji.demo.Model.WinnerList;
+import edu.tongji.demo.Service.WinnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

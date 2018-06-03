@@ -1,8 +1,8 @@
-package edu.tongji.demo.controller;
+package edu.tongji.demo.Controller;
 
-import edu.tongji.demo.model.*;
-import edu.tongji.demo.security.Verification;
-import edu.tongji.demo.service.SpecialService;
+import edu.tongji.demo.Model.*;
+import edu.tongji.demo.Security.Verification;
+import edu.tongji.demo.Service.SpecialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

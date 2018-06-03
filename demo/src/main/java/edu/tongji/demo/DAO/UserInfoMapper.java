@@ -1,6 +1,6 @@
-package edu.tongji.demo.dao;
+package edu.tongji.demo.DAO;
 
-import edu.tongji.demo.model.UserInfo;
+import edu.tongji.demo.Model.UserInfo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

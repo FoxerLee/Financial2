@@ -1,6 +1,6 @@
-package edu.tongji.demo.service;
+package edu.tongji.demo.Service;
 
-import edu.tongji.demo.model.Connect;
+import edu.tongji.demo.Model.Connect;
 
 import java.util.ArrayList;
 

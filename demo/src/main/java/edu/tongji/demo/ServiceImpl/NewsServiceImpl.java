@@ -1,7 +1,7 @@
-package edu.tongji.demo.serviceimpl;
+package edu.tongji.demo.ServiceImpl;
 
-import edu.tongji.demo.dao.NewsMapper;
-import edu.tongji.demo.service.NewsService;
+import edu.tongji.demo.DAO.NewsMapper;
+import edu.tongji.demo.Service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

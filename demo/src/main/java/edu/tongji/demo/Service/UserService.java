@@ -1,6 +1,6 @@
-package edu.tongji.demo.service;
+package edu.tongji.demo.Service;
 
-import edu.tongji.demo.model.UserInfo;
+import edu.tongji.demo.Model.UserInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,6 +1,6 @@
-package edu.tongji.demo.dao;
+package edu.tongji.demo.DAO;
 
-import edu.tongji.demo.model.WinnerList;
+import edu.tongji.demo.Model.WinnerList;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

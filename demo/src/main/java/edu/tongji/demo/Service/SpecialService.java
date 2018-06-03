@@ -1,6 +1,6 @@
-package edu.tongji.demo.service;
+package edu.tongji.demo.Service;
 
-import edu.tongji.demo.model.*;
+import edu.tongji.demo.Model.*;
 
 import java.util.ArrayList;
 

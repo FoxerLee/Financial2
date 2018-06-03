@@ -1,4 +1,4 @@
-package edu.tongji.demo.service;
+package edu.tongji.demo.Service;
 
 public interface WinnerService {
 

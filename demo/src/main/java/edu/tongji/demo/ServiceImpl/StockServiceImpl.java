@@ -1,11 +1,11 @@
-package edu.tongji.demo.serviceimpl;
+package edu.tongji.demo.ServiceImpl;
 
-import edu.tongji.demo.dao.*;
-import edu.tongji.demo.model.Connect;
-import edu.tongji.demo.model.DataRealTime;
-import edu.tongji.demo.model.SelfStocking;
-import edu.tongji.demo.model.WarehouseData;
-import edu.tongji.demo.service.StockService;
+import edu.tongji.demo.DAO.*;
+import edu.tongji.demo.Model.Connect;
+import edu.tongji.demo.Model.DataRealTime;
+import edu.tongji.demo.Model.SelfStocking;
+import edu.tongji.demo.Model.WarehouseData;
+import edu.tongji.demo.Service.StockService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

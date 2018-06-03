@@ -1,4 +1,4 @@
-package edu.tongji.demo.model;
+package edu.tongji.demo.Model;
 
 public class DataRealTime {
     private Integer id;
