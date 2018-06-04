@@ -30,7 +30,11 @@ public class StudyController {
         if (introductionFile == null){
             return "Not found";
         }else{
-            return introductionFile.getContent();
+            String content = introductionFile.getContent();
+            Map<String, Object> result  = new HashMap<>();
+            result.put("title", name);
+            result.put("text", content);
+            return result;
         }
     }
 
@@ -68,6 +72,12 @@ public class StudyController {
 //    @PostMapping("/strategy/change")
 //    public String changeStrategy(@RequestBody String text){
 //        JSONArray jsonArray = JSONArray.fromObject(text);
+//        List<Map>
 //    }
 
+    // 修改策略
+//    @GetMapping("/strategy/change")
+//    public Object changeStrategy(){
+//
+//    }
 }
