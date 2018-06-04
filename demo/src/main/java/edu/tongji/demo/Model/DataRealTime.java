@@ -1,7 +1,5 @@
 package edu.tongji.demo.Model;
 
-import java.util.Date;
-
 public class DataRealTime {
     private Integer id;
 

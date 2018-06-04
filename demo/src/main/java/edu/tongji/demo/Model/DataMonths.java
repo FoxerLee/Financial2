@@ -1,7 +1,5 @@
 package edu.tongji.demo.Model;
 
-import java.util.Date;
-
 public class DataMonths {
     private Integer id;
 

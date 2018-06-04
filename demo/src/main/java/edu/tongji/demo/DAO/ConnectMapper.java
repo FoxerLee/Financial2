@@ -21,6 +21,6 @@ public interface ConnectMapper {
     @Select("select name from stock_connect where code = \'${code}\'")
     String getName(@Param(value = "code")String code);
 
-    @Select("select res from stock_connect where code = \'${code}\'")
-    Integer getPredict(@Param(value = "code")String code);
+//    @Select("select res from stock_connect where code = \'${code}\'")
+//    Integer getPredict(@Param(value = "code")String code);
 }

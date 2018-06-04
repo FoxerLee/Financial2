@@ -7,13 +7,10 @@ import edu.tongji.demo.Model.SelfStocking;
 import edu.tongji.demo.Model.WarehouseData;
 import edu.tongji.demo.Service.StockService;
 import net.sf.json.JSONObject;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class StockServiceImpl implements StockService {
@@ -187,8 +184,8 @@ public class StockServiceImpl implements StockService {
         }
     }
 
-    @Override
-    public Integer getPredict(String code){
-        return connectMapper.getPredict(code);
-    }
+//    @Override
+//    public Integer getPredict(String code){
+//        return connectMapper.getPredict(code);
+//    }
 }
