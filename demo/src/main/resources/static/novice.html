@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>news</title>
+    <!-- jQuery-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular.js"></script>
+
+
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="css/style_cc.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style_foxer.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Kappe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--fonts-->
+    <!--<link href='http://fonts.useso.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>-->
+    <!--//fonts-->
+</head>
+<body>
+<div class="header" ng-app="myApp" ng-controller="siteCtrl">
+    <div class="header-left">
+        <div class="logo">
+            <a ng-click="check_out()">登出</a>
+        </div>
+        <div class="top-nav">
+            <ul >
+                <li><b class="white"></b></li>
+
+                <li ><a href="index_data2.html" class="black1">大数据展示</a ></li>
+                <li><a href="news.html" class="black" > 新闻资讯</a ></li>
+                <li><a href="ranking.html" class="black1"> 龙虎榜</a ></li>
+                <li><a href="fundamentals.html" class="black1"> 基本面数据</a ></li>
+                <li><a href="work.html" class="black2" > 个人主页</a ></li>
+                <li>
+                    <a href="knowledge.html" class="black2" > 投资知识</a >
+                    <ul>
+                        <li class="black"><a href="risk.html">风险提示</a></li>
+                        <li class="black"><a href="law.html">法律法规</a></li>
+                        <li class="black"><a href="novice.html">新手入门</a></li>
+                        <li class="black"><a href="advanced.html">进阶知识</a></li>
+                    </ul>
+                </li>
+                <li>
+
+                </li>
+
+                <div class="your-top">
+                    <form method="get" id="search_form" onkeypress="form_query()" action="/detail.html">
+                        <div class="cf">
+                            <label class="search-bar">
+                                <input id="keyword" placeholder="请输入股票代码" name="code" type="text" value="" class="input-search" >
+                                <a id="search" class="btn-search">
+                                    <i class="icon-search"></i>
+                                </a>
+                                <a href="javascript:" class="btn-more"></a>
+                            </label>
+                        </div>
+                    </form>
+
+                    <div class="clear"> </div>
+                </div>
+
+            </ul>
+        </div>
+    </div>
+    <!---->
+
+
+    <div class="content" ng-app="myApp" ng-controller="siteCtrl">
+        <div class="work" >
+            <p class="heat-map-title" >&nbsp;&nbsp;&nbsp;风险提示</p>
+            <br />
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                <tr>
+                    <td scope="col" style="vertical-align:middle; text-align:center;" >分类</td>
+                    <td scope="col" style="vertical-align:middle; text-align:center;" >标题</td>
+                    <td scope="col" style="vertical-align:middle; text-align:center;" >详情</td>
+
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券入门</td>
+                    <td style="vertical-align:middle; text-align:center;">债券基础知识一：债券是什么</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=债券基础知识一：债券是什么" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券入门</td>
+                    <td style="vertical-align:middle; text-align:center;">债券基础知识二：债券类型</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=债券基础知识二：债券类型" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券入门</td>
+                    <td style="vertical-align:middle; text-align:center;">债券基础知识三：债券市场简介</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=债券基础知识三：债券市场简介" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券入门</td>
+                    <td style="vertical-align:middle; text-align:center;">债券基础知识四：债券投资常用术语</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=债券基础知识四：债券投资常用术语" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券入门</td>
+                    <td style="vertical-align:middle; text-align:center;">债券基础知识五：债券投资入场须知</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=债券基础知识五：债券投资入场须知" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券入门</td>
+                    <td style="vertical-align:middle; text-align:center;">债券基础知识六：债市有风险</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=债券基础知识六：债市有风险" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券入门</td>
+                    <td style="vertical-align:middle; text-align:center;">债券基础知识七：债券持有人权利与义务</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=债券基础知识七：债券持有人权利与义务" target="_blank">🔎</a></td>
+                </tr>
+
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">债券入门</td>
+                    <td style="vertical-align:middle; text-align:center;">债券基础知识八：债券发行人的责任</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=债券基础知识八：债券发行人的责任" target="_blank">🔎</a></td>
+                </tr>
+
+
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列一：什么是基金</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列一：什么是基金" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列二：基金的定义与类型</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列二：基金的定义与类型" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列三：分级基金</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列三：分级基金" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列四：QFII和RQFII</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列四：QFII和RQFII" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列五：基金买入与卖出</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列五：基金买入与卖出" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列六：基金销售机构和渠道</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列六：基金销售机构和渠道" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列七：基金定投与申购的比较</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列七：基金定投与申购的比较" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列八：基金费用解析大全</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列八：基金费用解析大全" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列九：基金建仓期</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列九：基金建仓期" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列十：基金分红</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列十：基金分红" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列十一：基金的监管与安全问题</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列十一：基金的监管与安全问题" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列十二：如何分析一只基金</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列十二：如何分析一只基金" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列十三：基金行业的管理与自律</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列十三：基金行业的管理与自律" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">基金入门</td>
+                    <td style="vertical-align:middle; text-align:center;">基础知识系列十四：基金投资者的权利</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=基础知识系列十四：基金投资者的权利" target="_blank">🔎</a></td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识一：期货是什么</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识一：期货是什么" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识二：期货市场</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识二：期货市场" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识三：期货交易与现货交易、远期交易的关系</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识三：期货交易与现货交易、远期交易的关系" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识四：期货交易的基本特征</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识四：期货交易的基本特征" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识五：期货市场与证券市场区别</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识五：期货市场与证券市场区别" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识七：期货交易所</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识七：期货交易所" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识六：期货市场的发展过程</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识六：期货市场的发展过程" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识八：期货品种</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识八：期货品种" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识九：期权</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识九：期权" target="_blank">🔎</a></td>
+                </tr>
+
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识十：期货交易的风险</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识十：期货交易的风险" target="_blank">🔎</a></td>
+                </tr>
+
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识十一：期货术语大全</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识十一：期货术语大全" target="_blank">🔎</a></td>
+                </tr>
+
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">期货入门</td>
+                    <td style="vertical-align:middle; text-align:center;">期货基础知识十二：开户、下单、结算与交割</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=期货基础知识十二：开户、下单、结算与交割" target="_blank">🔎</a></td>
+                </tr>
+
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">A股</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=A股" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">熔断机制</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=熔断机制" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">大宗交易</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=大宗交易" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">全国股转系统</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=全国股转系统" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">股票成交原则</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=股票成交原则" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">退市风险警示</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=退市风险警示" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">优先股</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=优先股" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">注册制</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=注册制" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">B股</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=B股" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">创业板</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=创业板" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">股票交易时间</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=股票交易时间" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">普通股</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=普通股" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">股票市场</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=股票市场" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">分红派息</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=分红派息" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">中小板</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=中小板" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">什么是股票？</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=什么是股票？" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">IPO核准制</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=IPO核准制" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">主板市场</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=主板市场" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">股票入门</td>
+                    <td style="vertical-align:middle; text-align:center;">股票术语</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=股票术语" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">金融词典</td>
+                    <td style="vertical-align:middle; text-align:center;">金融词典（一）</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=金融词典（一）" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">金融词典</td>
+                    <td style="vertical-align:middle; text-align:center;">金融词典（二）</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=金融词典（二）" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">金融词典</td>
+                    <td style="vertical-align:middle; text-align:center;">金融词典（三）</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=金融词典（三）" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">金融词典</td>
+                    <td style="vertical-align:middle; text-align:center;">金融词典（四）</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=金融词典（四）" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">金融词典</td>
+                    <td style="vertical-align:middle; text-align:center;">金融词典（五）</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=金融词典（五）" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">金融词典</td>
+                    <td style="vertical-align:middle; text-align:center;">金融词典（六）</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=金融词典（六）" target="_blank">🔎</a></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; text-align:center;">金融词典</td>
+                    <td style="vertical-align:middle; text-align:center;">金融词典（七）</td>
+                    <td style="vertical-align:middle; text-align:center;"><a href="knowledge.html?name=金融词典（七）" target="_blank">🔎</a></td>
+                </tr>
+
+
+
+
+                <script>
+                    var app = angular.module('myApp', []);
+                    app.controller('siteCtrl', function($scope, $http) {
+                        $http.get("http://localhost:8080/research/personal")
+                            .then(function (response) {
+                                if (response === 400)
+                                    window.location.href =  "login.html";
+                                $scope.research = response.data;
+                            });
+                        $scope.check_out = function () {
+                            window.location.href =  "login.html";
+                        }
+                    });
+
+                </script>
+
+            </table>
+            <!-- 分页 end --
+        <!-- end main -->
+            <div class="clear"> </div>
+        </div>
+        <div class="clear"> </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+</script>
