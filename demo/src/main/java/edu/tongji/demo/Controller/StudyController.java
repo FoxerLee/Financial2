@@ -45,11 +45,11 @@ public class StudyController {
         String brief = jsonObject.getString("brief");
         String codes = jsonObject.getString("code");
         JSONArray jsonCodes = JSONArray.fromObject(codes);
-        List<Map<String, Integer>> codeData = new ArrayList<>();
+        List<Map<String, Double>> codeData = new ArrayList<>();
         for (int i = 0; i < jsonCodes.size(); i++) {
-            Map<String, Integer> codeMap = new HashMap<>();
+            Map<String, Double> codeMap = new HashMap<>();
             JSONObject temp_code = JSONObject.fromObject(jsonCodes.get(i));
-            codeMap.put(temp_code.getString("code_id"), Integer.parseInt(temp_code.getString("number")));
+            codeMap.put(temp_code.getString("code_id"), temp_code.getDouble("number"));
             codeData.add(codeMap);
         }
         int user_id = 5;
@@ -63,9 +63,9 @@ public class StudyController {
     }
 
     // 获取策略的基本信息(用户id和策略名称)
-    @GetMapping("/strategy/information")
+    @PostMapping("/strategy/information")
     public Object getInformation(@RequestParam(value = "name")String name, @RequestParam(value = "id")String user_id){
-        Object information = studyService.getInformation(name, Integer.parseInt(user_id));
+        Map<String, Object> information = studyService.getInformation(name, Integer.parseInt(user_id));
         return information;
     }
 
@@ -75,9 +75,26 @@ public class StudyController {
 //        List<Map>
 //    }
 
-    // 修改策略
-//    @GetMapping("/strategy/change")
-//    public Object changeStrategy(){
-//
-//    }
+//     修改策略
+    @PostMapping("/strategy/change")
+    public Object changeStrategy(@RequestBody String content){
+        JSONObject jsonObject = JSONObject.fromObject(content);
+        int user_id = jsonObject.getInt("id");
+        String strategy_name = jsonObject.getString("strategy_name");
+        JSONArray jsonArray = JSONArray.fromObject(jsonObject.getString("data"));
+        List<Map<String, Object>> old_data = studyService.getCodes(strategy_name, user_id);
+        for (int i = 0; i < old_data.size(); i++){
+            System.out.println(old_data.get(i).get("code_id"));
+            System.out.println(old_data.get(i).get("number"));
+        }
+        List post_data = new ArrayList();
+        for (int i = 0; i < jsonArray.size(); i++){
+            Map<String, Object> data = new HashMap<>();
+            JSONObject jsonObject1 = JSONObject.fromObject(jsonArray.get(i));
+            data.put("code_id", jsonObject1.getString("code_id"));
+            data.put("number", jsonObject1.getDouble("number"));
+            post_data.add(data);
+        }
+        return post_data;
+    }
 }

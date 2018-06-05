@@ -40,7 +40,7 @@ public class StudyServiceImpl implements StudyService{
 
     @Override
     public String createStrategy(String name, String brief,
-                                 List<Map<String, Integer>> codes, Integer user_id) throws SQLException{
+                                 List<Map<String, Double>> codes, Integer user_id) throws SQLException{
         String sql = "select count(*) from strategy where user_id = " + user_id +
                 " and strategy_name = \'" + name + "\'";
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
@@ -71,7 +71,7 @@ public class StudyServiceImpl implements StudyService{
     }
 
     @Override
-    public Object getInformation(String name, Integer user_id){
+    public Map<String, Object> getInformation(String name, Integer user_id){
         String queryInfo = "SELECT * FROM strategy WHERE strategy_name = \'" + name + "\' and user_id=" + user_id;
         SqlRowSet rs = jdbcTemplate.queryForRowSet(queryInfo);
         Map<String, Object> result = new HashMap<>();
@@ -81,8 +81,15 @@ public class StudyServiceImpl implements StudyService{
             result.put("name", s_name);
             result.put("brief", s_brief);
         }
+        List<Map<String, Object>> result_data = getCodes(name, user_id);
+        result.put("data", result_data);
+        return result;
+    }
+
+    @Override
+    public List<Map<String, Object>> getCodes(String name, Integer user_id){
         String queryCodes = "SELECT * FROM user_strategy WHERE strategy_name = \'" + name + "\' and user_id=" + user_id;
-        rs = jdbcTemplate.queryForRowSet(queryCodes);
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(queryCodes);
         List result_data = new ArrayList();
         while(rs.next()){
             Map<String, Object> data = new HashMap<>();
@@ -90,8 +97,7 @@ public class StudyServiceImpl implements StudyService{
             data.put("number", rs.getDouble("stock_num"));
             result_data.add(data);
         }
-        result.put("data", result_data);
-        return result;
+        return result_data;
     }
 
 }
