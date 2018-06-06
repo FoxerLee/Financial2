@@ -15,4 +15,7 @@ public interface StudyService {
     Map<String, Object> getInformation(String name, Integer user_id);
 
     List<Map<String, Object>> getCodes(String name, Integer user_id);
+
+    Object updateUserStrategy(List<Map<String, Object>> oldData, List<Map<String, Object>> newData,
+                                     String strategtName, Integer user_id);
 }

@@ -83,11 +83,7 @@ public class StudyController {
         String strategy_name = jsonObject.getString("strategy_name");
         JSONArray jsonArray = JSONArray.fromObject(jsonObject.getString("data"));
         List<Map<String, Object>> old_data = studyService.getCodes(strategy_name, user_id);
-        for (int i = 0; i < old_data.size(); i++){
-            System.out.println(old_data.get(i).get("code_id"));
-            System.out.println(old_data.get(i).get("number"));
-        }
-        List post_data = new ArrayList();
+        List<Map<String, Object>> post_data = new ArrayList();
         for (int i = 0; i < jsonArray.size(); i++){
             Map<String, Object> data = new HashMap<>();
             JSONObject jsonObject1 = JSONObject.fromObject(jsonArray.get(i));
@@ -95,6 +91,7 @@ public class StudyController {
             data.put("number", jsonObject1.getDouble("number"));
             post_data.add(data);
         }
+        studyService.updateUserStrategy(old_data, post_data, strategy_name, user_id);
         return post_data;
     }
 }
