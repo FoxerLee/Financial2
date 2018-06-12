@@ -93,11 +93,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </tr>
                 <tr ng-repeat="x in research">
 
-                    <td style="vertical-align:middle; text-align:center;">{{x.title}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{x.date}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{x.researcher}}</td>
+                    <td style="vertical-align:middle; text-align:center;">{{x.wow}}</td>
+                    <td style="vertical-align:middle; text-align:center;">{{x.name}}</td>
+                    <td style="vertical-align:middle; text-align:center;">{{x.intro}}</td>
                     <td style="vertical-align:middle; text-align:center;">{{x.inst}}</td>
-                    <td style="vertical-align:middle; text-align:center;"><a  href="{{x.url}}" target="_blank">🔎</a></td>
+                    <td style="vertical-align:middle; text-align:center;"><a  ng-click="detail(x.code)">🔎</a></td>
 
                 </tr>
 
@@ -105,7 +105,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <script>
                     var app = angular.module('myApp', []);
                     app.controller('siteCtrl', function($scope, $http) {
-                        $http.get("http://localhost:8080/research/personal")
+                        $http.get("http://localhost:8080/strategy/personal")
                             .then(function (response) {
                                 if (response === 400)
                                     window.location.href =  "login.html";
@@ -113,6 +113,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             });
                         $scope.check_out = function () {
                             window.location.href =  "login.html";
+                        }
+                        $scope.detail = function (scode) {
+                            window.location.href = "strategydetail.html?code=" + scode;
                         }
                     });
 
