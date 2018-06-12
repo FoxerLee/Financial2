@@ -42,42 +42,47 @@ public class StudyController {
 
     @PostMapping("/strategy/create")
     public Object createStrategy(@RequestBody String text, HttpServletRequest request) {
-        if (!Verification.verify()){
-            return "error!";
-        }else{
-            JSONObject jsonObject = JSONObject.fromObject(text);
-            String strategyName = jsonObject.getString("name");
-            String brief = jsonObject.getString("brief");
+//        System.out.println("fuck!");
+//        if (!Verification.verify()){
+//            return "error!";
+//        }else{
+//
+//        }
+        System.out.println("tag");
+        JSONObject jsonObject = JSONObject.fromObject(text);
+        String strategyName = jsonObject.getString("name");
+        String brief = jsonObject.getString("brief");
+        System.out.println("brief");
 //            String codes = jsonObject.getString("code");
 //            JSONArray jsonCodes = JSONArray.fromObject(codes);
-            List<Map<String, Double>> codeData = new ArrayList<>();
+        List<Map<String, Double>> codeData = new ArrayList<>();
 //            for (int i = 0; i < jsonCodes.size(); i++) {
 //                Map<String, Double> codeMap = new HashMap<>();
 //                JSONObject temp_code = JSONObject.fromObject(jsonCodes.get(i));
 //                codeMap.put(temp_code.getString("code_id"), temp_code.getDouble("number"));
 //                codeData.add(codeMap);
 //            }
-            for (int i = 1; i <= 3; i++){
-                Map<String, Double> data = new HashMap<>();
-                String name = jsonObject.getString("code_id" + i);
-                if (name == null || name.length() == 0){
-                    continue;
-                }
-                Double num = jsonObject.getDouble("num" + i);
-                data.put(name, num);
-                codeData.add(data);
+        for (int i = 1; i <= 3; i++){
+            Map<String, Double> data = new HashMap<>();
+            String name = jsonObject.getString("code_id" + i);
+            if (name == null || name.length() == 0){
+                continue;
             }
-            int user_id = userService.getIDByName(userService.getNameByCookie(request));
-            try{
-                Integer result = studyService.createStrategy(strategyName, brief, codeData, user_id);
-                if (result > 0){
-                    return result;
-                }
-                return -1;
-            }catch (SQLException e){
-                System.out.println(e);
-                return -1;
+            Double num = jsonObject.getDouble("num" + i);
+            data.put(name, num);
+            codeData.add(data);
+        }
+//        int user_id = userService.getIDByName(userService.getNameByCookie(request));
+        int user_id = 4;
+        try{
+            Integer result = studyService.createStrategy(strategyName, brief, codeData, user_id);
+            if (result > 0){
+                return result;
             }
+            return -1;
+        }catch (SQLException e){
+            System.out.println(e);
+            return -1;
         }
     }
 
@@ -115,6 +120,5 @@ public class StudyController {
             studyService.updateUserStrategy(old_data, post_data, strategy_name, user_id);
             return post_data;
         }
-
     }
 }

@@ -153,36 +153,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <br />
                         <form class="form-inline">
                             <div class="form-group">
-                                <label for="code1">股票代码</label>
+                                <label for="code1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 <input type="text" id="code1" class="form-control" placeholder=" ">
                             </div>
                             <div class="form-group">
-                                <label for="num1">股数</label>
-                                <input type="email" id="num1" class="form-control" placeholder=" ">
+                                <label for="num1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <input type="text" id="num1" class="form-control" placeholder=" ">
                             </div>
 
                         </form>
                         <br />
                         <form class="form-inline">
                             <div class="form-group">
-                                <label for="code2">股票代码</label>
+                                <label for="code2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 <input type="text" id="code2" class="form-control" placeholder=" ">
                             </div>
                             <div class="form-group">
-                                <label for="num2">股数</label>
-                                <input type="email" id="num2" class="form-control" placeholder=" ">
+                                <label for="num2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <input type="text" id="num2" class="form-control" placeholder=" ">
                             </div>
 
                         </form>
                         <br />
                         <form class="form-inline">
                             <div class="form-group">
-                                <label for="code3">股票代码</label>
+                                <label for="code3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 <input type="text" id="code3" class="form-control" placeholder=" ">
                             </div>
                             <div class="form-group">
-                                <label for="num3">股数</label>
-                                <input type="email" id="num3" class="form-control" placeholder=" ">
+                                <label for="num3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <input type="text" id="num3" class="form-control" placeholder=" ">
                             </div>
 
                         </form>
@@ -190,9 +190,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button ng-click="back()" class="btn btn-primary" type="button">Cancel</button>
-                                <button ng-click="newS()" class="btn btn-primary" type="reset">Reset</button>
-                                <button ng-click="newS()" class="btn btn-success"  >Submit</button>
+                                <button ng-click="back()" class="btn btn-primary" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                                <button ng-click="newS()" class="btn btn-success"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </div>
@@ -230,17 +230,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 window.location.href =  "login.html";
             };
             $http({
-                method:'POST',
+                method:'post',
                 url:'http://localhost:8080/study/strategy/create',
-                data:"name=" + name + "brief=" + intro+"code_id1="+code1+"num1="+num1+"code_id2="+code2+"num2="+num2+ "code_id3="+code3+"num3="+num3,
+                data:{name:name, brief:intro, code_id1:code1, code_id2:code2, code_id3:code3, num1:num1, num2:num2, num3:num3}
             }).then(function (value) {
                 if (value.data > 0){
-                    alert('success');
+                    alert('success!');
                     window.location.href = "detailstrategy.html?id=" + value.data;
                 }
 
                 else {
-                    alert("fail!");
+                    alert("创建失败！");
                     window.location.href = "newstrategy.html";
                 }
 
