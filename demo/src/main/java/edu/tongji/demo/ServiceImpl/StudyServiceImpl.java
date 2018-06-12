@@ -169,15 +169,14 @@ public class StudyServiceImpl implements StudyService{
             }
         }
         for (int i = 0; i < log.size(); i++){
-            SqlRowSet rs = jdbcTemplate.queryForRowSet("SELECT close_value from data_real_time WHERE code = " +
-                    "\'" + log.get(i).get("code_id") + "\'");
-            double value = 0.0;
-            if (rs.next())
-                value = rs.getDouble("close_value");
+//            SqlRowSet rs = jdbcTemplate.queryForRowSet("SELECT close_value from data_real_time WHERE code = " +
+//                    "\'" + log.get(i).get("code_id") + "\'");
+//            double value = 0.0;
+//            if (rs.next())
+//                value = rs.getDouble("close_value");
             jdbcTemplate.execute("INSERT INTO strategy_change(user_id, strategy_name, code_id, new_num, old_num) VALUES " +
                     "("+user_id+", \'"+strategtName+"\', \'"+ log.get(i).get("code_id")+"\', "+log.get(i).get("new_num")+","+ log.get(i).get("old_num")+")");
         }
         return null;
     }
-
 }
