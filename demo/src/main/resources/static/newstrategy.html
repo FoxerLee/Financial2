@@ -153,25 +153,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <br />
                         <form class="form-inline">
                             <div class="form-group">
-                                <label for="ex1">股票代码</label>
-                                <input type="text" id="ex1" class="form-control" placeholder=" ">
+                                <label for="code1">股票代码</label>
+                                <input type="text" id="code1" class="form-control" placeholder=" ">
                             </div>
                             <div class="form-group">
-                                <label for="ex2">股数</label>
-                                <input type="email" id="ex2" class="form-control" placeholder=" ">
-                            </div>
-
-                            <button type="submit" class="btn btn-default">添加</button>
-                        </form>
-                        <br />
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="ex3">股票代码</label>
-                                <input type="text" id="ex3" class="form-control" placeholder=" ">
-                            </div>
-                            <div class="form-group">
-                                <label for="ex4">股数</label>
-                                <input type="email" id="ex4" class="form-control" placeholder=" ">
+                                <label for="num1">股数</label>
+                                <input type="email" id="num1" class="form-control" placeholder=" ">
                             </div>
 
                             <button type="submit" class="btn btn-default">添加</button>
@@ -179,12 +166,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <br />
                         <form class="form-inline">
                             <div class="form-group">
-                                <label for="ex5">股票代码</label>
-                                <input type="text" id="ex5" class="form-control" placeholder=" ">
+                                <label for="code2">股票代码</label>
+                                <input type="text" id="code2" class="form-control" placeholder=" ">
                             </div>
                             <div class="form-group">
-                                <label for="ex6">股数</label>
-                                <input type="email" id="ex6" class="form-control" placeholder=" ">
+                                <label for="num2">股数</label>
+                                <input type="email" id="num2" class="form-control" placeholder=" ">
+                            </div>
+
+                            <button type="submit" class="btn btn-default">添加</button>
+                        </form>
+                        <br />
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="code3">股票代码</label>
+                                <input type="text" id="code3" class="form-control" placeholder=" ">
+                            </div>
+                            <div class="form-group">
+                                <label for="num3">股数</label>
+                                <input type="email" id="num3" class="form-control" placeholder=" ">
                             </div>
 
                             <button type="submit" class="btn btn-default">添加</button>
@@ -208,6 +208,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>>
     </div>
 </div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('siteCtrl', function($scope, $http) {
+        $http.get("http://localhost:8080/research/personal")
+            .then(function (response) {
+                if (response === 400)
+                    window.location.href =  "login.html";
+                $scope.research = response.data;
+            });
+        $scope.check_out = function () {
+            window.location.href =  "login.html";
+        }
+        $scope.Func = function () {
+            var username=document.getElementById("name").value;
+            var password=document.getElementById("_password").value;
+            $http({
+                method:'POST',
+                url:'http://localhost:8080/user/login',
+                data:"name=" + username + "&password=" + password,
+                headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function (value) {
+                if (value.data === 200)
+                    window.location.href = "index_data2.html";
+                else if(value.data === 400){
+                    alert("用户名或密码错误！");
+                    window.location.href = "login.html";
+                }
+                else
+                    window.location.href = "400.html";
+
+            });
+        }
+    });
+
+</script>
+
 <!-- jQuery -->
 <script src="vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
