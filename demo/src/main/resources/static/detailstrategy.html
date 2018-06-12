@@ -259,41 +259,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             .then(function (response) {
                 if (response.data === 400)
                     window.location.href =  "login.html";
-                $scope.stockname = response.data;
+                $scope.basicinfo = response.data;
             });
         $http.get("http://localhost:8080/news/code?code=" + code)
             .then(function (response) {
                 if (response.data === 400)
                     window.location.href =  "login.html";
-                $scope.news = response.data;
+                $scope.tradehistory = response.data;
             });
         $http.get("http://localhost:8080/research/code?code=" + code)
             .then(function (response) {
                 if (response.data === 400)
                     window.location.href =  "login.html";
-                $scope.research = response.data;
+                $scope.bonus = response.data;
             });
-        $http.get("http://localhost:8080/stock/brief?code=" + code)
-            .then(function (response) {
-                if (response.data === 400)
-                    window.location.href =  "login.html";
-                var temp2 = angular.fromJson(response.data);
-                if (temp2.settlement < temp2.close_value) {
-                    document.getElementById("miaomiao").style.color="#bd362f";
-                }
-                else if (temp2.settlement > temp2.close_value){
-                    document.getElementById("miaomiao").style.color="#46a546";
-                }
-                $scope.datarealtime = response.data;
-            });
-        // var selectoption = document.getElementById("select_k1").value;
-        // var temp = "http://localhost:8080/stock/history/days?code=";
-        // if(selectoption === "日K")
-        //     temp = "http://localhost:8080/stock/history/days?code=";
-        // else if(selectoption === "周K")
-        //     temp = "http://localhost:8080/stock/history/weeks?code=";
-        // else if(selectoption === "月K")
-        //     temp = "http://localhost:8080/stock/history/months?code=";
+
         $http.get("http://localhost:8080/stock/history/days?code=" + code)
             .then(function (response) {
                 document.getElementById("week_k").style.backgroundColor = "#778288";
@@ -303,19 +283,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     window.location.href =  "login.html";
                 //绘图
                 DrawData(response);
-            });
-        $http.get("http://localhost:8080/stock/predict?code=" + code)
-            .then(function (value) {
-                if(value.data === 400)
-                    window.location.href = "index.html";
-                var p = value.data;
-                if (p === 1){
-                    $scope.predict = "涨";
-                    document.getElementById("predict").style.color = "#bd362f";
-                }else if(p === 2){
-                    $scope.predict = "跌";
-                    document.getElementById("predict").style.color = "#46a546";
-                }
             });
 
         $scope.Select_Day_K = function () {

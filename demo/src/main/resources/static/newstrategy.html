@@ -161,7 +161,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <input type="email" id="num1" class="form-control" placeholder=" ">
                             </div>
 
-                            <button type="submit" class="btn btn-default">添加</button>
                         </form>
                         <br />
                         <form class="form-inline">
@@ -174,7 +173,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <input type="email" id="num2" class="form-control" placeholder=" ">
                             </div>
 
-                            <button type="submit" class="btn btn-default">添加</button>
                         </form>
                         <br />
                         <form class="form-inline">
@@ -187,15 +185,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <input type="email" id="num3" class="form-control" placeholder=" ">
                             </div>
 
-                            <button type="submit" class="btn btn-default">添加</button>
                         </form>
 
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button class="btn btn-primary" type="button">Cancel</button>
-                                <button class="btn btn-primary" type="reset">Reset</button>
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <a ng-click="newS()">mioa</a>
+                                <button ng-click="newS()" class="btn btn-primary" type="button">Cancel</button>
+                                <button ng-click="newS()" class="btn btn-primary" type="reset">Reset</button>
+                                <button ng-click="newS()" class="btn btn-success"  >Submit</button>
                             </div>
                         </div>
                     </div>
@@ -211,32 +209,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>
     var app = angular.module('myApp', []);
     app.controller('siteCtrl', function($scope, $http) {
-        $http.get("http://localhost:8080/research/personal")
-            .then(function (response) {
-                if (response === 400)
-                    window.location.href =  "login.html";
-                $scope.research = response.data;
-            });
         $scope.check_out = function () {
             window.location.href =  "login.html";
         }
-        $scope.Func = function () {
-            var username=document.getElementById("name").value;
-            var password=document.getElementById("_password").value;
+        $scope.newS = function () {
+            var name=document.getElementById("name").value;
+            var intro=document.getElementById("intro").value;
+            var code1=document.getElementById("code1").value;
+            var num1=document.getElementById("num1").value;
+            var code2=document.getElementById("code2").value;
+            var num2=document.getElementById("num2").value;
+            var code3=document.getElementById("code3").value;
+            var num3=document.getElementById("num3").value;
+
+            alert('!');
+            alert(name);
+            $scope.check_out = function () {
+                window.location.href =  "login.html";
+            }
             $http({
-                method:'POST',
+                method:'GET',
                 url:'http://localhost:8080/user/login',
-                data:"name=" + username + "&password=" + password,
-                headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+                data:"name=" + name + "intro=" + intro+"code1="+code1+"num1="+num1+"code2="+code2+"num2="+num2+ "code3="+code3+"num3="+num3,
             }).then(function (value) {
                 if (value.data === 200)
-                    window.location.href = "index_data2.html";
+                    window.location.href = "detailstrategy.html?name=" + name;
                 else if(value.data === 400){
-                    alert("用户名或密码错误！");
-                    window.location.href = "login.html";
+                    alert("创建失败！");
+                    window.location.href = "newstrategy.html";
                 }
-                else
-                    window.location.href = "400.html";
 
             });
         }

@@ -1,8 +1,8 @@
-package edu.tongji.demo.serviceimpl;
+package edu.tongji.demo.ServiceImpl;
 
 import edu.tongji.demo.dao.IntroductionFileMapper;
-import edu.tongji.demo.model.IntroductionFile;
-import edu.tongji.demo.service.StudyService;
+import edu.tongji.demo.Model.IntroductionFile;
+import edu.tongji.demo.Service.StudyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
