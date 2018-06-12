@@ -71,15 +71,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!---->
     <div class="content" >
         <div class="work">
-            <div class="heat-map-title">&nbsp;&nbsp;&nbsp;阿尔法策略
-                <button class="button button-raised button-action button-circle button-jumbo" style="background: rgb(51,58,62);border-color:rgb(51,58,62)"><i class="fa fa-thumbs-up" ng-click="display(code)" ></i></button>
-
+            <div class="heat-map-title">&nbsp;&nbsp;&nbsp;{{basicinfo.name}}
             </div>
             <div class="work-top">
                 <div class="test">
                     <div class="test-top">
                         <div class="blog-in">
-                            <h5 id="miaomiao" scope="col" style="vertical-align:middle; text-align:center;">总收益：{{datarealtime.close_value}}</h5>
+                            <h5 id="miaomiao" scope="col" style="vertical-align:middle; text-align:center;">总收益：{{bonus.year}}</h5>
                             <!--<p>涨停：@up_limit@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跌停：@down_limit@</p>-->
 
                         </div>
@@ -92,9 +90,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 <tr>
                                     <td scope="col" style="vertical-align:middle; text-align:center;">月收益：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{datarealtime.open_value}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{bonus.month}}</td>
                                     <td scope="col" style="vertical-align:middle; text-align:center;">收益净值：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{datarealtime.settlement}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{bonus.benefit}}</td>
                                 </tr>
 
                                 </tbody>
@@ -114,9 +112,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     }
                 </style>
                 <div id="select_k1" class="showcase-examples l-center">
-                    <input type="submit" value="近3个月" class="button button-pill button-primary" style="background-color: #1ab5b3;" ng-click="Select_Day_K()" id="day_k">
-                    <input type="submit" value="近1年" class="button button-pill button-primary" style="background-color: #1ab5b3;" ng-click="Select_Week_K()" id="week_k">
-                    <input type="submit" value="全部" class="button button-pill button-primary" style="background-color: #1ab5b3;" ng-click="Select_Month_K()" id="month_k">
+                    <input type="submit" value="近3个月" class="button button-pill button-primary" style="background-color: #1ab5b3;" ng-click="Select_month()" id="month">
+                    <input type="submit" value="近1年" class="button button-pill button-primary" style="background-color: #1ab5b3;" ng-click="Select_year()" id="year">
+                    <input type="submit" value="全部" class="button button-pill button-primary" style="background-color: #1ab5b3;" ng-click="Select_all()" id="all">
                     <!--<button class="button button-pill button-primary">Go</button>-->
                 </div>
                 <style>
@@ -146,12 +144,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <tbody>
                                 <tr>
                                     <td scope="col" style="vertical-align:middle; text-align:center;">主理人：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #bd362f">{{datarealtime.close_value*1.1}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #bd362f">{{basicinfo.user}}</td>
 
                                 </tr>
                                 <tr>
                                     <td scope="col" style="vertical-align:middle; text-align:center;">主理人简介：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #46a546">{{datarealtime.close_value*0.9}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #46a546">{{basicinfo.brief}}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -161,17 +159,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="stupid">
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tbody>
-                                <tr>
+                                <tr ng-repeat="x in basicinfo.code">
                                     <td scope="col" style="vertical-align:middle; text-align:center;">股票：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #bd362f">{{datarealtime.close_value*1.1}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #bd362f">{{x.code_id}}</td>
                                     <td scope="col" style="vertical-align:middle; text-align:center;">份额：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #46a546">{{datarealtime.close_value*0.9}}</td>
-                                </tr>
-                                <tr>
-                                    <td scope="col" style="vertical-align:middle; text-align:center;">股票：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{datarealtime.open_value}}</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center;">份额：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{datarealtime.settlement}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #46a546">{{x.num}}</td>
                                 </tr>
 
                                 </tbody>
@@ -192,15 +184,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="stupid">
                                 <table border="0" cellpadding="0" cellspacing="0">
                                     <tbody>
-                                    <tr>
-                                        <td scope="col" style="vertical-align:middle; text-align:right;padding:2%;">买</td>
-                                        <td scope="col" style="vertical-align:middle; text-align:left;padding:2%;">
-                                            <a href="{{y.url}}" target="_blank">
-                                                股票名字
-                                            </a>
-                                        </td>
-                                        <td scope="col" style="vertical-align:middle; text-align:right;padding:2%;">成交价：</td>
-                                        <td scope="col" style="vertical-align:middle; text-align:right;padding:2%;">份额：x-->y</td>
+                                    <tr ng-repeat="y in tradehistory">
+                                        <td scope="col" style="vertical-align:middle; text-align:right;padding:2%;">{{y.type}}</td>
+                                        <td scope="col" style="vertical-align:middle; text-align:left;padding:2%;">{{y.name}}</td>
+                                        <td scope="col" style="vertical-align:middle; text-align:right;padding:2%;">{{y.price}}</td>
+                                        <td scope="col" style="vertical-align:middle; text-align:right;padding:2%;">份额：{{y.old}}-->{{y.new}}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -247,368 +235,119 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             $http.get("http://localhost:8080/user/logout");
         };
         $scope.code = code;
-        $scope.display = function(tempcode){
-            $http.get("http://localhost:8080/profile/stock/add?code="+tempcode)
-                .then(function (value) {
-                    if (value.data === true)
-                        alert("加入自选股成功!");
-                    else
-                        alert("已加入该自选股！");
-                })};
+
         $http.get("http://localhost:8080/stock/name?code=" + code)
             .then(function (response) {
                 if (response.data === 400)
                     window.location.href =  "login.html";
-                $scope.stockname = response.data;
+                $scope.basicinfo = response.data;
             });
         $http.get("http://localhost:8080/news/code?code=" + code)
             .then(function (response) {
                 if (response.data === 400)
                     window.location.href =  "login.html";
-                $scope.news = response.data;
+                $scope.tradehistory = response.data;
             });
         $http.get("http://localhost:8080/research/code?code=" + code)
             .then(function (response) {
                 if (response.data === 400)
                     window.location.href =  "login.html";
-                $scope.research = response.data;
+                $scope.bonus = response.data;
             });
-        $http.get("http://localhost:8080/stock/brief?code=" + code)
-            .then(function (response) {
-                if (response.data === 400)
-                    window.location.href =  "login.html";
-                var temp2 = angular.fromJson(response.data);
-                if (temp2.settlement < temp2.close_value) {
-                    document.getElementById("miaomiao").style.color="#bd362f";
-                }
-                else if (temp2.settlement > temp2.close_value){
-                    document.getElementById("miaomiao").style.color="#46a546";
-                }
-                $scope.datarealtime = response.data;
-            });
-        // var selectoption = document.getElementById("select_k1").value;
-        // var temp = "http://localhost:8080/stock/history/days?code=";
-        // if(selectoption === "日K")
-        //     temp = "http://localhost:8080/stock/history/days?code=";
-        // else if(selectoption === "周K")
-        //     temp = "http://localhost:8080/stock/history/weeks?code=";
-        // else if(selectoption === "月K")
-        //     temp = "http://localhost:8080/stock/history/months?code=";
+
         $http.get("http://localhost:8080/stock/history/days?code=" + code)
             .then(function (response) {
-                document.getElementById("week_k").style.backgroundColor = "#778288";
-                document.getElementById("month_k").style.backgroundColor = "#778288";
-                document.getElementById("day_k").style.backgroundColor = "#1ab5b3";
+                document.getElementById("month").style.backgroundColor = "#778288";
+                document.getElementById("year").style.backgroundColor = "#778288";
+                document.getElementById("all").style.backgroundColor = "#1ab5b3";
                 if (response.data === 400)
                     window.location.href =  "login.html";
                 //绘图
                 DrawData(response);
             });
-        $http.get("http://localhost:8080/stock/predict?code=" + code)
-            .then(function (value) {
-                if(value.data === 400)
-                    window.location.href = "index.html";
-                var p = value.data;
-                if (p === 1){
-                    $scope.predict = "涨";
-                    document.getElementById("predict").style.color = "#bd362f";
-                }else if(p === 2){
-                    $scope.predict = "跌";
-                    document.getElementById("predict").style.color = "#46a546";
-                }
-            });
 
-        $scope.Select_Day_K = function () {
+        $scope.Select_month = function () {
             $http.get("http://localhost:8080/stock/history/days?code=" + code)
                 .then(function (response) {
                     if (response.data === 400)
                         window.location.href =  "login.html";
                     DrawData(response);
                 });
-            document.getElementById("week_k").style.backgroundColor = "#778288";
-            document.getElementById("month_k").style.backgroundColor = "#778288";
-            document.getElementById("day_k").style.backgroundColor = "#1ab5b3";
+            document.getElementById("month").style.backgroundColor = "#778288";
+            document.getElementById("year").style.backgroundColor = "#778288";
+            document.getElementById("all").style.backgroundColor = "#1ab5b3";
 
         };
-        $scope.Select_Week_K = function () {
+        $scope.Select_year = function () {
             $http.get("http://localhost:8080/stock/history/weeks?code=" + code)
                 .then(function (response) {
                     if (response.data === 400)
                         window.location.href =  "login.html";
                     DrawData(response);
                 });
-            document.getElementById("day_k").style.backgroundColor = "#778288";
-            document.getElementById("month_k").style.backgroundColor = "#778288";
-            document.getElementById("week_k").style.backgroundColor = "#1ab5b3";
+            document.getElementById("month").style.backgroundColor = "#778288";
+            document.getElementById("year").style.backgroundColor = "#778288";
+            document.getElementById("all").style.backgroundColor = "#1ab5b3";
         };
-        $scope.Select_Month_K = function () {
+        $scope.Select_all = function () {
             $http.get("http://localhost:8080/stock/history/months?code=" + code)
                 .then(function (response) {
                     if (response.data === 400)
                         window.location.href =  "login.html";
                     DrawData(response);
                 });
-            document.getElementById("week_k").style.backgroundColor = "#778288";
-            document.getElementById("day_k").style.backgroundColor = "#778288";
-            document.getElementById("month_k").style.backgroundColor = "#1ab5b3";
+            document.getElementById("month").style.backgroundColor = "#778288";
+            document.getElementById("year").style.backgroundColor = "#778288";
+            document.getElementById("all").style.backgroundColor = "#1ab5b3";
         }
     });
 
     function DrawData(response) {
-        var upColor = '#00da3c';
-        var downColor = '#ec0000';
-        var myChart = echarts.init(document.getElementById('main'));
-        var data = splitData(response.data);
-        myChart.setOption(option = {
-            backgroundColor: '#fff',
-            animation: false,
-            legend: {
-                bottom: 10,
-                left: 'center',
-                data: ['Dow-Jones index', 'MA5', 'MA10', 'MA20', 'MA30']
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross'
-                },
-                backgroundColor: 'rgba(245, 245, 245, 0.8)',
-                borderWidth: 1,
-                borderColor: '#ccc',
-                padding: 10,
-                textStyle: {
-                    color: '#000'
-                },
-                position: function (pos, params, el, elRect, size) {
-                    var obj = {top: 10};
-                    obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;
-                    return obj;
-                }
-                // extraCssText: 'width: 170px'
-            },
-            axisPointer: {
-                link: {xAxisIndex: 'all'},
-                label: {
-                    backgroundColor: '#777'
-                }
-            },
-            toolbox: {
-                feature: {
-                    dataZoom: {
-                        yAxisIndex: false
-                    },
-                    brush: {
-                        type: ['lineX', 'clear']
-                    }
-                }
-            },
-            brush: {
-                xAxisIndex: 'all',
-                brushLink: 'all',
-                outOfBrush: {
-                    colorAlpha: 0.1
-                }
-            },
-            visualMap: {
-                show: false,
-                seriesIndex: 5,
-                dimension: 2,
-                pieces: [{
-                    value: 1,
-                    color: downColor
-                }, {
-                    value: -1,
-                    color: upColor
-                }]
-            },
-            grid: [
-                {
-                    left: '10%',
-                    right: '8%',
-                    height: '50%'
-                },
-                {
-                    left: '10%',
-                    right: '8%',
-                    top: '63%',
-                    height: '16%'
-                }
-            ],
-            xAxis: [
-                {
-                    type: 'category',
-                    data: data.categoryData,
-                    scale: true,
-                    boundaryGap : false,
-                    axisLine: {onZero: false},
-                    splitLine: {show: false},
-                    splitNumber: 20,
-                    min: 'dataMin',
-                    max: 'dataMax',
-                    axisPointer: {
-                        z: 100
-                    }
-                },
-                {
-                    type: 'category',
-                    gridIndex: 1,
-                    data: data.categoryData,
-                    scale: true,
-                    boundaryGap : false,
-                    axisLine: {onZero: false},
-                    axisTick: {show: false},
-                    splitLine: {show: false},
-                    axisLabel: {show: false},
-                    splitNumber: 20,
-                    min: 'dataMin',
-                    max: 'dataMax'
-                }
-            ],
-            yAxis: [
-                {
-                    scale: true,
-                    splitArea: {
-                        show: true
-                    }
-                },
-                {
-                    scale: true,
-                    gridIndex: 1,
-                    splitNumber: 2,
-                    axisLabel: {show: false},
-                    axisLine: {show: false},
-                    axisTick: {show: false},
-                    splitLine: {show: false}
-                }
-            ],
-            dataZoom: [
-                {
-                    type: 'inside',
-                    xAxisIndex: [0, 1],
-                    start: 98,
-                    end: 100
-                },
-                {
-                    show: true,
-                    xAxisIndex: [0, 1],
-                    type: 'slider',
-                    top: '85%',
-                    start: 98,
-                    end: 100
-                }
-            ],
-            series: [
-                {
-                    name: 'Dow-Jones index',
-                    type: 'candlestick',
-                    data: data.values,
-                    itemStyle: {
-                        normal: {
-                            color: upColor,
-                            color0: downColor,
-                            borderColor: null,
-                            borderColor0: null
-                        }
-                    },
-                    tooltip: {
-                        formatter: function (param) {
-                            param = param[0];
-                            return [
-                                'Date: ' + param.name + '<hr size=1 style="margin: 3px 0">',
-                                'Open: ' + param.data[0] + '<br/>',
-                                'Close: ' + param.data[1] + '<br/>',
-                                'Lowest: ' + param.data[2] + '<br/>',
-                                'Highest: ' + param.data[3] + '<br/>'
-                            ].join('');
-                        }
-                    }
-                },
-                {
-                    name: 'MA5',
-                    type: 'line',
-                    data: calculateMA(5, data),
-                    smooth: true,
-                    lineStyle: {
-                        normal: {opacity: 0.5}
-                    }
-                },
-                {
-                    name: 'MA10',
-                    type: 'line',
-                    data: calculateMA(10, data),
-                    smooth: true,
-                    lineStyle: {
-                        normal: {opacity: 0.5}
-                    }
-                },
-                {
-                    name: 'MA20',
-                    type: 'line',
-                    data: calculateMA(20, data),
-                    smooth: true,
-                    lineStyle: {
-                        normal: {opacity: 0.5}
-                    }
-                },
-                {
-                    name: 'MA30',
-                    type: 'line',
-                    data: calculateMA(30, data),
-                    smooth: true,
-                    lineStyle: {
-                        normal: {opacity: 0.5}
-                    }
-                },
-                {
-                    name: 'Volume',
-                    type: 'bar',
-                    xAxisIndex: 1,
-                    yAxisIndex: 1,
-                    data: data.volumes
-                }
-            ]
-        }, true);
-        myChart.dispatchAction({
-            type: 'brush',
-            areas: [
-                {
-                    brushType: 'lineX',
-                    coordRange: ['2016-06-02', '2016-06-20'],
-                    xAxisIndex: 0
-                }
-            ]
+        var dateList = response.map(function (item) {
+            return item[0];
         });
-    }
+        var valueList = response.map(function (item) {
+            return item[1];
+        });
 
-    function splitData(rawData) {
-        var categoryData = [];
-        var values = [];
-        var volumes = [];
-        for (var i = 0; i < rawData.length; i++) {
-            categoryData.push(rawData[i].splice(0, 1)[0]);
-            values.push(rawData[i]);
-            volumes.push([i, rawData[i][4], rawData[i][0] > rawData[i][1] ? 1 : -1]);
-        }
-        return {
-            categoryData: categoryData,
-            values: values,
-            volumes: volumes
+        option = {
+
+            // Make gradient line here
+            visualMap: [{
+                show: false,
+                type: 'continuous',
+                seriesIndex: 0,
+                min: 0,
+                max: 400
+            }],
+
+
+            title: [{
+                left: 'center',
+                text: '收益率曲线'
+            }],
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: [{
+                data: dateList
+            }],
+            yAxis: [{
+                splitLine: {show: false}
+            }],
+            grid: [{
+                bottom: '60%'
+            }, {
+                top: '60%'
+            }],
+            series: [{
+                type: 'line',
+                showSymbol: false,
+                data: valueList
+            }]
         };
     }
-    function calculateMA(dayCount, data) {
-        var result = [];
-        for (var i = 0, len = data.values.length; i < len; i++) {
-            if (i < dayCount) {
-                result.push('-');
-                continue;
-            }
-            var sum = 0;
-            for (var j = 0; j < dayCount; j++) {
-                sum += data.values[i - j][1];
-            }
-            result.push(+(sum / dayCount).toFixed(3));
-        }
-        return result;
-    }
+
+
 </script>
 </html>
