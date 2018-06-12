@@ -210,10 +210,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     app.controller('siteCtrl', function($scope, $http) {
         $scope.check_out = function () {
             window.location.href =  "login.html";
-        }
+        };
         $scope.back = function () {
             window.location.href = "allstrategy.html";
-        }
+        };
         $scope.newS = function () {
             var name=document.getElementById("name").value;
             var intro=document.getElementById("intro").value;
@@ -228,16 +228,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             alert(code3);
             $scope.check_out = function () {
                 window.location.href =  "login.html";
-            }
+            };
             $http({
-                method:'GET',
+                method:'POST',
                 url:'http://localhost:8080/study/strategy/create',
                 data:"name=" + name + "brief=" + intro+"code_id1="+code1+"num1="+num1+"code_id2="+code2+"num2="+num2+ "code_id3="+code3+"num3="+num3,
             }).then(function (value) {
-                if (value.data === 200)
-                    window.location.href = "detailstrategy.html?name=" + name;
-                else if(value.data === 400){
-                    alert("创建失败！");
+                if (value.data > 0){
+                    alert('success');
+                    window.location.href = "detailstrategy.html?id=" + value.data;
+                }
+
+                else {
+                    alert("fail!");
                     window.location.href = "newstrategy.html";
                 }
 

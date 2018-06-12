@@ -69,11 +69,14 @@ public class StudyController {
             }
             int user_id = userService.getIDByName(userService.getNameByCookie(request));
             try{
-                String result = studyService.createStrategy(strategyName, brief, codeData, user_id);
-                return result;
+                Integer result = studyService.createStrategy(strategyName, brief, codeData, user_id);
+                if (result > 0){
+                    return result;
+                }
+                return -1;
             }catch (SQLException e){
                 System.out.println(e);
-                return "error";
+                return -1;
             }
         }
     }

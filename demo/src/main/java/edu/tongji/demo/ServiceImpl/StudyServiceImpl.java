@@ -40,35 +40,46 @@ public class StudyServiceImpl implements StudyService{
     }
 
     @Override
-    public String createStrategy(String name, String brief,
-                                 List<Map<String, Double>> codes, Integer user_id) throws SQLException{
-        String sql = "select count(*) from strategy where user_id = " + user_id +
-                " and strategy_name = \'" + name + "\'";
-        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
-        if (rs.next()){
-            // 如果已经有了这个策略
-            if (rs.getInt(1) > 0){
-                return "already have this strategy";
-            }
-        }
+    public Integer createStrategy(String name, String brief,
+                                 List<Map<String, Double>> codes, Integer user_id){
+//        String sql = "select count(*) from strategy where user_id = " + user_id +
+//                " and strategy_name = \'" + name + "\'";
+//        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
+//        if (rs.next()){
+//            // 如果已经有了这个策略
+//            if (rs.getInt(1) > 0){
+//                return "already have this strategy";
+//            }
+//        }
         String createStrategySql = "INSERT INTO strategy(user_id, strategy_name, brief) VALUES ("
                 + user_id + ", \'" + name + "\'," + "\'" + brief+ "\' " + ")";
         jdbcTemplate.execute(createStrategySql);
-        for (int i = 0; i < codes.size(); i++){
-            String getReadDataSQL = "select close_value from data_real_time where code = " +
-                    "\'" + codes.get(i).keySet().toArray()[0] + "\'";
-            SqlRowSet realData = jdbcTemplate.queryForRowSet(getReadDataSQL);
-            if (realData.next()){
-                double value = realData.getDouble("close_value");
-                String createUserStrategySQL =
-                        "INSERT INTO user_strategy(strategy_name, user_id, code_id, stock_num, initial_value) " +
-                                "VALUES ("+ "\'" + name +"\', " + user_id +","+ "\'" +  codes.get(i).keySet().toArray()[0]
-                                + "\'," + codes.get(i).values().toArray()[0] +","+ value +");";
-                jdbcTemplate.execute(createUserStrategySQL);
-                System.out.println(createUserStrategySQL);
+        System.out.println("##########################################");
+        System.out.println("create strategy" + name + "successfully!");
+        String query = "SELECT * FROM strategy WHERE user_id = " + user_id + " and strategy_name=\'" + name + "\' order by time DESC ;";
+        SqlRowSet strategy = jdbcTemplate.queryForRowSet(query);
+        System.out.println("query for id of the strategy you've just created...");
+        if (strategy.next()){
+            int id = strategy.getInt("id");
+            System.out.println("strategy id is: " + id);
+            for (int i = 0; i < codes.size(); i++){
+                String getReadDataSQL = "select close_value from data_real_time where code = " +
+                        "\'" + codes.get(i).keySet().toArray()[0] + "\'";
+                SqlRowSet realData = jdbcTemplate.queryForRowSet(getReadDataSQL);
+                if (realData.next()){
+                    double value = realData.getDouble("close_value");
+                    String createUserStrategySQL =
+                            "INSERT INTO user_strategy(strategy_id, code_id, stock_num, initial_value) " +
+                                    "VALUES (" + id +","+ "\'" +  codes.get(i).keySet().toArray()[0]
+                                    + "\'," + codes.get(i).values().toArray()[0] +","+ value +");";
+                    jdbcTemplate.execute(createUserStrategySQL);
+                }
+                System.out.println("insert into user_strategy code_id: " + codes.get(i).keySet().toArray()[0]);
             }
+            return id;
+        }else{
+            return -1;
         }
-        return "successfully";
     }
 
     @Override

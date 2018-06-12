@@ -10,7 +10,7 @@ public interface StudyService {
 
     IntroductionFile getFileByName(String name);
 
-    String createStrategy(String name, String brief, List<Map<String, Double>> codes, Integer user_id) throws SQLException;
+    Integer createStrategy(String name, String brief, List<Map<String, Double>> codes, Integer user_id) throws SQLException;
 
     Map<String, Object> getInformation(String name, Integer user_id);
 
