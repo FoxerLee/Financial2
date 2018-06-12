@@ -238,11 +238,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 url:'http://localhost:8080/study/strategy/create',
                 data:{name:name, brief:intro, code_id1:code1, code_id2:code2, code_id3:code3, num1:num1, num2:num2, num3:num3}
             }).then(function (value) {
-                if (value.data > 0){
+                if (value.data.status > 0){
                     alert('success!');
-                    window.location.href = "detailstrategy.html?id=" + value.data;
+                    window.location.href = "detailstrategy.html?strategy_id=" + value.data.id;
                 }
-
                 else {
                     alert("创建失败！");
                     window.location.href = "newstrategy.html";
