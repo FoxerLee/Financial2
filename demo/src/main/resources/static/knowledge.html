@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>news</title>
+    <title>knowledge</title>
     <!-- jQuery-->
     <script src="js/jquery.min.js"></script>
     <script src="js/angular-route.js"></script>
     <script src="js/angular.js"></script>
-
 
     <!-- Custom Theme files -->
     <!--theme-style-->
@@ -23,6 +22,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--fonts-->
     <!--<link href='http://fonts.useso.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>-->
     <!--//fonts-->
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
 </head>
 <body>
 <div class="header" ng-app="myApp" ng-controller="siteCtrl">
@@ -42,10 +43,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li>
                     <a href="knowledge.html" class="black2" > 投资知识</a >
                     <ul>
-                        <li class="black"><a href="#">风险提示</a></li>
-                        <li class="black"><a href="#">法律法规</a></li>
-                        <li class="black"><a href="#">新手入门</a></li>
-                        <li class="black"><a href="#">进阶知识</a></li>
+                        <li class="black"><a href="risk.html">风险提示</a></li>
+                        <li class="black"><a href="law.html">法律法规</a></li>
+                        <li class="black"><a href="novice.html">新手入门</a></li>
+                        <li class="black"><a href="advanced.html">进阶知识</a></li>
                     </ul>
                 </li>
                 <li>
@@ -75,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
     <div class="content" ng-app="myApp" ng-controller="siteCtrl">
-        
+        <div id="article"></div>
     <div class="clear"> </div>
     </div>
 </div>
@@ -103,14 +104,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     }
     var args = getQueryStringArgs();
     var name = args["name"];
+
     var app = angular.module('myApp', []);
     app.controller('siteCtrl', function($scope, $http) {
-        $scope.name = name;
-        $http.get("http://localhost:8080/study/introduction?name=" + name)
+        $http.get("http://localhost:8080/study/introduction?name="+name)
             .then(function (response) {
-                if (response.data === 400)
-                    window.location.href =  "login.html";
-                $scope.knowledge = response.data;
+                // var temp2 = angular.fromJson(response.data);
+                var temp2 = response.data['text'];
+                document.getElementById("article").innerHTML = temp2;
+                //var temp3 = temp2[0].data[0].name;
+                // $scope.rankings = temp2;
             });
-    }
+        $scope.form_query = function () {
+            var code = document.getElementById("code").value;
+            window.location.href = "detail.html?code=" + code;
+        };
+        $scope.check_out = function () {
+            window.location.href = "login.html";
+            $http.get("http://localhost:8080/user/logout");
+        }
+    });
 </script>
