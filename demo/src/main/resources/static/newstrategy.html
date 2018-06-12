@@ -125,10 +125,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">策略名称 <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">策略名称 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="name" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                <input id="name" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
 
@@ -190,8 +190,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <a ng-click="newS()">mioa</a>
-                                <button ng-click="newS()" class="btn btn-primary" type="button">Cancel</button>
+                                <button ng-click="back()" class="btn btn-primary" type="button">Cancel</button>
                                 <button ng-click="newS()" class="btn btn-primary" type="reset">Reset</button>
                                 <button ng-click="newS()" class="btn btn-success"  >Submit</button>
                             </div>
@@ -212,6 +211,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $scope.check_out = function () {
             window.location.href =  "login.html";
         }
+        $scope.back = function () {
+            window.location.href = "allstrategy.html";
+        }
         $scope.newS = function () {
             var name=document.getElementById("name").value;
             var intro=document.getElementById("intro").value;
@@ -223,14 +225,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             var num3=document.getElementById("num3").value;
 
             alert('!');
-            alert(name);
+            alert(code3);
             $scope.check_out = function () {
                 window.location.href =  "login.html";
             }
             $http({
                 method:'GET',
-                url:'http://localhost:8080/user/login',
-                data:"name=" + name + "intro=" + intro+"code1="+code1+"num1="+num1+"code2="+code2+"num2="+num2+ "code3="+code3+"num3="+num3,
+                url:'http://localhost:8080/study/strategy/create',
+                data:"name=" + name + "brief=" + intro+"code_id1="+code1+"num1="+num1+"code_id2="+code2+"num2="+num2+ "code_id3="+code3+"num3="+num3,
             }).then(function (value) {
                 if (value.data === 200)
                     window.location.href = "detailstrategy.html?name=" + name;
