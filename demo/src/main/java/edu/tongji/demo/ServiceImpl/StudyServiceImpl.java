@@ -1,6 +1,5 @@
 package edu.tongji.demo.ServiceImpl;
 
-import edu.tongji.demo.Model.News;
 import edu.tongji.demo.DAO.IntroductionFileMapper;
 import edu.tongji.demo.Model.IntroductionFile;
 import edu.tongji.demo.Service.StudyService;
@@ -267,6 +266,60 @@ public class StudyServiceImpl implements StudyService{
         jdbcTemplate.update("UPDATE strategy SET fund = " + old_value + " WHERE id=" + strategy_id);
         jdbcTemplate.update("UPDATE strategy SET left_storage = " + tag + " WHERE id=" + strategy_id);
         return null;
+    }
+
+
+    @Override
+    public Object changeLog(Integer strategy_id, List<Map<String, Object>> oldData, List<Map<String, Object>> newData){
+        List<Map<String, Object>> log = new ArrayList<>();
+        for (int i =0; i < oldData.size(); i++){
+            Boolean tag = false;
+            for (int j = 0; j < newData.size(); j++){
+                if (newData.get(j).get("code_id").toString().equals(oldData.get(i).get("code_id").toString())){
+                    tag = true;
+                    if (Double.parseDouble(newData.get(j).get("number").toString()) ==
+                            Double.parseDouble(oldData.get(i).get("number").toString()))
+                        continue;
+                    else{
+                        Map<String, Object> newLog = new HashMap<>();
+                        newLog.put("code_id", newData.get(j).get("code_id").toString());
+                        newLog.put("new", Double.parseDouble(newData.get(j).get("number").toString()));
+                        newLog.put("old", Double.parseDouble(oldData.get(i).get("number").toString()));
+                        log.add(newLog);
+                        break;
+                    }
+                }
+            }
+            if (!tag){
+                Map<String, Object> newLog = new HashMap<>();
+                newLog.put("code_id", oldData.get(i).get("code_id").toString());
+                newLog.put("old", Double.parseDouble(oldData.get(i).get("number").toString()));
+                newLog.put("new", 0.0);
+                log.add(newLog);
+            }
+        }
+        for (int i =0; i < newData.size(); i++){
+            boolean tag = false;
+            for (int j = 0; j < oldData.size(); j++){
+                if (newData.get(i).get("code_id").toString().equals(oldData.get(j).get("code_id").toString())){
+                    tag = true;
+                    break;
+                }
+            }
+            if (!tag){
+                Map<String, Object> newLog = new HashMap<>();
+                newLog.put("code_id", newData.get(i).get("code_id").toString());
+                newLog.put("new", Double.parseDouble(newData.get(i).get("number").toString()));
+                newLog.put("old", 0.0);
+                log.add(newLog);
+            }
+        }
+        for (int i = 0; i < log.size(); i++){
+            jdbcTemplate.execute("INSERT INTO strategy_change(strategy_id, code_id, new, old) VALUES (" + strategy_id + ",\'" +
+                    log.get(i).get("code_id").toString()+ "\'," + Double.parseDouble(log.get(i).get("new").toString()) + "," +
+                    Double.parseDouble(log.get(i).get("old").toString())+");");
+        }
+        return log;
     }
 
 }

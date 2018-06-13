@@ -105,11 +105,11 @@ public class StudyController {
         if (!Verification.verify()){
             return "error!";
         }else{
-            int user_id = userService.getIDByName(userService.getNameByCookie(request));
+//            int user_id = userService.getIDByName(userService.getNameByCookie(request));
             JSONObject jsonObject = JSONObject.fromObject(content);
             JSONArray jsonArray = JSONArray.fromObject(jsonObject.getString("data"));
             Integer strategy_id = jsonObject.getInt("strategy_id");
-//            List<Map<String, Object>> old_data = studyService.getCodes(strategy_id);
+            List<Map<String, Object>> old_data = studyService.getCodes(strategy_id);
             List<Map<String, Object>> post_data = new ArrayList();
             for (int i = 0; i < jsonArray.size(); i++){
                 Map<String, Object> data = new HashMap<>();
@@ -118,8 +118,9 @@ public class StudyController {
                 data.put("number", jsonObject1.getDouble("number"));
                 post_data.add(data);
             }
+            Object result = studyService.changeLog(strategy_id, old_data, post_data);
             studyService.updateUserStrategy(post_data, strategy_id);
-            return post_data;
+            return result;
         }
     }
 }
