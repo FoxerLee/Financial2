@@ -12,7 +12,7 @@ public interface StudyService {
 
     Map<String, Object> createStrategy(String name, String brief, List<Map<String, Object>> codes, Integer user_id) throws SQLException;
 
-    Map<String, Object> getInformation(String name, Integer user_id);
+    Object getInformation();
 
     List<Map<String, Object>> getCodes(Integer strategy_id);
 

@@ -115,7 +115,6 @@ public class StudyServiceImpl implements StudyService{
         if (strategy_id.next()){
             id = strategy_id.getInt("id");
         }
-        System.out.println(id);
         for (int i = 0; i < codes.size(); i++){
             String createDetail = "INSERT INTO strategy_detail(strategy_id, code_id, storage_number, present_value, trading_storage) VALUES (" +
                     id+ ", \'"+ code_ids.get(i) + "\', " + storage.get(i) +"," + present_value.get(i) + "," + 10000 * storage.get(i) / present_value.get(i) +");";
@@ -129,19 +128,21 @@ public class StudyServiceImpl implements StudyService{
 
 
     @Override
-    public Map<String, Object> getInformation(String name, Integer user_id){
-//        String queryInfo = "SELECT * FROM strategy WHERE strategy_name = \'" + name + "\' and user_id=" + user_id;
-//        SqlRowSet rs = jdbcTemplate.queryForRowSet(queryInfo);
-//        Map<String, Object> result = new HashMap<>();
-//        if (rs.next()){
-//            String s_name = rs.getString("strategy_name");
-//            String s_brief = rs.getString("brief");
-//            result.put("name", s_name);
-//            result.put("brief", s_brief);
-//        }
-//        List<Map<String, Object>> result_data = getCodes(name, user_id);
-//        result.put("data", result_data);
-        return null;
+    public Object getInformation(){
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT t1.id, t1.name, t1.brief, t2.user_id, t2.name as user_name, t3.present_amount " +
+                "FROM (strategy t1 left join user_info t2 ON t1.user_id = t2.user_id) left join strategy_log t3 on t1.id = t3.strategy_id;");
+        ArrayList<Map<String, Object>> data = new ArrayList<>();
+        while (sqlRowSet.next()){
+            Map<String, Object> map = new HashMap<>();
+            map.put("strategy_id", sqlRowSet.getInt("id"));
+            map.put("strategy_name", sqlRowSet.getString("name"));
+            map.put("brief", sqlRowSet.getString("brief"));
+            map.put("user_id", sqlRowSet.getInt("user_id"));
+            map.put("user_name", sqlRowSet.getString("user_name"));
+            map.put("present_amount", sqlRowSet.getDouble("present_amount"));
+            data.add(map);
+        }
+        return data;
     }
 
     @Override

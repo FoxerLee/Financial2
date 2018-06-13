@@ -89,13 +89,11 @@ public class StudyController {
 
     // 获取策略的基本信息(用户id和策略名称)
     @GetMapping("/strategy/information")
-    public Object getInformation(@RequestParam(value = "name")String name, HttpServletRequest request){
+    public Object getInformation(){
         if (!Verification.verify()){
             return "False";
         }else{
-            int user_id = userService.getIDByName(userService.getNameByCookie(request));
-            Map<String, Object> information = studyService.getInformation(name, user_id);
-            return information;
+            return studyService.getInformation();
         }
     }
 
