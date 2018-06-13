@@ -71,13 +71,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!---->
     <div class="content" >
         <div class="work">
-            <div class="heat-map-title">&nbsp;&nbsp;&nbsp;{{basicinfo.name}}
+            <div class="heat-map-title">&nbsp;&nbsp;&nbsp;{{basicinfo.strategy_name}}
             </div>
             <div class="work-top">
                 <div class="test">
                     <div class="test-top">
                         <div class="blog-in">
-                            <h5 id="miaomiao" scope="col" style="vertical-align:middle; text-align:center;">总收益：{{bonus.year}}</h5>
+                            <h5 id="miaomiao" scope="col" style="vertical-align:middle; text-align:center;">总收益率：{{basicinfo.benefit_all}}</h5>
                             <!--<p>涨停：@up_limit@&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跌停：@down_limit@</p>-->
 
                         </div>
@@ -89,10 +89,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <tbody>
 
                                 <tr>
-                                    <td scope="col" style="vertical-align:middle; text-align:center;">月收益：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{bonus.month}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center;">月收益率：</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{basicinfo.benefit_month}}</td>
                                     <td scope="col" style="vertical-align:middle; text-align:center;">收益净值：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{bonus.benefit}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center;">{{basicinfo.benefit_net}}</td>
                                 </tr>
 
                                 </tbody>
@@ -144,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <tbody>
                                 <tr>
                                     <td scope="col" style="vertical-align:middle; text-align:center;">主理人：</td>
-                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #bd362f">{{basicinfo.user}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #bd362f">{{basicinfo.user_name}}</td>
 
                                 </tr>
                                 <tr>
@@ -164,6 +164,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <td scope="col" style="vertical-align:middle; text-align:center; color: #bd362f">{{x.code_id}}</td>
                                     <td scope="col" style="vertical-align:middle; text-align:center;">份额：</td>
                                     <td scope="col" style="vertical-align:middle; text-align:center; color: #46a546">{{x.num}}</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center;">当前价格：</td>
+                                    <td scope="col" style="vertical-align:middle; text-align:center; color: #46a546">{{x.present_value}}</td>
                                 </tr>
 
                                 </tbody>
@@ -184,10 +186,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="stupid">
                                 <table border="0" cellpadding="0" cellspacing="0">
                                     <tbody>
-                                    <tr ng-repeat="y in tradehistory">
+                                    <tr ng-repeat="y in basicinfo.tradehistory">
                                         <td scope="col" style="vertical-align:middle; text-align:right;padding:2%;">{{y.type}}</td>
-                                        <td scope="col" style="vertical-align:middle; text-align:left;padding:2%;">{{y.name}}</td>
-                                        <td scope="col" style="vertical-align:middle; text-align:right;padding:2%;">{{y.price}}</td>
+                                        <td scope="col" style="vertical-align:middle; text-align:left;padding:2%;">股票：{{y.id}}</td>
                                         <td scope="col" style="vertical-align:middle; text-align:right;padding:2%;">份额：{{y.old}}-->{{y.new}}</td>
                                     </tr>
                                     </tbody>
@@ -242,19 +243,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     window.location.href =  "login.html";
                 $scope.basicinfo = response.data;
             });
-        $http.get("http://localhost:8080/news/code?code=" + code)
-            .then(function (response) {
-                if (response.data === 400)
-                    window.location.href =  "login.html";
-                $scope.tradehistory = response.data;
-            });
-        $http.get("http://localhost:8080/research/code?code=" + code)
-            .then(function (response) {
-                if (response.data === 400)
-                    window.location.href =  "login.html";
-                $scope.bonus = response.data;
-            });
-
         $http.get("http://localhost:8080/stock/history/days?code=" + code)
             .then(function (response) {
                 document.getElementById("month").style.backgroundColor = "#778288";
