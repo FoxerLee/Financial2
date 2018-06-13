@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 @Service
 public class StudyServiceImpl implements StudyService{
@@ -320,6 +318,79 @@ public class StudyServiceImpl implements StudyService{
                     Double.parseDouble(log.get(i).get("old").toString())+");");
         }
         return log;
+    }
+
+    @Override
+    public Object getStrategtDetail(Integer strategy_id){
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT t1.name as strategy_name, t2.name as user_name, t1.brief as brief FROM strategy t1 " +
+                "left join user_info t2 on t1.user_id = t2.user_id where t1.id = " + strategy_id+ ";");
+        String user_name = "";
+        String strategy_name = "";
+        String brief = "";
+        if (sqlRowSet.next()){
+            user_name = sqlRowSet.getString("user_name");
+            strategy_name = sqlRowSet.getString("strategy_name");
+            brief = sqlRowSet.getString("brief");
+        }
+        sqlRowSet = jdbcTemplate.queryForRowSet("select * from strategy_detail where strategy_id = "+ strategy_id+";");
+        List<Map<String, Object>> code_data = new ArrayList<>();
+        while (sqlRowSet.next()){
+            Map<String, Object> temp_data = new HashMap<>();
+            temp_data.put("code_id", sqlRowSet.getString("code_id"));
+            temp_data.put("storage_number", sqlRowSet.getDouble("storage_number"));
+            temp_data.put("present_value", sqlRowSet.getDouble("present_value"));
+            code_data.add(temp_data);
+        }
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        sqlRowSet = jdbcTemplate.queryForRowSet("select present_amount from strategy_log where time = " +
+                "(select min(time) from strategy_log where strategy_id = "+strategy_id+") and strategy_id = "+strategy_id+";");
+        double history_value = 0.0;
+        if(sqlRowSet.next()){
+            history_value = sqlRowSet.getDouble("present_amount");
+        }
+        sqlRowSet = jdbcTemplate.queryForRowSet("select present_amount from strategy_log where time = " +
+                "(select max(time) from strategy_log where strategy_id = "+strategy_id+") and strategy_id = "+strategy_id+";");
+        double present_value = 0.0;
+        if (sqlRowSet.next()){
+            present_value = sqlRowSet.getDouble("present_amount");
+        }
+        sqlRowSet = jdbcTemplate.queryForRowSet("select present_amount from strategy_log where time > UNIX_TIMESTAMP('"+year+"-"+month+"-1') and strategy_id = "+strategy_id+" order by time asc;");
+        List<Double> month_value = new ArrayList<>();
+        while (sqlRowSet.next()){
+            month_value.add(sqlRowSet.getDouble("present_amount"));
+        }
+        double benefit_all = (present_value - history_value) / history_value;
+        double benefit_net = present_value - history_value;
+        double benefit_month = 0.0;
+        if (month_value.size() > 1){
+            benefit_month = (month_value.get(month_value.size() - 1) - month_value.get(0)) / month_value.get(0);
+        }
+        sqlRowSet = jdbcTemplate.queryForRowSet("select * from strategy_change where strategy_id = "+strategy_id+";");
+        List<Map<String, Object>> change_log = new ArrayList<>();
+        while(sqlRowSet.next()){
+            Map<String, Object> temp = new HashMap<>();
+            temp.put("code_id", sqlRowSet.getString("code_id"));
+            temp.put("old", sqlRowSet.getDouble("old"));
+            temp.put("new", sqlRowSet.getDouble("new"));
+            if (sqlRowSet.getDouble("new") > sqlRowSet.getDouble("old")){
+                temp.put("type", "买");
+            }else{
+                temp.put("type", "卖");
+            }
+            change_log.add(temp);
+        }
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("strategy_name", strategy_name);
+        result.put("user_name", user_name);
+        result.put("brief", brief);
+        result.put("code_data", code_data);
+        result.put("benefit_all", benefit_all);
+        result.put("benefit_month", benefit_month);
+        result.put("benefit_net", benefit_net);
+        result.put("change_log", change_log);
+        return result;
     }
 
 }

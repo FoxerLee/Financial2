@@ -124,4 +124,10 @@ public class StudyController {
             return result;
         }
     }
+
+    @GetMapping("/strategy/detail")
+    public Object getStrategyDetail(@RequestParam(value = "strategy_id")String id){
+        Integer strategy_id = Integer.parseInt(id);
+        return studyService.getStrategtDetail(strategy_id);
+    }
 }

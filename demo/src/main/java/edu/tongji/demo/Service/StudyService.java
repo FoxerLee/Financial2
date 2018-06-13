@@ -19,4 +19,6 @@ public interface StudyService {
     Object updateUserStrategy(List<Map<String, Object>> newData,Integer strategy_id);
 
     Object changeLog(Integer strategy_id, List<Map<String, Object>> oldData, List<Map<String, Object>> newData);
+
+    Object getStrategtDetail(Integer strategy_id);
 }
