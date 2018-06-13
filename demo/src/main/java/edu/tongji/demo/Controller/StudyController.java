@@ -87,14 +87,17 @@ public class StudyController {
         }
     }
 
-    // 获取策略的基本信息(用户id和策略名称)
+    // 获取策略的基本信息
     @GetMapping("/strategy/information")
     public Object getInformation(){
-        if (!Verification.verify()){
-            return "False";
-        }else{
-            return studyService.getInformation();
-        }
+//        if (!Verification.verify()){
+//            return "False";
+//        }else{
+//
+//        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("data", studyService.getInformation());
+        return map;
     }
 
 //     修改策略

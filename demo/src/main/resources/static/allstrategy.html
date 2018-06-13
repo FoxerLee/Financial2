@@ -93,33 +93,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </tr>
                 <tr ng-repeat="x in research">
 
-                    <td style="vertical-align:middle; text-align:center;">{{x.wow}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{x.name}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{x.intro}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{x.inst}}</td>
-                    <td style="vertical-align:middle; text-align:center;"><a  ng-click="detail(x.code)">🔎</a></td>
+                    <td style="vertical-align:middle; text-align:center;">{{x.present_amount}}</td>
+                    <td style="vertical-align:middle; text-align:center;">{{x.strategy_name}}</td>
+                    <td style="vertical-align:middle; text-align:center;">{{x.brief}}</td>
+                    <td style="vertical-align:middle; text-align:center;">{{x.user_name}}</td>
+                    <td style="vertical-align:middle; text-align:center;"><a  ng-click="detail(x.strategy_id)">🔎</a></td>
 
                 </tr>
-
-
-                <script>
-                    var app = angular.module('myApp', []);
-                    app.controller('siteCtrl', function($scope, $http) {
-                        $http.get("http://localhost:8080/strategy/personal")
-                            .then(function (response) {
-                                if (response === 400)
-                                    window.location.href =  "login.html";
-                                $scope.research = response.data;
-                            });
-                        $scope.check_out = function () {
-                            window.location.href =  "login.html";
-                        };
-                        $scope.detail = function (scode) {
-                            window.location.href = "strategydetail.html?code=" + scode;
-                        }
-                    });
-
-                </script>
 
             </table>
             <!-- 分页 end --
@@ -132,5 +112,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </body>
 </html>
 <script>
+    var app = angular.module('myApp', []);
+    app.controller('siteCtrl', function($scope, $http) {
+        $http.get("http://localhost:8080/study/strategy/information")
+            .then(function (response) {
+                if (response === 400)
+                    window.location.href =  "login.html";
+                $scope.research = response.data.data;
+            });
+        $scope.check_out = function () {
+            window.location.href =  "login.html";
+        };
+        $scope.detail = function (scode) {
+            window.location.href = "strategydetail.html?code=" + scode;
+        }
+    });
 
 </script>

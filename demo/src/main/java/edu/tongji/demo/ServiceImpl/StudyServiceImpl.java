@@ -129,9 +129,7 @@ public class StudyServiceImpl implements StudyService{
 
     @Override
     public Object getInformation(){
-        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT t1.id, t1.name, t1.brief, t2.user_id, t2.name as user_name, t3.present_amount " +
-                "FROM (strategy t1 left join user_info t2 ON t1.user_id = t2.user_id) left join strategy_log t3 on t1.id = t3.strategy_id where t3.time = " +
-                "(select max(time) from strategy_log where strategy_log.strategy_id = t1.id);");
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT t1.id, t1.name, t1.brief, t2.user_id, t2.name as user_name, t3.present_amount FROM (strategy t1 left join user_info t2 ON t1.user_id = t2.user_id) left join strategy_log t3 on t1.id = t3.strategy_id where t3.time = (select max(strategy_log.time) from strategy_log where strategy_log.strategy_id = t1.id);");
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         while (sqlRowSet.next()){
             Map<String, Object> map = new HashMap<>();
