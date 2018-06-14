@@ -125,10 +125,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">策略名称 <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">策略名称 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="name" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                <input id="name" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
 
@@ -150,52 +150,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <br />
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="code1">股票代码</label>
-                                <input type="text" id="code1" class="form-control" placeholder=" ">
-                            </div>
-                            <div class="form-group">
-                                <label for="num1">股数</label>
-                                <input type="email" id="num1" class="form-control" placeholder=" ">
-                            </div>
+                        <div id="strategy_tables">
+                            <br />
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="code1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <input type="text" id="code1" class="form-control" placeholder=" ">
+                                </div>
+                                <div class="form-group">
+                                    <label for="num1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <input type="text" id="num1" class="form-control" placeholder=" ">
+                                </div>
 
-                            <button type="submit" class="btn btn-default">添加</button>
-                        </form>
-                        <br />
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="code2">股票代码</label>
-                                <input type="text" id="code2" class="form-control" placeholder=" ">
-                            </div>
-                            <div class="form-group">
-                                <label for="num2">股数</label>
-                                <input type="email" id="num2" class="form-control" placeholder=" ">
-                            </div>
+                            </form>
+                            <br />
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="code2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <input type="text" id="code2" class="form-control" placeholder=" ">
+                                </div>
+                                <div class="form-group">
+                                    <label for="num2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <input type="text" id="num2" class="form-control" placeholder=" ">
+                                </div>
 
-                            <button type="submit" class="btn btn-default">添加</button>
-                        </form>
-                        <br />
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="code3">股票代码</label>
-                                <input type="text" id="code3" class="form-control" placeholder=" ">
-                            </div>
-                            <div class="form-group">
-                                <label for="num3">股数</label>
-                                <input type="email" id="num3" class="form-control" placeholder=" ">
-                            </div>
+                            </form>
+                            <br />
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="code3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <input type="text" id="code3" class="form-control" placeholder=" ">
+                                </div>
+                                <div class="form-group">
+                                    <label for="num3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <input type="text" id="num3" class="form-control" placeholder=" ">
+                                </div>
 
-                            <button type="submit" class="btn btn-default">添加</button>
-                        </form>
+                            </form>
 
+                        </div>
+
+                        <button id="add-strategy-button" class="btn btn-primary" type="button"> 愚蠢的吴可菲 </button>
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button class="btn btn-primary" type="button">Cancel</button>
-                                <button class="btn btn-primary" type="reset">Reset</button>
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <button ng-click="back()" class="btn btn-primary" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                                <button ng-click="newS()" class="btn btn-success"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </div>
@@ -211,35 +212,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>
     var app = angular.module('myApp', []);
     app.controller('siteCtrl', function($scope, $http) {
-        $http.get("http://localhost:8080/research/personal")
-            .then(function (response) {
-                if (response === 400)
-                    window.location.href =  "login.html";
-                $scope.research = response.data;
-            });
         $scope.check_out = function () {
             window.location.href =  "login.html";
-        }
-        $scope.Func = function () {
-            var username=document.getElementById("name").value;
-            var password=document.getElementById("_password").value;
+        };
+        $scope.back = function () {
+            window.location.href = "allstrategy.html";
+        };
+        $scope.newS = function () {
+            var name=document.getElementById("name").value;
+            var intro=document.getElementById("intro").value;
+            var code1=document.getElementById("code1").value;
+            var num1=document.getElementById("num1").value;
+            var code2=document.getElementById("code2").value;
+            var num2=document.getElementById("num2").value;
+            var code3=document.getElementById("code3").value;
+            var num3=document.getElementById("num3").value;
+
+            alert('!');
+            alert(code3);
+            $scope.check_out = function () {
+                window.location.href =  "login.html";
+            };
             $http({
-                method:'POST',
-                url:'http://localhost:8080/user/login',
-                data:"name=" + username + "&password=" + password,
-                headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+                method:'post',
+                url:'http://localhost:8080/study/strategy/create',
+                data:{name:name, brief:intro, code_id1:code1, code_id2:code2, code_id3:code3, num1:num1, num2:num2, num3:num3}
             }).then(function (value) {
-                if (value.data === 200)
-                    window.location.href = "index_data2.html";
-                else if(value.data === 400){
-                    alert("用户名或密码错误！");
-                    window.location.href = "login.html";
+                if (value.data.status > 0){
+                    alert('success!');
+                    window.location.href = "detailstrategy.html?strategy_id=" + value.data.id;
                 }
-                else
-                    window.location.href = "400.html";
+                else {
+                    alert("创建失败！");
+                    window.location.href = "newstrategy.html";
+                }
 
             });
         }
+    });
+
+    $('#add-strategy-button').click(function(){
+        strategys = document.getElementById("strategy_tables").innerHTML;
+        new_strategy = "<form class=\"form-inline\">\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label for=\"code1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n" +
+            "                                    <input type=\"text\" id=\"code1\" class=\"form-control\" placeholder=\" \">\n" +
+            "                                </div>\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label for=\"num1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n" +
+            "                                    <input type=\"text\" id=\"num1\" class=\"form-control\" placeholder=\" \">\n" +
+            "                                </div>\n" +
+            "\n" +
+            "                            </form>\n" +
+            "                            <br />";
+        document.getElementById("strategy_tables").innerHTML = strategys + new_strategy;
     });
 
 </script>
