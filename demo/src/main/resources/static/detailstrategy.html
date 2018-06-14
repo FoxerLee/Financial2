@@ -121,8 +121,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     .guding{text-align:center;}
                     #main{display:inline-block;}
                 </style>
+                <br/>
+                <br/>
                 <div class="guding">
-                    <div id="main" style="top:2%;left:2%;width:470px;height:310px;" ></div>
+                    <div id="main" style="top:2%;left:0.01px;width:560px;height:500px;" ></div>
                 </div>
 
             </div>
@@ -250,9 +252,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 var temp_data = response.data.data;
                 DrawData(temp_data);
             });
-        document.getElementById("month").style.backgroundColor = "#778288";
+        document.getElementById("month").style.backgroundColor = "#1ab5b3";
         document.getElementById("year").style.backgroundColor = "#778288";
-        document.getElementById("all").style.backgroundColor = "#1ab5b3";
+        document.getElementById("all").style.backgroundColor = "#778288";
 
         $scope.Select_month = function () {
             $http.get("http://localhost:8080/study/strategy/log/month?strategy_id=" + 11)
@@ -260,9 +262,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     var temp_data = response.data.data;
                     DrawData(temp_data);
                 });
-            document.getElementById("month").style.backgroundColor = "#778288";
+            document.getElementById("month").style.backgroundColor = "#1ab5b3";
             document.getElementById("year").style.backgroundColor = "#778288";
-            document.getElementById("all").style.backgroundColor = "#1ab5b3";
+            document.getElementById("all").style.backgroundColor ="#778288" ;
 
         };
         $scope.Select_year = function () {
@@ -272,8 +274,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     DrawData(temp_data);
                 });
             document.getElementById("month").style.backgroundColor = "#778288";
-            document.getElementById("year").style.backgroundColor = "#778288";
-            document.getElementById("all").style.backgroundColor = "#1ab5b3";
+            document.getElementById("year").style.backgroundColor = "#1ab5b3";
+            document.getElementById("all").style.backgroundColor = "#778288";
         };
         $scope.Select_all = function () {
             $http.get("http://localhost:8080/study/strategy/log/all?strategy_id=" + 11)

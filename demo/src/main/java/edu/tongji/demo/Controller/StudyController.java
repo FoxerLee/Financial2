@@ -118,8 +118,11 @@ public class StudyController {
         for (int i = 0; i < jsonArray.size(); i++){
             Map<String, Object> data = new HashMap<>();
             JSONObject jsonObject1 = JSONObject.fromObject(jsonArray.get(i));
+            if (jsonObject1.getDouble("number") == 0.0)
+                continue;
             data.put("code_id", jsonObject1.getString("code_id"));
             data.put("number", jsonObject1.getDouble("number"));
+
             post_data.add(data);
         }
         Object result = studyService.changeLog(strategy_id, old_data, post_data);

@@ -352,7 +352,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     myLen=temp.length;
                     console.log(myLen);
                     originCount = myLen;
-                    while(q<3){
+                    while(q<myLen){
 
                         //alert("m"+myLen);
                         //alert(q);
@@ -390,7 +390,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     }
                     $scope.newS = function () {
                         var sum = 0;
-                        alert("hahahahah");
                         var backName = [];
                         var backValue = [];
                         var data= [];
@@ -402,15 +401,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             //alert(temp[i].code);
                             temp2["number"] = $("#"+String(temp[i].code)).val()/100.0;
                             //alert($("#"+String(temp[i].code)).val()/100.0)
-                            alert("o"+temp2.code_id);
-                            alert("o"+temp2.number);
+                            // alert("o"+temp2.code_id);
+                            // alert("o"+temp2.number);
                             data.push(temp2);
                         }
                         for (var j = 2; j < count; j++) {
                             temp2 = {};
                             sID = "slide" + String(j);
                             iID = "input" + String(j);
-                            alert(count);
                             //alert("hahahahah");
                             //alert($("#" + sID).val());
                             //alert($('#' + iID).attr('placeholder'));
@@ -418,50 +416,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             backName.push($('#' + iID).attr('placeholder'));
                             temp2["code_id"] = $('#' + iID).val();
                             temp2["number"] = $("#" + sID).val()/100.0;
-                            alert("a"+temp2.code_id);
-                            alert("a"+temp2.number);
+                            // alert("a"+temp2.code_id);
+                            // alert("a"+temp2.number);
                             data.push(temp2);
                         }
-                        sID = "slide" + String(count);
-                        iID = "input" + String(count);
-                        //alert("hahahahah");
-                        //alert($("#" + sID).val());
-                        //alert($('#' + iID).val());
-                        backValue.push($("#" + sID).val());
-                        backName.push($('#' + iID).val());
-                        temp2 = {};
-                        temp2["code_id"] = $('#' + iID).val();
-                        temp2["number"] = $("#" + sID).val()/100.0;
-                        alert("l"+temp2.code_id);
-                        alert("l"+temp2.number);
-                        data.push(temp2);
+                        if (count > 1){
+                            sID = "slide" + String(count);
+                            iID = "input" + String(count);
+                            //alert("hahahahah");
+                            //alert($("#" + sID).val());
+                            //alert($('#' + iID).val());
+                            backValue.push($("#" + sID).val());
+                            backName.push($('#' + iID).val());
+                            temp2 = {};
+                            temp2["code_id"] = $('#' + iID).val();
+                            temp2["number"] = $("#" + sID).val()/100.0;
+                            data.push(temp2);
+                        }
                         //console.log("hahahahah")
                         for(var s=0;s<backValue.length;s++){
-                            alert(backValue[s]);
                             sum = sum + parseInt(backValue[s]);
                         }
-                        alert(sum);
                         if(sum>100){
                             alert("总仓位超过100%，请修改！");
                             console.log(data)
                         }
                         else {
-//                            $http({
-//                                method: 'POST',
-//                                url: 'http://localhost:8080/study/strategy/change',
-//                                data: "strategy_id=" + code + "&data=" + data,
-//                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-//                            }).then(function (value) {
-//                                if (value.data === 200)
-//                                    window.location.href = "detailstrategy.html?code=" + code;
-//                                else if (value.data === 400) {
-//                                    alert("修改失败！");
-//                                    window.location.href = "work.html";
-//                                }
-//                                else
-//                                    window.location.href = "400.html";
-//
-//                            });
+                           $http({
+                               method: 'POST',
+                               url: 'http://localhost:8080/study/strategy/change',
+                               // data: "strategy_id=" + code + "&data=" + data,
+                               data:{strategy_id:11, data:data}
+                               // headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                           }).then(function (value) {
+                               if (value.data === 200)
+                                   window.location.href = "detailstrategy.html?code=" + code;
+                               else if (value.data === 400) {
+                                   alert("修改失败！");
+                                   window.location.href = "work.html";
+                               }
+                               else
+                                   window.location.href = "400.html";
+
+                           });
                         }
                     };
                     $scope.back = function () {
