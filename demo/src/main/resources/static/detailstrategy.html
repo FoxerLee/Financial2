@@ -240,14 +240,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         };
         $scope.code = code;
 
-        $http.get("http://localhost:8080/study/strategy/detail?strategy_id=" + 11)
+        $http.get("http://localhost:8080/study/strategy/detail?strategy_id=" + code)
             .then(function (response) {
                 if (response.data === 400)
                     window.location.href =  "login.html";
                 $scope.basicinfo = response.data;
             });
 
-        $http.get("http://localhost:8080/study/strategy/log/month?strategy_id=" + 11)
+        $http.get("http://localhost:8080/study/strategy/log/month?strategy_id=" + code)
             .then(function (response) {
                 var temp_data = response.data.data;
                 DrawData(temp_data);
@@ -257,7 +257,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         document.getElementById("all").style.backgroundColor = "#778288";
 
         $scope.Select_month = function () {
-            $http.get("http://localhost:8080/study/strategy/log/month?strategy_id=" + 11)
+            $http.get("http://localhost:8080/study/strategy/log/month?strategy_id=" + code)
                 .then(function (response) {
                     var temp_data = response.data.data;
                     DrawData(temp_data);
@@ -268,7 +268,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         };
         $scope.Select_year = function () {
-            $http.get("http://localhost:8080/study/strategy/log/year?strategy_id=" + 11)
+            $http.get("http://localhost:8080/study/strategy/log/year?strategy_id=" + code)
                 .then(function (response) {
                     var temp_data = response.data.data;
                     DrawData(temp_data);
@@ -278,7 +278,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             document.getElementById("all").style.backgroundColor = "#778288";
         };
         $scope.Select_all = function () {
-            $http.get("http://localhost:8080/study/strategy/log/all?strategy_id=" + 11)
+            $http.get("http://localhost:8080/study/strategy/log/all?strategy_id=" + code)
                 .then(function (response) {
                     var temp_data = response.data.data;
                     DrawData(temp_data);
