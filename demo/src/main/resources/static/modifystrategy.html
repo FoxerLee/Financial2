@@ -443,14 +443,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                data:{strategy_id:11, data:data}
                                // headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                            }).then(function (value) {
-                               if (value.data === 200)
-                                   window.location.href = "detailstrategy.html?code=" + code;
-                               else if (value.data === 400) {
+                               if (value.data === 400) {
                                    alert("修改失败！");
                                    window.location.href = "work.html";
                                }
                                else
-                                   window.location.href = "400.html";
+                                   window.location.href = "detailstrategy.html?code=" + code;
 
                            });
                         }
