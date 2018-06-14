@@ -23,4 +23,10 @@ public interface StudyService {
     Object getStrategtDetail(Integer strategy_id);
 
     Object getSelfStrategy(Integer strategy_id);
+
+    Object getMonth3Data(Integer strategy_id);
+
+    Object getYearData(Integer strategy_id);
+
+    Object getAllData(Integer strategy_id);
 }

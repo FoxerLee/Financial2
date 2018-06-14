@@ -408,4 +408,57 @@ public class StudyServiceImpl implements StudyService{
         return result;
     }
 
+    @Override
+    public Object getMonth3Data(Integer strategy_id){
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM strategy_log where strategy_id = "+strategy_id+
+                " and UNIX_TIMESTAMP(time) > UNIX_TIMESTAMP('"+year+"-"+(month - 3) +"-1') order by time asc;");
+        List<Map<String, Object>> data = new ArrayList<>();
+        while(sqlRowSet.next()){
+            Map<String, Object> temp = new HashMap<>();
+            temp.put("time", sqlRowSet.getString("time"));
+            temp.put("amount", sqlRowSet.getDouble("present_amount"));
+            data.add(temp);
+        }
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", data);
+        return result;
+    }
+
+    @Override
+    public Object getYearData(Integer strategy_id){
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM strategy_log where strategy_id = "+strategy_id+
+                " and UNIX_TIMESTAMP(time) > UNIX_TIMESTAMP('"+year+"-1-1') order by time asc;");
+        List<Map<String, Object>> data = new ArrayList<>();
+        while(sqlRowSet.next()){
+            Map<String, Object> temp = new HashMap<>();
+            temp.put("time", sqlRowSet.getString("time"));
+            temp.put("amount", sqlRowSet.getDouble("present_amount"));
+            data.add(temp);
+        }
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", data);
+        return result;
+    }
+
+    @Override
+    public Object getAllData(Integer strategy_id){
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM strategy_log where strategy_id = "+strategy_id+
+                " order by time asc;");
+        List<Map<String, Object>> data = new ArrayList<>();
+        while(sqlRowSet.next()){
+            Map<String, Object> temp = new HashMap<>();
+            temp.put("time", sqlRowSet.getString("time"));
+            temp.put("amount", sqlRowSet.getDouble("present_amount"));
+            data.add(temp);
+        }
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", data);
+        return result;
+    }
+
 }

@@ -138,4 +138,22 @@ public class StudyController {
         Integer strategy_id = Integer.parseInt(id);
         return studyService.getSelfStrategy(strategy_id);
     }
+
+    @GetMapping("/strategy/log/month")
+    public Object getStrategyMonth(@RequestParam(value = "strategy_id")String id){
+        Integer strategy_id = Integer.parseInt(id);
+        return studyService.getMonth3Data(strategy_id);
+    }
+
+    @GetMapping("/strategy/log/year")
+    public Object getStrategyYear(@RequestParam(value = "strategy_id")String id){
+        Integer strategy_id = Integer.parseInt(id);
+        return studyService.getYearData(strategy_id);
+    }
+
+    @GetMapping("/strategy/log/all")
+    public Object getStrategyAll(@RequestParam(value = "strategy_id")String id){
+        Integer strategy_id = Integer.parseInt(id);
+        return studyService.getAllData(strategy_id);
+    }
 }
