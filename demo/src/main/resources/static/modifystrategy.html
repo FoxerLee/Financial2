@@ -341,7 +341,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     var myLen = 0;
     var q=0;
     app.controller('siteCtrl', function($scope, $http) {
-        $http.get("http://localhost:8080/study/strategy/self?strategy_id=" + code)
+        $http.get("http://localhost:8080/study/strategy/self?strategy_id=" + 11)
                 .then(function (response) {
                     // alert("ok");
                     if (response === 400)
@@ -440,15 +440,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                method: 'POST',
                                url: 'http://localhost:8080/study/strategy/change',
                                // data: "strategy_id=" + code + "&data=" + data,
-                               data:{strategy_id:code, data:data}
+                               data:{strategy_id:11, data:data}
                                // headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                            }).then(function (value) {
-                               if (value.data === 400) {
+                               if (value.data === 200)
+                                   window.location.href = "detailstrategy.html?code=" + code;
+                               else if (value.data === 400) {
                                    alert("修改失败！");
                                    window.location.href = "work.html";
                                }
                                else
-                                   window.location.href = "detailstrategy.html?code=" + code;
+                                   window.location.href = "400.html";
 
                            });
                         }
