@@ -5,6 +5,9 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/angular-route.js"></script>
+    <link rel="stylesheet" href="js/jquery.range.css">
+    <script src="js/jquery.range-min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
 
     <!-- Custom Theme files -->
     <!--theme-style-->
@@ -152,49 +155,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <br />
                             <form class="form-inline">
                                 <div class="form-group">
-                                    <label for="code1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="code1" class="form-control" placeholder=" ">
+                                    <label for="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <input type="text" id="code" class="form-control" placeholder=" ">
                                 </div>
                                 <div class="form-group">
-                                    <label for="num1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="num1" class="form-control" placeholder=" ">
+                                    <label >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                </div>
+                                <div class="form-group">
+                                    <input class="single-slider" type="hidden" value="0.0"/>
                                 </div>
 
                             </form>
                             <br />
-                            <form class="form-inline">
-                                <div class="form-group">
-                                    <label for="code2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="code2" class="form-control" placeholder=" ">
-                                </div>
-                                <div class="form-group">
-                                    <label for="num2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="num2" class="form-control" placeholder=" ">
-                                </div>
-
-                            </form>
-                            <br />
-                            <form class="form-inline">
-                                <div class="form-group">
-                                    <label for="code3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="code3" class="form-control" placeholder=" ">
-                                </div>
-                                <div class="form-group">
-                                    <label for="num3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="num3" class="form-control" placeholder=" ">
-                                </div>
-
-                            </form>
 
                         </div>
 
-                        <button id="add-strategy-button" class="btn btn-primary" type="button"> 愚蠢的吴可菲 </button>
+
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button ng-click="back()" class="btn btn-primary" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                <button ng-click="back()" class="btn btn-primary" type="button">&nbsp;&nbsp;&nbsp;&nbsp;取消&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                <button id="add-strategy-button"  class="btn btn-primary" type="reset">&nbsp;&nbsp;&nbsp;&nbsp;添加&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                <button ng-click="newS()" class="btn btn-success"  >&nbsp;&nbsp;&nbsp;&nbsp;提交&nbsp;&nbsp;&nbsp;&nbsp;</button>
 
-                                <button ng-click="newS()" class="btn btn-success"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                             </div>
                         </div>
                     </div>
@@ -208,6 +191,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 <script>
+    var code =[];
+    var num = [];
+    var id=0;
+    $(document).ready(function(){
+        alert("hhhh");
+        $('.single-slider').jRange({
+            from: 0,
+            to: 100,
+            step: 1,
+            scale: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+            format: '%s',
+            width: 300,
+            showLabels: true,
+            snap: true,
+            onstatechange: function () {
+                var value = $(".single-slider").val();
+                console.log(value);
+            }
+
+        });
+
+    });
+    $('#add-strategy-button').click(function(){
+        count = count+1;
+        sliderID = "slide" + String(count);
+        alert(sliderID);
+        strategys = document.getElementById("strategy_tables").innerHTML;
+        new_strategy = "<br/><form class=\"form-inline\">\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label for=\"code"+id+"\">股票代码</label>\n" +
+            "                                    <input type=\"text\" id=\"code"+id+"\" class=\"form-control\" placeholder=\" \">\n" +
+            "                                </div>\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label for=\"num1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n"+
+            "                                </div>\n" +
+            "                                <div class=\"form-group\">\n"+
+            "                                    <input id = \""+sliderID +"\" class=\"single-slider\" type=\"hidden\" value=\"0.0\"/>\n" +
+            "                                </div>\n" +
+            "                            </form>\n";
+        document.getElementById("strategy_tables").innerHTML = strategys + new_strategy;
+        $(document).ready(function(){
+            $('#'+sliderID).jRange({
+                from: 0,
+                to: 100,
+                step: 1,
+                scale: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                format: '%s',
+                width: 500,
+                showLabels: true,
+                snap: true,
+                onstatechange: function () {
+                    var value = $(".single-slider").val();
+                    console.log(value);
+                }
+            });
+
+        });
+        id = id+1;
+
+    });
     var app = angular.module('myApp', []);
     app.controller('siteCtrl', function($scope, $http) {
         $scope.check_out = function () {
@@ -219,19 +262,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         $scope.newS = function () {
             var name=document.getElementById("name").value;
             var intro=document.getElementById("intro").value;
-            var code1=document.getElementById("code1").value;
-            var num1=document.getElementById("num1").value;
-            var code2=document.getElementById("code2").value;
-            var num2=document.getElementById("num2").value;
-            var code3=document.getElementById("code3").value;
-            var num3=document.getElementById("num3").value;
-
+            code.push(document.getElementById("code").value);
+            num.push(document.getElementById("num").value);
+            for(var i=0;i<id+1;i++){
+                code.push(document.getElementById("code"+i).value);
+                num.push(document.getElementById("num"+i).value);
+                alert(code);
+            }
             alert('!');
-            alert(code3);
+            alert(code);
             $scope.check_out = function () {
                 window.location.href =  "login.html";
             }
-            $http.get("http://localhost:8080/study/strategy/create?name=" + name + "brief=" + intro+"code_id1="+code1+"num1="+num1+"code_id2="+code2+"num2="+num2+ "code_id3="+code3+"num3="+num3
+            $http.get("http://localhost:8080/study/strategy/create?name=" + name + "brief=" + intro+"code="+code+"num="+num
             ).then(function (value) {
                 if (value.data === 200)
                     window.location.href = "detailstrategy.html?name=" + name;
@@ -244,22 +287,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
     });
 
-    $('#add-strategy-button').click(function(){
-        strategys = document.getElementById("strategy_tables").innerHTML;
-        new_strategy = "<form class=\"form-inline\">\n" +
-            "                                <div class=\"form-group\">\n" +
-            "                                    <label for=\"code1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n" +
-            "                                    <input type=\"text\" id=\"code1\" class=\"form-control\" placeholder=\" \">\n" +
-            "                                </div>\n" +
-            "                                <div class=\"form-group\">\n" +
-            "                                    <label for=\"num1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n" +
-            "                                    <input type=\"text\" id=\"num1\" class=\"form-control\" placeholder=\" \">\n" +
-            "                                </div>\n" +
-            "\n" +
-            "                            </form>\n" +
-            "                            <br />";
-        document.getElementById("strategy_tables").innerHTML = strategys + new_strategy;
-    });
 
 </script>
 

@@ -5,6 +5,8 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/angular-route.js"></script>
+    <link rel="stylesheet" href="css/jquery.range.css">
+    <script src="js/jquery.range-min.js"></script>
 
     <!-- Custom Theme files -->
     <!--theme-style-->
@@ -65,13 +67,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li><a href="ranking.html" class="black1"> 龙虎榜</a ></li>
                 <li><a href="fundamentals.html" class="black1"> 基本面数据</a ></li>
                 <li><a href="work.html" class="black2" > 个人主页</a ></li>
+                <li><a href="allstrategy.html" class="black2" > 策略中心</a ></li>
                 <li>
-                    <a href="knowledge_test.html" class="black2" > 投资知识</a >
+                    <a href="knowledge.html" class="black2" > 投资知识</a >
                     <ul>
-                        <li class="black"><a href="#">风险提示</a></li>
-                        <li class="black"><a href="#">法律法规</a></li>
-                        <li class="black"><a href="#">新手入门</a></li>
-                        <li class="black"><a href="#">进阶知识</a></li>
+                        <li class="black"><a href="risk.html">风险提示</a></li>
+                        <li class="black"><a href="law.html">法律法规</a></li>
+                        <li class="black"><a href="novice.html">新手入门</a></li>
+                        <li class="black"><a href="advanced.html">进阶知识</a></li>
                     </ul>
                 </li>
                 <li>
@@ -103,29 +106,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!---->
     <div class="content" ng-app="myApp" ng-controller="siteCtrl">
         <div class="work" >
-            <p class="heat-map-title" >&nbsp;&nbsp;&nbsp;阿尔法策略
+            <p class="heat-map-title" >&nbsp;&nbsp;&nbsp;{{stockname.name}}
                 <button class="button-borderless" id="predict"><a href="newstrategy.html">修改策略</a></button>
             </p>
 
-            <br />
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0" >
-                <tr>
-                    <td scope="col" style="vertical-align:middle; text-align:center;" >股票</td>
-                    <td scope="col" style="vertical-align:middle; text-align:center;" >份额</td>
-                </tr>
-                <tr ng-repeat="x in research">
-                    <td style="vertical-align:middle; text-align:center;">{{x.title}}</td>
-                    <td style="vertical-align:middle; text-align:center;">{{x.date}}</td>
-                </tr>
-            </table>
-            <br />
             <div class="x_title">
-                <h2>添加股票 </h2>
 
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
+                <div id="strategy_tables">
                 <br />
                 <form class="form-inline">
                     <div class="form-group">
@@ -133,11 +123,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <input type="text" id="ex1" class="form-control" placeholder=" ">
                     </div>
                     <div class="form-group">
-                        <label for="ex2">股数</label>
-                        <input type="email" id="ex2" class="form-control" placeholder=" ">
+                        <label >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-
-                    <button type="submit" class="btn btn-default">添加</button>
+                    <div class="form-group">
+                        <input class="single-slider" type="hidden" value="0.0"/>
+                    </div>
                 </form>
                 <br />
                 <form class="form-inline">
@@ -146,11 +136,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <input type="text" id="ex3" class="form-control" placeholder=" ">
                     </div>
                     <div class="form-group">
-                        <label for="ex4">股数</label>
-                        <input type="email" id="ex4" class="form-control" placeholder=" ">
+                        <label >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-
-                    <button type="submit" class="btn btn-default">添加</button>
+                    <div class="form-group">
+                        <input class="single-slider" type="hidden" value="0.0"/>
+                    </div>
                 </form>
                 <br />
                 <form class="form-inline">
@@ -159,25 +149,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <input type="text" id="ex5" class="form-control" placeholder=" ">
                     </div>
                     <div class="form-group">
-                        <label for="ex6">股数</label>
-                        <input type="email" id="ex6" class="form-control" placeholder=" ">
+                        <label >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-
-                    <button type="submit" class="btn btn-default">添加</button>
+                    <div class="form-group">
+                        <input class="single-slider" type="hidden" value="0.0"/>
+                    </div>
                 </form>
+                </div>
+                <br />
+                <br />
+                <br />
 
                 <div class="ln_solid"></div>
                 <div class="form-group">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                        <button class="btn btn-primary" type="button">Cancel</button>
-                        <button class="btn btn-primary" type="reset">Reset</button>
-                        <button type="submit" class="btn btn-success">Submit</button>
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-7">
+                        <button ng-click="newS()" class="btn btn-primary" type="button">取消</button>
+                        <button id="add-strategy-button" ng-click="newS()" class="btn btn-primary" type="reset">添加</button>
+                        <button ng-click="newS()" class="btn btn-success"  >提交</button>
                     </div>
                 </div>
-            </div>
             <!-- 分页 end --
         <!-- end main -->
             <div class="clear"> </div>
+            </div>
         </div>
         <div class="clear"> </div>
     </div>
@@ -221,4 +215,172 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 </body>
+<script>
+    var count = 3;
+    var sliderID = '';
+    $(document).ready(function(){
+        $('.single-slider').jRange({
+            from: 0,
+            to: 100,
+            step: 1,
+            scale: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+            format: '%s',
+            width: 500,
+            showLabels: true,
+            snap: true,
+            onstatechange: function () {
+                var value = $(".single-slider").val();
+                console.log(value);
+            }
+        });
+
+    });
+
+    $('#add-strategy-button').click(function(){
+        count = count+1;
+        sliderID = "slide" + String(count);
+        alert(sliderID);
+        strategys = document.getElementById("strategy_tables").innerHTML;
+        new_strategy = "<br/><form class=\"form-inline\">\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label for=\"code1\">股票代码</label>\n" +
+            "                                    <input type=\"text\" id=\"code1\" class=\"form-control\" placeholder=\" \">\n" +
+            "                                </div>\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label for=\"num1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n"+
+            "                                </div>\n" +
+            "                                <div class=\"form-group\">\n"+
+            "                                    <input id = \""+sliderID +"\" class=\"single-slider\" type=\"hidden\" value=\"0.0\"/>\n" +
+            "                                </div>\n" +
+            "                            </form>\n";
+        document.getElementById("strategy_tables").innerHTML = strategys + new_strategy;
+        $(document).ready(function(){
+            $('#'+sliderID).jRange({
+                from: 0,
+                to: 100,
+                step: 1,
+                scale: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                format: '%s',
+                width: 500,
+                showLabels: true,
+                snap: true,
+                onstatechange: function () {
+                    var value = $(".single-slider").val();
+                    console.log(value);
+                }
+            });
+
+        });
+
+
+    });
+
+    function change(){
+        var num=document.getElementById("range");
+        var location=document.getElementById("show");
+        location.value=num.value;
+    }
+    function getQueryStringArgs(){
+        var qs = (location.search.length>0?location.search.substring(1):"");
+        var args = {};
+        var items = qs.length?qs.split("&"):[];
+        var item = null;
+        var name = null;
+        var value = null;
+        len = items.length;
+        for (var i = 0; i < len; i++) {
+            item = items[i].split("=");
+            name = decodeURIComponent(item[0]);
+            value = decodeURIComponent(item[1]);
+            if (name.length) {
+                args[name] = value;
+            }
+        }
+        return args;
+    }
+    var args = getQueryStringArgs();
+    var code = args["code"];
+    var app = angular.module('myApp', []);
+    app.controller('siteCtrl', function($scope, $http) {
+        $http.get("http://localhost:8080/...?code=" + code)
+            .then(function (response) {
+                if (response.data === 400)
+                    window.location.href =  "login.html";
+                $scope.stockname = response.data;
+            });
+        $http.get("http://localhost:8080/...?code=" + code)
+            .then(function (response) {
+                if (response === 400)
+                    window.location.href =  "login.html";
+                $scope.research = response.data;
+                $scope.edit = function (e) {
+                    var code = id;
+                    console.log(id);
+                    var td = $(e.target);
+                    var txt = td.text();
+                    var input = $("<input type='text' value='" + txt + "' style='width:82px;height:26px;'/>");
+                    td.html(input);
+                    input.click(function () {
+                        return false;
+                    });
+                    //获取焦点
+                    input.trigger("focus");
+                    //文本框失去焦点后提交内容，重新变为文本
+                    input.blur(function () {
+                        var newtxt = $(this).val();
+                        //判断文本有没有修改
+                        if (newtxt != txt) {
+                            td.html(newtxt);
+                        }
+                        else {
+                            td.html(newtxt);
+                            //console.log(code,newtxt)
+                        }
+                    });
+
+
+                };
+
+                $scope.newS = function () {
+                    //var name=document.getElementById("name").value;
+                    //var intro=document.getElementById("intro").value;
+                    var code1 = document.getElementById("code1").value;
+                    var num1 = document.getElementById("num1").value;
+                    var code2 = document.getElementById("code2").value;
+                    var num2 = document.getElementById("num2").value;
+                    var code3 = document.getElementById("code3").value;
+                    var num3 = document.getElementById("num3").value;
+                    var temp = angular.fromJson(response.data);
+                    var myLen=temp.length;
+                    var arr=[];
+                    for (var i=0;i<myLen;i++){
+                        arr.push(document.getElementById(String(temp[i].code)).value);
+                    }
+
+                    //console.log("hahahahah")
+                    $scope.check_out = function () {
+                        window.location.href = "login.html";
+                    };
+                    $http({
+                        method:'POST',
+                        url:'http://localhost:8080/...',
+                        data:"code1=" + code1 + "&num1=" + num1 + "&code2=" + code2 + "&num2=" + num2 + "&code3=" + code3 + "&num3=" + num3+"&origin="+arr,
+                        headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+                    }).then(function (value) {
+                        if (value.data === 200)
+                            window.location.href = "detailstrategy.html?code=" + code;
+                        else if (value.data === 400) {
+                            alert("修改失败！");
+                            window.location.href = "work.html";
+                        }
+                        else
+                            window.location.href = "400.html";
+
+                    });
+                }
+            });
+
+
+    });
+</script>
 </html>
