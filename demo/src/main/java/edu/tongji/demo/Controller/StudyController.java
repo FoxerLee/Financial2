@@ -46,32 +46,21 @@ public class StudyController {
         if (!Verification.verify()){
             return "error!";
         }else{
+            System.out.println(text);
             JSONObject jsonObject = JSONObject.fromObject(text);
             String strategyName = jsonObject.getString("name");
             String brief = jsonObject.getString("brief");
-            String codes = jsonObject.getString("code");
+            String codes = jsonObject.getString("data");
             JSONArray jsonCodes = JSONArray.fromObject(codes);
             List<Map<String, Object>> codeData = new ArrayList<>();
             for (int i = 0; i < jsonCodes.size(); i++) {
                 Map<String, Object> codeMap = new HashMap<>();
                 JSONObject temp_code = JSONObject.fromObject(jsonCodes.get(i));
                 codeMap.put("code_id", temp_code.getString("code_id"));
-                codeMap.put("num", temp_code.getDouble("num"));
+                codeMap.put("num", temp_code.getDouble("number"));
                 codeData.add(codeMap);
             }
-//        for (int i = 1; i <= 3; i++){
-//            Map<String, Double> data = new HashMap<>();
-//            String name = jsonObject.getString("code_id" + i);
-//            if (name == null || name.length() == 0){
-//                continue;
-//            }
-//            Double num = jsonObject.getDouble("num" + i);
-//            data.put(name, num);
-//            codeData.add(data);
-//        }
-//        int user_id = userService.getIDByName(userService.getNameByCookie(request));
-
-            int user_id = 4;
+            int user_id = userService.getIDByName(userService.getNameByCookie(request));
             try{
                 Map<String, Object> value = studyService.createStrategy(strategyName, brief, codeData, user_id);
                 if (Double.parseDouble(value.get("left_storage").toString()) > 0)

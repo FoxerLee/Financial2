@@ -30,61 +30,6 @@ public class StudyServiceImpl implements StudyService{
         }
     }
 
-//    @Override
-//    public Map<String, Object> createStrategy(String name, String brief,
-//                                              List<Map<String, Double>> codes, Integer user_id){
-//        Map<String, Object> result = new HashMap<>();
-//        String createStrategySql = "INSERT INTO strategy(user_id, strategy_name, brief) VALUES ("
-//                + user_id + ", \'" + name + "\'," + "\'" + brief+ "\' " + ")";
-//        jdbcTemplate.execute(createStrategySql);
-//        System.out.println("##########################################");
-//        System.out.println("create strategy" + name + "successfully!");
-//        String query = "SELECT * FROM strategy WHERE user_id = " + user_id + " and strategy_name=\'" + name + "\' order by time DESC ;";
-//        System.out.println("query for id of the strategy you've just created...");
-//        SqlRowSet strategy = jdbcTemplate.queryForRowSet(query);
-//        if (strategy.next()){
-//            int id = strategy.getInt("id");
-//            System.out.println("strategy id is: " + id);
-//            result.put("id", id);
-//            List<Double> values = new ArrayList<>();
-//            String getFund = "SELECT fund FROM user_info WHERE user_id=" + user_id;
-//            SqlRowSet fundResult = jdbcTemplate.queryForRowSet(getFund);
-//            Double fund = 0.0;
-//            if (fundResult.next())
-//                fund = fundResult.getDouble("fund");
-//            for (int i = 0; i < codes.size(); i++){
-//                String getReadDataSQL = "select close_value from data_real_time where code = " +
-//                        "\'" + codes.get(i).keySet().toArray()[0] + "\'";
-//                SqlRowSet realData = jdbcTemplate.queryForRowSet(getReadDataSQL);
-//                if (realData.next()){
-//                    double value = realData.getDouble("close_value");
-//                    fund -= value * Double.parseDouble(codes.get(i).values().toArray()[0].toString());
-//                    values.add(value);
-//                }
-//            }
-//            if (fund > 0){
-//                for (int i = 0; i < codes.size(); i++){
-//                    String createUserStrategySQL =
-//                            "INSERT INTO user_strategy(strategy_id, code_id, stock_num, initial_value) " +
-//                                    "VALUES (" + id +","+ "\'" +  codes.get(i).keySet().toArray()[0]
-//                                    + "\'," + codes.get(i).values().toArray()[0] +","+ values.get(i) +");";
-//                    jdbcTemplate.execute(createUserStrategySQL);
-//                    System.out.println("insert into user_strategy code_id: " + codes.get(i).keySet().toArray()[0]);
-//                }
-//                result.put("fund", fund);
-//                String updateFund = "UPDATE user_info SET fund=" + fund + " WHERE user_id=" + user_id;
-//                jdbcTemplate.execute(updateFund);
-//            }else{
-//                // 资金不够
-//                result.put("fund", -1.0);
-//            }
-//        }else{
-//            result.put("fund", -2.0);
-//            result.put("id", 0);
-//        }
-//        return result;
-//    }
-
     @Override
     public Map<String, Object> createStrategy(String name, String brief,
                                               List<Map<String, Object>> codes, Integer user_id){
@@ -114,6 +59,7 @@ public class StudyServiceImpl implements StudyService{
         if (strategy_id.next()){
             id = strategy_id.getInt("id");
         }
+        jdbcTemplate.execute("INSERT INTO strategy_log(strategy_id, present_amount) VALUES ("+id+", 0)");
         for (int i = 0; i < codes.size(); i++){
             String createDetail = "INSERT INTO strategy_detail(strategy_id, code_id, storage_number, present_value, trading_storage) VALUES (" +
                     id+ ", \'"+ code_ids.get(i) + "\', " + storage.get(i) +"," + present_value.get(i) + "," + 10000 * storage.get(i) / present_value.get(i) +");";
