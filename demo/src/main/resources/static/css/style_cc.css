@@ -752,6 +752,27 @@ ul.feature-grid li i{
   vertical-align: middle;
   margin:0 13px 0 0;
 }
+
+ul.feature-grid2 li{
+  list-style:none;
+}
+ul.feature-grid2 li a{
+  color:#848484;
+  font-size:1em;
+  padding:0.5em 0;
+  display:inline-block;
+}
+ul.feature-grid2 li a:hover{
+  color:#1ab5b3;
+}
+ul.feature-grid2 li i{
+  background: url(../images/modify.png)no-repeat;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  margin:0 13px 0 0;
+}
 /*--about--*/
 .about{
   padding:1.5em;

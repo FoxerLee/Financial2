@@ -5,6 +5,8 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/angular-route.js"></script>
+    <link rel="stylesheet" href="css/jquery.range.css">
+    <script src="js/jquery.range-min.js"></script>
 
     <!-- Custom Theme files -->
     <!--theme-style-->
@@ -65,13 +67,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li><a href="ranking.html" class="black1"> 龙虎榜</a ></li>
                 <li><a href="fundamentals.html" class="black1"> 基本面数据</a ></li>
                 <li><a href="work.html" class="black2" > 个人主页</a ></li>
+                <li><a href="allstrategy.html" class="black2" > 策略中心</a ></li>
                 <li>
-                    <a href="knowledge_test.html" class="black2" > 投资知识</a >
+                    <a href="knowledge.html" class="black2" > 投资知识</a >
                     <ul>
-                        <li class="black"><a href="#">风险提示</a></li>
-                        <li class="black"><a href="#">法律法规</a></li>
-                        <li class="black"><a href="#">新手入门</a></li>
-                        <li class="black"><a href="#">进阶知识</a></li>
+                        <li class="black"><a href="risk.html">风险提示</a></li>
+                        <li class="black"><a href="law.html">法律法规</a></li>
+                        <li class="black"><a href="novice.html">新手入门</a></li>
+                        <li class="black"><a href="advanced.html">进阶知识</a></li>
                     </ul>
                 </li>
                 <li>
@@ -101,179 +104,98 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!---->
 
     <!---->
-    <div class="content ng-scope" >
-        <div class="work">
-            <div class="heat-map-title">&nbsp;&nbsp;&nbsp;新建策略&nbsp;&nbsp;
-                <button class="button-borderless" id="predict"><a href="allstrategy.html">看看别人怎么玩儿</a></button>
+    <div class="content" ng-app="myApp" ng-controller="siteCtrl">
+        <div class="work" >
+            <p class="heat-map-title" >&nbsp;&nbsp;&nbsp;新建策略
 
+            </p>
+
+            <div class="x_title">
+
+                <div class="clearfix"></div>
             </div>
-        <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>基本信息</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
+            <div class="x_content">
+                <br />
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">策略名称 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="name" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="intro" class="control-label col-md-3 col-sm-3 col-xs-12">主理人简介</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="intro" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                        </div>
+                    </div>
+
+
+
+                </form>
+            </div>
+            <div class="x_title">
+                <h2>添加股票 </h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div id="strategy_tables">
                     <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+                    <!--<form class="form-inline">
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">策略名称 <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="name" required="required" class="form-control col-md-7 col-xs-12">
-                            </div>
+                            <label for="ex1">股票代码</label>
+                            <input type="text" id="ex1" class="form-control" placeholder=" ">
                         </div>
-
                         <div class="form-group">
-                            <label for="intro" class="control-label col-md-3 col-sm-3 col-xs-12">主理人简介</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="intro" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                            </div>
+                            <label >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         </div>
-
-
-
+                        <div class="form-group">
+                            <input class="single-slider" type="hidden" value="20.0"/>
+                        </div>
                     </form>
+                    <br />-->
+                    <!--<form class="form-inline"  ng-repeat="x in research">-->
+                    <!--<div class="form-group">-->
+                    <!--<label for="ex3">股票代码</label>-->
+                    <!--<input type="text" id="ex3" class="form-control" placeholder={{x.code}}>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                    <!--<label >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                    <!--<input id={{x.code}} class="stupid" type="hidden" value={{x.num}}>-->
+                    <!--</div>-->
+                    <!--</form>-->
                 </div>
+                <br />
+                <br />
+                <br />
 
-                    <div class="x_title">
-                        <h2>添加股票 </h2>
-
-                        <div class="clearfix"></div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-7">
+                        <button ng-click="back()" class="btn btn-primary" type="button">返回</button>
+                        <button id="add-strategy-button" class="btn btn-primary" type="reset">添加</button>
+                        <button id="test" ng-click="newS()" class="btn btn-success"  >提交</button>
                     </div>
-                    <div class="x_content">
-                        <div id="strategy_tables">
-                            <br />
-                            <form class="form-inline">
-                                <div class="form-group">
-                                    <label for="code1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="code1" class="form-control" placeholder=" ">
-                                </div>
-                                <div class="form-group">
-                                    <label for="num1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="num1" class="form-control" placeholder=" ">
-                                </div>
-
-                            </form>
-                            <br />
-                            <form class="form-inline">
-                                <div class="form-group">
-                                    <label for="code2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="code2" class="form-control" placeholder=" ">
-                                </div>
-                                <div class="form-group">
-                                    <label for="num2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="num2" class="form-control" placeholder=" ">
-                                </div>
-
-                            </form>
-                            <br />
-                            <form class="form-inline">
-                                <div class="form-group">
-                                    <label for="code3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="code3" class="form-control" placeholder=" ">
-                                </div>
-                                <div class="form-group">
-                                    <label for="num3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    <input type="text" id="num3" class="form-control" placeholder=" ">
-                                </div>
-
-                            </form>
-
-                        </div>
-
-                        <button id="add-strategy-button" class="btn btn-primary" type="button"> 愚蠢的吴可菲 </button>
-                        <div class="ln_solid"></div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button ng-click="back()" class="btn btn-primary" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-
-                                <button ng-click="newS()" class="btn btn-success"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                            </div>
-                        </div>
-                    </div>
-
+                </div>
+                <!-- 分页 end --
+            <!-- end main -->
+                <div class="clear"> </div>
             </div>
         </div>
+        <div class="clear"> </div>
     </div>
 
-
-        </div>>
-    </div>
 </div>
-<script>
-    var app = angular.module('myApp', []);
-    app.controller('siteCtrl', function($scope, $http) {
-        $scope.check_out = function () {
-            window.location.href =  "login.html";
-        };
-        $scope.back = function () {
-            window.location.href = "allstrategy.html";
-        };
-        $scope.newS = function () {
-            var name=document.getElementById("name").value;
-            var intro=document.getElementById("intro").value;
-            var code1=document.getElementById("code1").value;
-            var num1=document.getElementById("num1").value;
-            var code2=document.getElementById("code2").value;
-            var num2=document.getElementById("num2").value;
-            var code3=document.getElementById("code3").value;
-            var num3=document.getElementById("num3").value;
-
-            alert('!');
-            alert(code3);
-            $scope.check_out = function () {
-                window.location.href =  "login.html";
-            };
-            $http({
-                method:'post',
-                url:'http://localhost:8080/study/strategy/create',
-                data:{name:name, brief:intro, code_id1:code1, code_id2:code2, code_id3:code3, num1:num1, num2:num2, num3:num3}
-            }).then(function (value) {
-                if (value.data.status > 0){
-                    alert('success!');
-                    window.location.href = "detailstrategy.html?strategy_id=" + value.data.id;
-                }
-                else {
-                    alert("创建失败！");
-                    window.location.href = "newstrategy.html";
-                }
-
-            });
-        }
-    });
-
-    $('#add-strategy-button').click(function(){
-        strategys = document.getElementById("strategy_tables").innerHTML;
-        new_strategy = "<form class=\"form-inline\">\n" +
-            "                                <div class=\"form-group\">\n" +
-            "                                    <label for=\"code1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股票代码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n" +
-            "                                    <input type=\"text\" id=\"code1\" class=\"form-control\" placeholder=\" \">\n" +
-            "                                </div>\n" +
-            "                                <div class=\"form-group\">\n" +
-            "                                    <label for=\"num1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;股数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n" +
-            "                                    <input type=\"text\" id=\"num1\" class=\"form-control\" placeholder=\" \">\n" +
-            "                                </div>\n" +
-            "\n" +
-            "                            </form>\n" +
-            "                            <br />";
-        document.getElementById("strategy_tables").innerHTML = strategys + new_strategy;
-    });
-
-</script>
-
 <!-- jQuery -->
-<script src="vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--<script src="js/jquery.min.js"></script>-->
+<!--&lt;!&ndash; Bootstrap &ndash;&gt;-->
+<!--<script src="js/bootstrap.min.js"></script>-->
 <!-- FastClick -->
 <script src="vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
@@ -308,4 +230,184 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 </body>
+<script>
+    var originCount = 1;
+    var count = 1;
+    var sliderID = '';
+    var miao = [];
+    var tmp = $('#slide1').jRange({
+        from: 0,
+        to: 100,
+        step: 1,
+        scale: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+        format: '%s',
+        width: 500,
+        showLabels: true,
+        snap: true,
+        onstatechange: function () {
+
+        }
+    });
+
+
+
+
+    var sty = [];
+
+    $('#add-strategy-button').click(function(){
+        count = count+1;
+        sliderID = "slide" + String(count);
+        inputID = "input" + String(count);
+//        alert(sliderID);
+//        strategys = document.getElementById("strategy_tables").innerHTML;
+        if (count>originCount+1) {
+//            alert($("#input" + String(count - 1)).val());
+            sty.push($("#input" + String(count - 1)).val());
+        }
+
+        $('#strategy_tables').append("<br/><form class=\"form-inline\">\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label for=\"code1\">股票代码</label>\n" +
+            "                                    <input type=\"text\" id = \""+inputID +"\" class=\"form-control\" placeholder=\" \">\n" +
+            "                                </div>\n" +
+            "                                <div class=\"form-group\">\n" +
+            "                                    <label for=\"num1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n"+
+            "                                </div>\n" +
+            "                                <div class=\"form-group\">\n"+
+            "                                    <input id = \""+sliderID +"\" class=\"single-slider\" type=\"hidden\" value=\"0.0\"/>\n" +
+            "                                </div>\n" +
+            "                            </form>\n");
+
+//        document.getElementById("strategy_tables").innerHTML = strategys + new_strategy;
+        for(var j=originCount+1;j<count;j++){
+//            alert(name[j-originCount-1]);
+            $("#input"+String(j)).attr("placeholder",sty[j-originCount-1]);
+        }
+
+        for(var i = 1; i <= count; i++){
+
+
+            $('#slide'+ String(i)).jRange({
+                from: 0,
+                to: 100,
+                step: 1,
+                scale: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+                format: '%s',
+                width: 500,
+                showLabels: true,
+                snap: true,
+                onstatechange: function () {
+
+                }
+            });
+        }
+
+        $('#'+sliderID).jRange({
+            from: 0,
+            to: 100,
+            step: 1,
+            scale: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+            format: '%s',
+            width: 500,
+            showLabels: true,
+            snap: true,
+            onstatechange: function () {
+
+            }
+        });
+//        miao.push(tmp);
+
+    });
+
+
+    var app = angular.module('myApp', []);
+    var temp = [];
+    var myLen = 0;
+    var q=0;
+    app.controller('siteCtrl', function($scope, $http) {
+        $scope.newS = function () {
+            var sum = 0;
+            var name=document.getElementById("name").value;
+            var intro=document.getElementById("intro").value;
+            var backName = [];
+            var backValue = [];
+            var data= [];
+            for (var i=0;i<myLen;i++){
+                temp2 = {};
+                backValue.push($("#"+String(temp[i].code)).val());
+                backName.push(temp[i].code);
+                temp2["code_id"] = temp[i].code;
+                //alert(temp[i].code);
+                temp2["number"] = $("#"+String(temp[i].code)).val()/100.0;
+                //alert($("#"+String(temp[i].code)).val()/100.0)
+                data.push(temp2);
+            }
+            for (var j = 2; j < count; j++) {
+                temp2 = {};
+                sID = "slide" + String(j);
+                iID = "input" + String(j);
+                //alert("hahahahah");
+                //alert($("#" + sID).val());
+                //alert($('#' + iID).attr('placeholder'));
+                backValue.push($("#" + sID).val());
+                backName.push($('#' + iID).attr('placeholder'));
+                temp2["code_id"] = $('#' + iID).val();
+                temp2["number"] = $("#" + sID).val()/100.0;
+                data.push(temp2);
+            }
+            sID = "slide" + String(count);
+            iID = "input" + String(count);
+            //alert("hahahahah");
+            //alert($("#" + sID).val());
+            //alert($('#' + iID).val());
+            backValue.push($("#" + sID).val());
+            backName.push($('#' + iID).val());
+            temp2 = {};
+            temp2["code_id"] = $('#' + iID).val();
+            temp2["number"] = $("#" + sID).val()/100.0;
+            alert("l"+temp2.code_id);
+            alert("l"+temp2.number);
+            data.push(temp2);
+            //console.log("hahahahah")
+            for(var s=0;s<backValue.length;s++){
+                alert(backValue[s]);
+                sum = sum + parseInt(backValue[s]);
+            }
+            alert(sum);
+            alert(data);
+            alert(name);
+            alert(intro);
+            if(sum>100){
+                alert("总仓位超过100%，请修改！");
+                console.log(data)
+            }
+            else {
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8080/study/strategy/create',
+                    data: {name:name, brief:intro, data:data}
+                    // headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).then(function (value) {
+                    if (value.data.status > 0){
+                        alert(value.data.strategy_id);
+                        window.location.href = "detailstrategy.html?strategy_id=" + value.data.strategy_id;
+                    }
+                    else {
+                        alert("创建失败！");
+                        window.location.href = "newstrategy.html";
+                    }
+//
+                });
+            }
+        };
+        $scope.back = function () {
+            window.location.href = "allstrategy.html";
+        };
+        $scope.check_out = function () {
+            window.location.href = "login.html";
+        };
+
+
+    });
+</script>
 </html>
