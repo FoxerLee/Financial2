@@ -230,6 +230,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     var args = getQueryStringArgs();
     var code = args["code"];
     var app = angular.module('myApp', []);
+
     app.controller('siteCtrl', function($scope, $http) {
         $scope.check_out = function () {
             window.location.href = "login.html";
@@ -239,60 +240,55 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         $http.get("http://localhost:8080/study/strategy/detail?strategy_id=" + 11)
             .then(function (response) {
-                alert("yes");
                 if (response.data === 400)
                     window.location.href =  "login.html";
                 $scope.basicinfo = response.data;
             });
 
-        // $http.get("http://localhost:8080/stock/history/days?code=" + code)
-        //     .then(function (response) {
-        //         document.getElementById("month").style.backgroundColor = "#778288";
-        //         document.getElementById("year").style.backgroundColor = "#778288";
-        //         document.getElementById("all").style.backgroundColor = "#1ab5b3";
-        //         if (response.data === 400)
-        //             window.location.href =  "login.html";
-        //         //绘图
-        //         DrawData(response);
-        //     });
-        //
-        // $scope.Select_month = function () {
-        //     $http.get("http://localhost:8080/stock/history/days?code=" + code)
-        //         .then(function (response) {
-        //             if (response.data === 400)
-        //                 window.location.href =  "login.html";
-        //             DrawData(response);
-        //         });
-        //     document.getElementById("month").style.backgroundColor = "#778288";
-        //     document.getElementById("year").style.backgroundColor = "#778288";
-        //     document.getElementById("all").style.backgroundColor = "#1ab5b3";
-        //
-        // };
-        // $scope.Select_year = function () {
-        //     $http.get("http://localhost:8080/stock/history/weeks?code=" + code)
-        //         .then(function (response) {
-        //             if (response.data === 400)
-        //                 window.location.href =  "login.html";
-        //             DrawData(response);
-        //         });
-        //     document.getElementById("month").style.backgroundColor = "#778288";
-        //     document.getElementById("year").style.backgroundColor = "#778288";
-        //     document.getElementById("all").style.backgroundColor = "#1ab5b3";
-        // };
-        // $scope.Select_all = function () {
-        //     $http.get("http://localhost:8080/stock/history/months?code=" + code)
-        //         .then(function (response) {
-        //             if (response.data === 400)
-        //                 window.location.href =  "login.html";
-        //             DrawData(response);
-        //         });
-        //     document.getElementById("month").style.backgroundColor = "#778288";
-        //     document.getElementById("year").style.backgroundColor = "#778288";
-        //     document.getElementById("all").style.backgroundColor = "#1ab5b3";
-        // }
+        $http.get("http://localhost:8080/study/strategy/log/month?strategy_id=" + 11)
+            .then(function (response) {
+                var temp_data = response.data.data;
+                DrawData(temp_data);
+            });
+        document.getElementById("month").style.backgroundColor = "#778288";
+        document.getElementById("year").style.backgroundColor = "#778288";
+        document.getElementById("all").style.backgroundColor = "#1ab5b3";
+
+        $scope.Select_month = function () {
+            $http.get("http://localhost:8080/study/strategy/log/month?strategy_id=" + 11)
+                .then(function (response) {
+                    var temp_data = response.data.data;
+                    DrawData(temp_data);
+                });
+            document.getElementById("month").style.backgroundColor = "#778288";
+            document.getElementById("year").style.backgroundColor = "#778288";
+            document.getElementById("all").style.backgroundColor = "#1ab5b3";
+
+        };
+        $scope.Select_year = function () {
+            $http.get("http://localhost:8080/study/strategy/log/year?strategy_id=" + 11)
+                .then(function (response) {
+                    var temp_data = response.data.data;
+                    DrawData(temp_data);
+                });
+            document.getElementById("month").style.backgroundColor = "#778288";
+            document.getElementById("year").style.backgroundColor = "#778288";
+            document.getElementById("all").style.backgroundColor = "#1ab5b3";
+        };
+        $scope.Select_all = function () {
+            $http.get("http://localhost:8080/study/strategy/log/all?strategy_id=" + 11)
+                .then(function (response) {
+                    var temp_data = response.data.data;
+                    DrawData(temp_data);
+                });
+            document.getElementById("month").style.backgroundColor = "#778288";
+            document.getElementById("year").style.backgroundColor = "#778288";
+            document.getElementById("all").style.backgroundColor = "#1ab5b3";
+        }
     });
 
     function DrawData(response) {
+        var myChart = echarts.init(document.getElementById('main'));
         var dateList = response.map(function (item) {
             return item[0];
         });
@@ -300,7 +296,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             return item[1];
         });
 
-        option = {
+        myChart.setOption(option = {
 
             // Make gradient line here
             visualMap: [{
@@ -335,7 +331,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 showSymbol: false,
                 data: valueList
             }]
-        };
+        });
     }
 
 

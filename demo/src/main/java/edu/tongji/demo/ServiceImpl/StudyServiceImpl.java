@@ -415,11 +415,12 @@ public class StudyServiceImpl implements StudyService{
         int year = calendar.get(Calendar.YEAR);
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM strategy_log where strategy_id = "+strategy_id+
                 " and UNIX_TIMESTAMP(time) > UNIX_TIMESTAMP('"+year+"-"+(month - 3) +"-1') order by time asc;");
-        List<Map<String, Object>> data = new ArrayList<>();
+        List<List<Object>> data = new ArrayList<>();
         while(sqlRowSet.next()){
-            Map<String, Object> temp = new HashMap<>();
-            temp.put("time", sqlRowSet.getString("time"));
-            temp.put("amount", sqlRowSet.getDouble("present_amount"));
+//            Map<String, Object> temp = new HashMap<>()
+            List<Object> temp = new ArrayList<>();
+            temp.add(sqlRowSet.getString("time").split(" ")[0]);
+            temp.add(sqlRowSet.getDouble("present_amount"));
             data.add(temp);
         }
         Map<String, Object> result = new HashMap<>();
@@ -433,11 +434,12 @@ public class StudyServiceImpl implements StudyService{
         int year = calendar.get(Calendar.YEAR);
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM strategy_log where strategy_id = "+strategy_id+
                 " and UNIX_TIMESTAMP(time) > UNIX_TIMESTAMP('"+year+"-1-1') order by time asc;");
-        List<Map<String, Object>> data = new ArrayList<>();
+        List<List<Object>> data = new ArrayList<>();
         while(sqlRowSet.next()){
-            Map<String, Object> temp = new HashMap<>();
-            temp.put("time", sqlRowSet.getString("time"));
-            temp.put("amount", sqlRowSet.getDouble("present_amount"));
+//            Map<String, Object> temp = new HashMap<>()
+            List<Object> temp = new ArrayList<>();
+            temp.add(sqlRowSet.getString("time").split(" ")[0]);
+            temp.add(sqlRowSet.getDouble("present_amount"));
             data.add(temp);
         }
         Map<String, Object> result = new HashMap<>();
@@ -449,11 +451,12 @@ public class StudyServiceImpl implements StudyService{
     public Object getAllData(Integer strategy_id){
         SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM strategy_log where strategy_id = "+strategy_id+
                 " order by time asc;");
-        List<Map<String, Object>> data = new ArrayList<>();
+        List<List<Object>> data = new ArrayList<>();
         while(sqlRowSet.next()){
-            Map<String, Object> temp = new HashMap<>();
-            temp.put("time", sqlRowSet.getString("time"));
-            temp.put("amount", sqlRowSet.getDouble("present_amount"));
+//            Map<String, Object> temp = new HashMap<>()
+            List<Object> temp = new ArrayList<>();
+            temp.add(sqlRowSet.getString("time").split(" ")[0]);
+            temp.add(sqlRowSet.getDouble("present_amount"));
             data.add(temp);
         }
         Map<String, Object> result = new HashMap<>();
