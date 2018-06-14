@@ -7,6 +7,7 @@ import edu.tongji.demo.Service.UserService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -158,5 +159,11 @@ public class StudyController {
     public Object getStrategyAll(@RequestParam(value = "strategy_id")String id){
         Integer strategy_id = Integer.parseInt(id);
         return studyService.getAllData(strategy_id);
+    }
+
+    @GetMapping("/strategy/profile")
+    public Object getProileData(HttpServletRequest request){
+        int user_id = userService.getIDByName(userService.getNameByCookie(request));
+        return studyService.getProfileStrategy(user_id);
     }
 }

@@ -1,5 +1,6 @@
 package edu.tongji.demo.ServiceImpl;
 
+import com.sun.corba.se.spi.ior.ObjectKey;
 import edu.tongji.demo.DAO.IntroductionFileMapper;
 import edu.tongji.demo.Model.IntroductionFile;
 import edu.tongji.demo.Service.StudyService;
@@ -457,6 +458,21 @@ public class StudyServiceImpl implements StudyService{
             List<Object> temp = new ArrayList<>();
             temp.add(sqlRowSet.getString("time").split(" ")[0]);
             temp.add(sqlRowSet.getDouble("present_amount"));
+            data.add(temp);
+        }
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", data);
+        return result;
+    }
+
+    @Override
+    public Object getProfileStrategy(Integer user_id){
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT name, id FROM strategy WHERE user_id="+user_id+";");
+        List<Map<String, Object>> data = new ArrayList<>();
+        while (sqlRowSet.next()){
+            Map<String, Object> temp = new HashMap<>();
+            temp.put("name", sqlRowSet.getString("name"));
+            temp.put("code", sqlRowSet.getString("id"));
             data.add(temp);
         }
         Map<String, Object> result = new HashMap<>();

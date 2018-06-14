@@ -29,4 +29,6 @@ public interface StudyService {
     Object getYearData(Integer strategy_id);
 
     Object getAllData(Integer strategy_id);
+
+    Object getProfileStrategy(Integer user_id);
 }

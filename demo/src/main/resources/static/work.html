@@ -151,16 +151,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $scope.t_name = value.data.name;
                 $scope.nickname = value.data.nickname;
                 $scope.mailbox = value.data.email;
-            })
+            });
 
         $http.get("http://localhost:8080/profile/stock/check")
             .then(function (response) {
                 $scope.stockList= response.data
             });
 
-        $http.get("http://localhost:8080/profile/...")
+        $http.get("http://localhost:8080/study/strategy/profile")
                 .then(function (response) {
-                    $scope.strategyList= response.data
+                    $scope.strategyList= response.data.data
                 });
 
         $scope.del = function (code, name) {
@@ -172,16 +172,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             window.location.href = "work.html";
                         })
                 })
-        }
+        };
         $scope.goto = function (code) {
             window.location.href = "detail.html?code=" + code;
-        }
+        };
         $scope.goto_strategy = function (code) {
             window.location.href = "detailstrategy.html?code=" + code;
-        }
+        };
         $scope.modify = function (code) {
             window.location.href = "modifystrategy.html?code=" + code;
-        }
+        };
         $scope.check_out = function () {
             window.location.href="/login.html";
             $http.get("http://localhost:8080/user/logout");

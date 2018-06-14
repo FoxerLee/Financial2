@@ -400,18 +400,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             temp2["code_id"] = temp[i].code;
                             //alert(temp[i].code);
                             temp2["number"] = $("#"+String(temp[i].code)).val()/100.0;
-                            //alert($("#"+String(temp[i].code)).val()/100.0)
-                            // alert("o"+temp2.code_id);
-                            // alert("o"+temp2.number);
                             data.push(temp2);
                         }
                         for (var j = 2; j < count; j++) {
                             temp2 = {};
                             sID = "slide" + String(j);
                             iID = "input" + String(j);
-                            //alert("hahahahah");
-                            //alert($("#" + sID).val());
-                            //alert($('#' + iID).attr('placeholder'));
                             backValue.push($("#" + sID).val());
                             backName.push($('#' + iID).attr('placeholder'));
                             temp2["code_id"] = $('#' + iID).val();
