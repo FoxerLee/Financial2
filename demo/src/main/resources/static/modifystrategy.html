@@ -106,8 +106,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!---->
     <div class="content" ng-app="myApp" ng-controller="siteCtrl">
         <div class="work" >
-            <p class="heat-map-title" >&nbsp;&nbsp;&nbsp;{{strategyname}}
-                <button class="button-borderless" id="predict"><a href="newstrategy.html">修改策略</a></button>
+            <p class="heat-map-title" >&nbsp;&nbsp;&nbsp;修改策略{{strategyname}}
+
             </p>
 
             <div class="x_title">
@@ -227,7 +227,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     var sty = [];
 
     $('#add-strategy-button').click(function(){
-
         count = count+1;
         sliderID = "slide" + String(count);
         inputID = "input" + String(count);
@@ -315,31 +314,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
         return args;
     }
-    $('#test').click(function(){
-        var backName = [];
-        var backValue = [];
-        for (var j = originCount + 1; j < count; j++) {
-            sID = "slide" + String(j);
-            iID = "input" + String(j);
-            alert("hahahahah");
-            alert($("#" + sID).val());
-            alert($('#' + iID).attr('placeholder'));
-            backValue.push($("#" + sID).val());
-            backName.push($('#' + iID).attr('placeholder'));
-        }
-        sID = "slide" + String(count);
-        iID = "input" + String(count);
-        alert("hahahahah");
-        alert($("#" + sID).val());
-        alert($('#' + iID).val());
-        backValue.push($("#" + sID).val());
-        backName.push($('#' + iID).val());
-    });
+//    $('#test').click(function(){
+//        var backName = [];
+//        var backValue = [];
+//        for (var j = originCount + 1; j < count; j++) {
+//            sID = "slide" + String(j);
+//            iID = "input" + String(j);
+//            alert("hahahahah");
+//            alert($("#" + sID).val());
+//            alert($('#' + iID).attr('placeholder'));
+//            backValue.push($("#" + sID).val());
+//            backName.push($('#' + iID).attr('placeholder'));
+//        }
+//        sID = "slide" + String(count);
+//        iID = "input" + String(count);
+//        alert("hahahahah");
+//        alert($("#" + sID).val());
+//        alert($('#' + iID).val());
+//        backValue.push($("#" + sID).val());
+//        backName.push($('#' + iID).val());
+//    });
     var args = getQueryStringArgs();
     var code = args["code"];
     var app = angular.module('myApp', []);
     var temp = [];
     var myLen = 0;
+    var q=0;
     app.controller('siteCtrl', function($scope, $http) {
         $http.get("http://localhost:8080/study/strategy/self?strategy_id=" + 11)
                 .then(function (response) {
@@ -349,23 +349,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     $scope.strategyname = code;
                     $scope.research = response.data.data;
                     var temp = angular.fromJson(response.data.data);
-                    var myLen=temp.length;
+                    myLen=temp.length;
                     console.log(myLen);
                     originCount = myLen;
-                    for (var i=0;i<myLen;i++){
+                    while(q<3){
+
+                        //alert("m"+myLen);
+                        //alert(q);
+                        //alert(temp[q].num);
+                        var stock_num = String(temp[q].num*100.0)+".00";
                         $('#strategy_tables').append("<br/><form class=\"form-inline\">\n" +
                             "                                <div class=\"form-group\">\n" +
                             "                                    <label for=\"code1\">股票代码</label>\n" +
-                            "                                    <input type=\"text\" id = \""+temp[i].code +"\" class=\"form-control\" placeholder=\""+temp[i].code+"\">\n" +
+                            "                                    <input type=\"text\" class=\"form-control\" placeholder=\""+temp[q].code+"\">\n" +
                             "                                </div>\n" +
                             "                                <div class=\"form-group\">\n" +
                             "                                    <label for=\"num1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n"+
                             "                                </div>\n" +
                             "                                <div class=\"form-group\">\n"+
-                            "                                    <input id = \""+sliderID +"\" class=\"single-slider\" type=\"hidden\" value=\""+temp[i].num+"\"/>\n" +
+                            "                                    <input id = \""+temp[q].code +"\" class=\"single-slider\" type=\"hidden\" value=\""+stock_num+"\">\n" +
                             "                                </div>\n" +
                             "                            </form>\n");
-                        $('#'+String(temp[i].code)).jRange({
+                        $('#'+String(temp[q].code)).jRange({
                             from: 0,
                             to: 100,
                             step: 1,
@@ -378,70 +383,85 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             }
                         });
-                        // alert(temp[i].code);
+                        //myLen--;
+                        //alert(myLen);
+                        q=q+1;
+                         //alert(cc);
                     }
                     $scope.newS = function () {
                         var sum = 0;
-                        //alert("hahahahah");
+                        alert("hahahahah");
                         var backName = [];
                         var backValue = [];
                         var data= [];
                         for (var i=0;i<myLen;i++){
-                            temp = new Array();
+                            temp2 = {};
                             backValue.push($("#"+String(temp[i].code)).val());
                             backName.push(temp[i].code);
-                            temp["code_id"] = temp[i].code;
-                            temp["number"] = $("#"+String(temp[i].code)).val();
-                            data.push(temp);
+                            temp2["code_id"] = temp[i].code;
+                            //alert(temp[i].code);
+                            temp2["number"] = $("#"+String(temp[i].code)).val()/100.0;
+                            //alert($("#"+String(temp[i].code)).val()/100.0)
+                            alert("o"+temp2.code_id);
+                            alert("o"+temp2.number);
+                            data.push(temp2);
                         }
-                        for (var j = originCount + 1; j < count; j++) {
-                            temp = new Array();
+                        for (var j = 2; j < count; j++) {
+                            temp2 = {};
                             sID = "slide" + String(j);
                             iID = "input" + String(j);
+                            alert(count);
                             //alert("hahahahah");
-                            alert($("#" + sID).val());
-                            alert($('#' + iID).attr('placeholder'));
+                            //alert($("#" + sID).val());
+                            //alert($('#' + iID).attr('placeholder'));
                             backValue.push($("#" + sID).val());
                             backName.push($('#' + iID).attr('placeholder'));
-                            temp["code_id"] = $('#' + iID).attr('placeholder');
-                            temp["number"] = $("#" + sID).val();
-                            data.push(temp);
+                            temp2["code_id"] = $('#' + iID).val();
+                            temp2["number"] = $("#" + sID).val()/100.0;
+                            alert("a"+temp2.code_id);
+                            alert("a"+temp2.number);
+                            data.push(temp2);
                         }
                         sID = "slide" + String(count);
                         iID = "input" + String(count);
                         //alert("hahahahah");
-                        alert($("#" + sID).val());
-                        alert($('#' + iID).val());
+                        //alert($("#" + sID).val());
+                        //alert($('#' + iID).val());
                         backValue.push($("#" + sID).val());
                         backName.push($('#' + iID).val());
-                        temp = new Array();
-                        temp["code_id"] = $('#' + iID).val();
-                        temp["number"] = $("#" + sID).val();
-                        data.push(temp);
+                        temp2 = {};
+                        temp2["code_id"] = $('#' + iID).val();
+                        temp2["number"] = $("#" + sID).val()/100.0;
+                        alert("l"+temp2.code_id);
+                        alert("l"+temp2.number);
+                        data.push(temp2);
                         //console.log("hahahahah")
                         for(var s=0;s<backValue.length;s++){
-                            sum = sum + backValue[s];
+                            alert(backValue[s]);
+                            sum = sum + parseInt(backValue[s]);
                         }
+                        alert(sum);
                         if(sum>100){
                             alert("总仓位超过100%，请修改！");
+                            console.log(data)
                         }
                         else {
-                            $http({
-                                method: 'POST',
-                                url: 'http://localhost:8080/study/strategy/change',
-                                data: "strategy_id=" + code + "&data=" + data,
-                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                            }).then(function (value) {
-                                if (value.data === 200)
-                                    window.location.href = "detailstrategy.html?code=" + code;
-                                else if (value.data === 400) {
-                                    alert("修改失败！");
-                                    window.location.href = "work.html";
-                                }
-                                else
-                                    window.location.href = "400.html";
-
-                            });
+//                            $http({
+//                                method: 'POST',
+//                                url: 'http://localhost:8080/study/strategy/change',
+//                                data: "strategy_id=" + code + "&data=" + data,
+//                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+//                            }).then(function (value) {
+//                                if (value.data === 200)
+//                                    window.location.href = "detailstrategy.html?code=" + code;
+//                                else if (value.data === 400) {
+//                                    alert("修改失败！");
+//                                    window.location.href = "work.html";
+//                                }
+//                                else
+//                                    window.location.href = "400.html";
+//
+//                            });
                         }
                     };
                     $scope.back = function () {
