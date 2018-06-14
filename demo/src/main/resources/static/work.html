@@ -36,6 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li><a href="ranking.html" class="black1"> 龙虎榜</a ></li>
                 <li><a href="fundamentals.html" class="black1"> 基本面数据</a ></li>
                 <li><a href="work.html" class="black" > 个人主页</a ></li>
+                <li><a href="allstrategy.html" class="black2" > 策略中心</a ></li>
                 <li>
                     <a href="knowledge.html" class="black2" > 投资知识</a >
                     <ul>
@@ -80,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         .miao{display:inline-block;}
                     </style>
                     <div class="guding">
-                        <img class="miao" src="images/网站图标.png">
+                        <img class="miao" src="images/Õ¯’æÕº±Í.png">
                     </div>
 
                     <ul class="likes">
@@ -96,6 +97,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h3>自选股信息</h3>
                     <ul ng-repeat="x in stockList" id="choiceList" class="feature-grid">
                         <li><i id="2" ng-click="del(x.code, x.name)"></i><a ng-click="goto(x.code)">{{x.name}}</a></li>
+                    </ul>
+                    <h3>我的策略</h3>
+                    <ul ng-repeat="x in strategyList" id="choiceList2" class="feature-grid">
+                        <li><i id="3" ng-click="modify(x.code)"></i><a ng-click="goto_strategy(x.code)">{{x.name}}</a></li>
                     </ul>
                 </div>
 
@@ -152,6 +157,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             .then(function (response) {
                 $scope.stockList= response.data
             });
+
+        $http.get("http://localhost:8080/profile/...")
+                .then(function (response) {
+                    $scope.strategyList= response.data
+                });
+
         $scope.del = function (code, name) {
             $http.delete("http://localhost:8080/profile/stock/delete?code=" + code)
                 .then(function (value) {
@@ -164,6 +175,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
         $scope.goto = function (code) {
             window.location.href = "detail.html?code=" + code;
+        }
+        $scope.goto_strategy = function (code) {
+            window.location.href = "detailstrategy.html?code=" + code;
+        }
+        $scope.modify = function (code) {
+            window.location.href = "modifystrategy.html?code=" + code;
         }
         $scope.check_out = function () {
             window.location.href="/login.html";
