@@ -130,18 +130,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </form>
                     <br />-->
-                    <form class="form-inline"  ng-repeat="x in research">
-                        <div class="form-group">
-                            <label for="ex3">股票代码</label>
-                            <input type="text" id="ex3" class="form-control" placeholder={{x.code}}>
-                        </div>
-                        <div class="form-group">
-                            <label >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        </div>
-                        <div class="form-group">
-                            <input id={{x.code}} class="stupid" type="hidden" value={{x.num}}/>
-                        </div>
-                    </form>
+                    <!--<form class="form-inline"  ng-repeat="x in research">-->
+                        <!--<div class="form-group">-->
+                            <!--<label for="ex3">股票代码</label>-->
+                            <!--<input type="text" id="ex3" class="form-control" placeholder={{x.code}}>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<input id={{x.code}} class="stupid" type="hidden" value={{x.num}}>-->
+                        <!--</div>-->
+                    <!--</form>-->
                 </div>
                 <br />
                 <br />
@@ -165,9 +165,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </div>
 <!-- jQuery -->
-<script src="vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--<script src="js/jquery.min.js"></script>-->
+<!--&lt;!&ndash; Bootstrap &ndash;&gt;-->
+<!--<script src="js/bootstrap.min.js"></script>-->
 <!-- FastClick -->
 <script src="vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
@@ -338,17 +338,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     var args = getQueryStringArgs();
     var code = args["code"];
     var app = angular.module('myApp', []);
+    var temp = [];
+    var myLen = 0;
     app.controller('siteCtrl', function($scope, $http) {
-        $http.get("http://localhost:8080/...?code=" + code)
+        $http.get("http://localhost:8080/study/strategy/self?strategy_id=" + 11)
                 .then(function (response) {
+                    // alert("ok");
                     if (response === 400)
                         window.location.href =  "login.html";
                     $scope.strategyname = code;
-                    $scope.research = response.data;
-                    var temp = angular.fromJson(response.data);
+                    $scope.research = response.data.data;
+                    var temp = angular.fromJson(response.data.data);
                     var myLen=temp.length;
+                    console.log(myLen);
                     originCount = myLen;
                     for (var i=0;i<myLen;i++){
+                        $('#strategy_tables').append("<br/><form class=\"form-inline\">\n" +
+                            "                                <div class=\"form-group\">\n" +
+                            "                                    <label for=\"code1\">股票代码</label>\n" +
+                            "                                    <input type=\"text\" id = \""+temp[i].code +"\" class=\"form-control\" placeholder=\""+temp[i].code+"\">\n" +
+                            "                                </div>\n" +
+                            "                                <div class=\"form-group\">\n" +
+                            "                                    <label for=\"num1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>\n"+
+                            "                                </div>\n" +
+                            "                                <div class=\"form-group\">\n"+
+                            "                                    <input id = \""+sliderID +"\" class=\"single-slider\" type=\"hidden\" value=\""+temp[i].num+"\"/>\n" +
+                            "                                </div>\n" +
+                            "                            </form>\n");
                         $('#'+String(temp[i].code)).jRange({
                             from: 0,
                             to: 100,
@@ -362,17 +378,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             }
                         });
+                        // alert(temp[i].code);
                     }
                     $scope.newS = function () {
                         var sum = 0;
                         //alert("hahahahah");
                         var backName = [];
                         var backValue = [];
+                        var data= [];
                         for (var i=0;i<myLen;i++){
+                            temp = new Array();
                             backValue.push($("#"+String(temp[i].code)).val());
                             backName.push(temp[i].code);
+                            temp["code_id"] = temp[i].code;
+                            temp["number"] = $("#"+String(temp[i].code)).val();
+                            data.push(temp);
                         }
                         for (var j = originCount + 1; j < count; j++) {
+                            temp = new Array();
                             sID = "slide" + String(j);
                             iID = "input" + String(j);
                             //alert("hahahahah");
@@ -380,6 +403,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             alert($('#' + iID).attr('placeholder'));
                             backValue.push($("#" + sID).val());
                             backName.push($('#' + iID).attr('placeholder'));
+                            temp["code_id"] = $('#' + iID).attr('placeholder');
+                            temp["number"] = $("#" + sID).val();
+                            data.push(temp);
                         }
                         sID = "slide" + String(count);
                         iID = "input" + String(count);
@@ -388,6 +414,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         alert($('#' + iID).val());
                         backValue.push($("#" + sID).val());
                         backName.push($('#' + iID).val());
+                        temp = new Array();
+                        temp["code_id"] = $('#' + iID).val();
+                        temp["number"] = $("#" + sID).val();
+                        data.push(temp);
                         //console.log("hahahahah")
                         for(var s=0;s<backValue.length;s++){
                             sum = sum + backValue[s];
@@ -398,8 +428,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         else {
                             $http({
                                 method: 'POST',
-                                url: 'http://localhost:8080/...',
-                                data: "code=" + backName + "&value=" + backValue,
+                                url: 'http://localhost:8080/study/strategy/change',
+                                data: "strategy_id=" + code + "&data=" + data,
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             }).then(function (value) {
                                 if (value.data === 200)

@@ -21,4 +21,6 @@ public interface StudyService {
     Object changeLog(Integer strategy_id, List<Map<String, Object>> oldData, List<Map<String, Object>> newData);
 
     Object getStrategtDetail(Integer strategy_id);
+
+    Object getSelfStrategy(Integer strategy_id);
 }

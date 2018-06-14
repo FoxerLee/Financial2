@@ -393,4 +393,19 @@ public class StudyServiceImpl implements StudyService{
         return result;
     }
 
+    @Override
+    public Object getSelfStrategy(Integer strategy_id){
+        SqlRowSet sqlRowSet = jdbcTemplate.queryForRowSet("SELECT * FROM strategy_detail WHERE strategy_id = "+strategy_id+";");
+        List<Map<String, Object>> data = new ArrayList<>();
+        while(sqlRowSet.next()){
+            Map<String, Object> temp = new HashMap<>();
+            temp.put("code", sqlRowSet.getString("code_id"));
+            temp.put("num", sqlRowSet.getDouble("storage_number"));
+            data.add(temp);
+        }
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", data);
+        return result;
+    }
+
 }
