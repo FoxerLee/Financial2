@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             <table width="100%" border="0" cellspacing="0" cellpadding="0" >
                 <tr>
-                    <td scope="col" style="vertical-align:middle; text-align:center;" >月收益率</td>
+                    <td scope="col" style="vertical-align:middle; text-align:center;" >总收益率</td>
                     <td scope="col" style="vertical-align:middle; text-align:center;" >策略名称</td>
                     <td scope="col" style="vertical-align:middle; text-align:center;" >策略简介</td>
                     <td scope="col" style="vertical-align:middle; text-align:center;" >主理人</td>
@@ -94,7 +94,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </tr>
                 <tr ng-repeat="x in research">
 
-                    <td style="vertical-align:middle; text-align:center;">{{x.present_amount}}</td>
+                    <td id="stupid" style="vertical-align:middle; text-align:center;">{{x.present_amount}}</td>
                     <td style="vertical-align:middle; text-align:center;">{{x.strategy_name}}</td>
                     <td style="vertical-align:middle; text-align:center;">{{x.brief}}</td>
                     <td style="vertical-align:middle; text-align:center;">{{x.user_name}}</td>
@@ -120,6 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 if (response === 400)
                     window.location.href =  "login.html";
                 $scope.research = response.data.data;
+                document.getElementById("stupid").innerText =
             });
         $scope.check_out = function () {
             window.location.href =  "login.html";
