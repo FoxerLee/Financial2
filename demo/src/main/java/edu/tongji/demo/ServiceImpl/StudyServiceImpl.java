@@ -302,7 +302,7 @@ public class StudyServiceImpl implements StudyService {
         if (sqlRowSet.next()) {
             present_value = sqlRowSet.getDouble("present_amount");
         }
-        sqlRowSet = jdbcTemplate.queryForRowSet("select present_amount from strategy_log where time > UNIX_TIMESTAMP('" + year + "-" + month + "-1') and strategy_id = " + strategy_id + " order by time asc;");
+        sqlRowSet = jdbcTemplate.queryForRowSet("select present_amount from strategy_log where UNIX_TIMESTAMP(time) > UNIX_TIMESTAMP('" + year + "-" + month + "-1') and strategy_id = " + strategy_id + " order by time asc;");
         List<Double> month_value = new ArrayList<>();
         while (sqlRowSet.next()) {
             month_value.add(sqlRowSet.getDouble("present_amount"));
