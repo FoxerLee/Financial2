@@ -170,8 +170,23 @@ public class StockServiceImpl implements StockService {
         DataRealTime dataRealTimes = dataRealTimeMapper.getPresentData(code);
         if (dataRealTimes == null)
             return "404";
-        else
+        else {
+            dataRealTimes.setOpen_value(Double.parseDouble(String.format("%.2f", dataRealTimes.getOpen_value())));
+            dataRealTimes.setClose_value(Double.parseDouble(String.format("%.2f", dataRealTimes.getClose_value())));
+            dataRealTimes.setHigh_value(Double.parseDouble(String.format("%.2f", dataRealTimes.getHigh_value())));
+            dataRealTimes.setLow_value(Double.parseDouble(String.format("%.2f", dataRealTimes.getLow_value())));
+            dataRealTimes.setVolume_value(Double.parseDouble(String.format("%.2f", dataRealTimes.getVolume_value())));
+            dataRealTimes.setP_change(Double.parseDouble(String.format("%.2f", dataRealTimes.getP_change())));
+            dataRealTimes.setTurnoverratio(Double.parseDouble(String.format("%.2f", dataRealTimes.getTurnoverratio())));
+            dataRealTimes.setAmount(Double.parseDouble(String.format("%.2f", dataRealTimes.getAmount())));
+            dataRealTimes.setPer(Double.parseDouble(String.format("%.2f", dataRealTimes.getPer())));
+            dataRealTimes.setPb(Double.parseDouble(String.format("%.2f", dataRealTimes.getPb())));
+            dataRealTimes.setMktcap(Double.parseDouble(String.format("%.2f", dataRealTimes.getMktcap())));
+            dataRealTimes.setNmc(Double.parseDouble(String.format("%.2f", dataRealTimes.getNmc())));
+            dataRealTimes.setSettlement(Double.parseDouble(String.format("%.2f", dataRealTimes.getSettlement())));
             return dataRealTimes;
+        }
+
     }
 
     @Override
