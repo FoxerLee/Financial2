@@ -8,6 +8,6 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface DataDaysMapper {
 
-    @Select("select p_change from data_real_time where code = \'${code}\'"  )
+    @Select("select p_change from data_real_time where code = \'${code}\'  order by trading_day desc limit 1")
     DataDays getPChangeByCode(@Param(value = "code")String code);
 }
