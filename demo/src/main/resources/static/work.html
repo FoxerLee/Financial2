@@ -46,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li class="black"><a href="advanced.html">进阶知识</a></li>
                     </ul>
                 </li>
-                <li>S
+                <li>
 
                 </li>
 
@@ -98,9 +98,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul ng-repeat="x in stockList" id="choiceList" class="feature-grid">
                         <li><i id="2" ng-click="del(x.code, x.name)"></i><a ng-click="goto(x.code)">{{x.name}}</a></li>
                     </ul>
+                    <br>
                     <h3>我的策略</h3>
-                    <ul ng-repeat="x in strategyList" id="choiceList2" class="feature-grid">
-                        <li><i id="3" ng-click="modify(x.code)"></i><a ng-click="goto_strategy(x.code)">{{x.name}}</a></li>
+                    <ul ng-repeat="x in strategyList" id="choiceList2" class="feature-grid2">
+                        <li><i id="3" ng-click="modify(x.code)"></i><b id="4" ng-click="del2(x.code,x.name)"></b><a ng-click="goto_strategy(x.code)">{{x.name}}</a></li>
                     </ul>
                 </div>
 
@@ -116,6 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </html>
 <script type="text/javascript">
     function del(id){
+        console.log(id);
         var x
 
         var index;
@@ -160,15 +162,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
 
         $http.get("http://localhost:8080/study/strategy/profile")
-                .then(function (response) {
-                    $scope.strategyList= response.data.data
-                });
+            .then(function (response) {
+                $scope.strategyList= response.data.data
+            });
 
         $scope.del = function (code, name) {
             $http.delete("http://localhost:8080/profile/stock/delete?code=" + code)
                 .then(function (value) {
                     alert("已成功删除自选股：" + name);
                     $http.get("http://localhost:8080/profile/stock/check")
+                        .then(function (value2) {
+                            window.location.href = "work.html";
+                        })
+                })
+        };
+        $scope.del2 = function (code, name) {
+            $http.delete("http://localhost:8080/profile/...?code=" + code)
+                .then(function (value) {
+                    alert("已成功删除策略：" + name);
+                    $http.get("http://localhost:8080/study/strategy/profile")
                         .then(function (value2) {
                             window.location.href = "work.html";
                         })

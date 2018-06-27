@@ -213,15 +213,15 @@ body a{
   background:#30383b;
 }
 /*.top-nav ul li  b {*/
-  /*display:block;*/
-  /*outline: none;*/
-  /*padding-top: 1em;*/
-  /*padding-bottom: 1em;*/
-  /*color: #fff;*/
-  /*text-decoration: none;*/
-  /*font-size: 0.5em;*/
-  /*text-align: right;*/
-  /*background:#30383b;*/
+/*display:block;*/
+/*outline: none;*/
+/*padding-top: 1em;*/
+/*padding-bottom: 1em;*/
+/*color: #fff;*/
+/*text-decoration: none;*/
+/*font-size: 0.5em;*/
+/*text-align: right;*/
+/*background:#30383b;*/
 /*}*/
 .top-nav ul li  a.black{
   background:#30383c;
@@ -356,6 +356,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi1.jpg);
 }
 .cc2{
@@ -364,6 +365,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi2.jpg);
 }
 .cc3{
@@ -372,6 +374,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi3.jpg);
 }
 .cc4{
@@ -380,6 +383,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi4.jpg);
 }
 .cc5{
@@ -388,6 +392,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi5.jpg);
 }
 .cc6{
@@ -396,6 +401,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi6.jpg);
 }
 .cc7{
@@ -404,6 +410,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi7.jpg);
 }
 .cc8{
@@ -412,6 +419,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi8.jpg);
 }
 .cc9{
@@ -420,6 +428,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi9.jpg);
 }
 .cc10{
@@ -428,6 +437,7 @@ p.footer-class a:hover{
   text-align: center;
   font-size:1.2em;
   padding-bottom: 1.9em;
+  text-decoration:none;
   background: url(../images/pi10.jpg);
 }
 
@@ -440,6 +450,7 @@ p.footer-class a:hover{
   width: 100%;
 }
 .b-link-stripe .b-wrapper{
+  font-size:0.5em;
   position:absolute;
   width:100%;
   top:0;
@@ -498,6 +509,7 @@ p.footer-class a:hover{
 }
 /* lt-ie9 */
 .b-animate-go:hover .b-animate{
+  text-decoration: none;
   visibility:visible;
 }
 .b-from-left{
@@ -745,6 +757,34 @@ ul.feature-grid li a:hover{
   color:#1ab5b3;
 }
 ul.feature-grid li i{
+  background: url(../images/delete.png)no-repeat;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  margin:0 13px 0 0;
+}
+ul.feature-grid2 li{
+  list-style:none;
+}
+ul.feature-grid2 li a{
+  color:#848484;
+  font-size:1em;
+  padding:0.5em 0;
+  display:inline-block;
+}
+ul.feature-grid2 li a:hover{
+  color:#1ab5b3;
+}
+ul.feature-grid2 li i{
+  background: url(../images/modify.png)no-repeat;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  margin:0 13px 0 0;
+}
+ul.feature-grid2 li b{
   background: url(../images/delete.png)no-repeat;
   width: 18px;
   height: 18px;
@@ -1043,7 +1083,7 @@ iframe{
   color:#fff;
   font-style:italic;
   font-size:0.8em;
-  text-decoration:underline;
+  text-decoration:none;
 }
 .col-in a:hover{
   text-decoration:none;
@@ -1332,17 +1372,17 @@ ul.archive-grid li a:hover{
   margin: 0.8em 1.0em;
 }
 /*.your-top i {*/
-  /*background: url(../images/search.png) 1em 1em;*/
-  /*width: 50px;*/
-  /*height: 50px;*/
-  /*display: inline-block;*/
-  /*float:left;*/
+/*background: url(../images/search.png) 1em 1em;*/
+/*width: 50px;*/
+/*height: 50px;*/
+/*display: inline-block;*/
+/*float:left;*/
 /*}*/
 /*.your-top i.email {*/
-  /*background-position: -51px -86px ;*/
+/*background-position: -51px -86px ;*/
 /*}*/
 /*.your-top i.website {*/
-  /*background-position: -93px -86px ;*/
+/*background-position: -93px -86px ;*/
 /*}*/
 .your-top input[type="text"],.grid-contact-in textarea {
   background: none;
@@ -1765,7 +1805,7 @@ ul.archive-grid li a:hover{
     display:none;
   }
   /*.logo {*/
-    /*padding: 1em;*/
+  /*padding: 1em;*/
   /*}*/
   .b-animate span {
     padding-top: 1.5em;
