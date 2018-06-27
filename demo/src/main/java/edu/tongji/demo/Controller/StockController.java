@@ -32,11 +32,7 @@ public class StockController {
             return "404";
         }
     }
-        /**
-     * ͨ��code����name���connect����Ϣ
-     * @param content
-     * @return
-     */
+
     @PostMapping("/one")
     public Object GetSpecificInfo(@RequestBody String content){
         if (!Verification.verify())
@@ -46,11 +42,7 @@ public class StockController {
         }
     }
 
-    /**
-     * ������ҵ���Ʒ��ظ���ҵ��Ʊ�Լ����ǵ�����Ϣ
-     * @param name
-     * @return
-     */
+
     @GetMapping("/industry")
     public Object GetStocksOfIndustry(@RequestParam(value = "name", defaultValue = "化工行业")  String name){
 //        if (!Verification.verify())
@@ -61,11 +53,7 @@ public class StockController {
         return stockService.getStocksOfIndustry(name);
     }
 
-    /**
-     * ��ȡĳֻ��Ʊ��������Ϣ������code
-     * @param code
-     * @return
-     */
+
     @GetMapping(value = "/brief")
     public Object getBrief(@Param(value = "code") String code){
         if (!Verification.verify())
@@ -77,11 +65,7 @@ public class StockController {
         }
     }
 
-    /**
-     * ��ù�Ʊ����ʷ����������Kͼ
-     * @param code
-     * @return
-     */
+
     @GetMapping(value = "/history/days")
     public Object getHistoryDays(@Param(value = "code") String code){
         if (!Verification.verify())
@@ -115,11 +99,7 @@ public class StockController {
         }
     }
 
-    /**
-     * ����code��ȡ��Ʊ����
-     * @param code
-     * @return
-     */
+
     @GetMapping(value = "/name")
     public Object getStockName(@Param(value = "code") String code){
         if (!Verification.verify())

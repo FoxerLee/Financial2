@@ -84,9 +84,10 @@ def run():
                 # print title
                 # print url
                 # print date
-                # print inst
+                # print inst 
                 # print researcher
-                re.append((id, title, url, date, inst, researcher))
+                if date == str(datetime.datetime.now()):
+                    re.append((id, title, url, date, inst, researcher))
             except Exception, e:
                 print e
                 print 'get data error ' + id
