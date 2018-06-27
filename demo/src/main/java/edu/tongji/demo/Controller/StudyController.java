@@ -155,4 +155,11 @@ public class StudyController {
         int user_id = userService.getIDByName(userService.getNameByCookie(request));
         return studyService.getProfileStrategy(user_id);
     }
+
+    @DeleteMapping("/strategy/delete")
+    public Object delete(@RequestParam(value = "strategy_id")String id) {
+        Integer strategy_id = Integer.parseInt(id);
+        studyService.deleteStrategy(strategy_id);
+        return true;
+    }
 }

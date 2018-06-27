@@ -177,13 +177,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 })
         };
         $scope.del2 = function (code, name) {
-            $http.delete("http://localhost:8080/profile/...?code=" + code)
+            $http.delete("http://localhost:8080/study/strategy/delete?strategy_id=" + code)
                 .then(function (value) {
                     alert("已成功删除策略：" + name);
-                    $http.get("http://localhost:8080/study/strategy/profile")
-                        .then(function (value2) {
-                            window.location.href = "work.html";
-                        })
+                    window.location.href = "work.html";
+                    // $http.get("http://localhost:8080/study/strategy/profile")
+                    //     .then(function (value2) {
+                    //         window.location.href = "work.html";
+                    //     })
                 })
         };
         $scope.goto = function (code) {

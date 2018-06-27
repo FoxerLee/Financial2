@@ -31,4 +31,6 @@ public interface StudyService {
     Object getAllData(Integer strategy_id);
 
     Object getProfileStrategy(Integer user_id);
+
+    void deleteStrategy(Integer id);
 }

@@ -425,4 +425,12 @@ public class StudyServiceImpl implements StudyService {
         return result;
     }
 
+    @Override
+    public void deleteStrategy(Integer id) {
+        jdbcTemplate.execute("DELETE FROM strategy WHERE id = " + id + ";");
+        jdbcTemplate.execute("DELETE FROM strategy_change WHERE strategy_id = " + id + ";");
+        jdbcTemplate.execute("DELETE FROM strategy_detail WHERE strategy_id = " + id + ";");
+        jdbcTemplate.execute("DELETE FROM strategy_log WHERE strategy_id = " + id + ";" );
+    }
+
 }
