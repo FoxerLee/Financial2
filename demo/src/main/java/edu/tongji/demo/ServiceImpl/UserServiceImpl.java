@@ -10,12 +10,17 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserInfoMapper userInfoMapper;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public Integer getIDByName(String name){
@@ -82,13 +87,18 @@ public class UserServiceImpl implements UserService {
 
     public boolean signUp(String name, String password, String email, String nickname){
         try{
-            if(userInfoMapper.Check(name) >= 1)
-                return false;
-            else{
-                System.out.println("name:" + name + ",password:" + password + ",email" + email + ",nickname:" + nickname);
-                userInfoMapper.AddUser(name, password, email, nickname);
-                return true;
+            SqlRowSet set = jdbcTemplate.queryForRowSet("SELECT name FROM user_info WHERE name = \'" + name + "\';");
+            Boolean judge = true;
+            if (set.next()){
+                judge = false;
             }
+            if (judge == true) {
+                String sql = "INSERT INTO user_info(password, name, email, nickname) VALUES (\'"+
+                        password + "\',\'" + name + "\', \'"+ email + "\', \'" + nickname +"\');";
+                System.out.println(sql);
+                jdbcTemplate.execute(sql);
+            }
+            return judge;
         }catch (Exception e){
             return false;
         }

@@ -80,4 +80,6 @@ public class CashFlowData {
     public void setCf_liabilities(Double cf_liabilities) {
         this.cf_liabilities = cf_liabilities;
     }
+
+
 }
