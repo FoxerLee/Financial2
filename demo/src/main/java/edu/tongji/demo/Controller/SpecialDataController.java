@@ -23,8 +23,8 @@ public class SpecialDataController {
 
     @GetMapping("/cashflow")
     public Object getCashFlowData(@RequestParam(value = "page", defaultValue = "1") String page){
-        if(!Verification.verify())
-            return "400";
+//        if(!Verification.verify())
+//            return "400";
         try{
             ArrayList<CashFlowData> cashFlowData = specialService.getCashFloweData();
             int size = cashFlowData.size();
@@ -61,8 +61,8 @@ public class SpecialDataController {
 
     @GetMapping("/debt")
     public Object getDebtPayingData(@RequestParam(value = "page", defaultValue = "1")String page){
-        if(!Verification.verify())
-            return "400";
+//        if(!Verification.verify())
+//            return "400";
         try{
             ArrayList<DebtPayingData> debtPayingData = specialService.getDebtPayingData();
             int size = debtPayingData.size();
@@ -100,8 +100,8 @@ public class SpecialDataController {
 
     @GetMapping("/growth")
     public Object getGrowthData(@RequestParam(value = "page", defaultValue = "1")String page){
-        if(!Verification.verify())
-            return "400";
+//        if(!Verification.verify())
+//            return "400";
         try{
             ArrayList<GrowthData> growthData = specialService.getGrowthData();
             int size = growthData.size();
@@ -139,8 +139,8 @@ public class SpecialDataController {
 
     @GetMapping("/profit")
     public Object getProfileData(@RequestParam(value = "page", defaultValue = "1")String page){
-        if(!Verification.verify())
-            return "400";
+//        if(!Verification.verify())
+//            return "400";
         try{
             ArrayList<ProfileData> profitData = specialService.getProfileData();
             int size = profitData.size();
@@ -179,8 +179,8 @@ public class SpecialDataController {
 
     @GetMapping("/operation")
     public Object getOperationData(@RequestParam(value = "page", defaultValue = "1")String page){
-        if(!Verification.verify())
-            return "400";
+//        if(!Verification.verify())
+//            return "400";
         try{
             ArrayList<OperationData> operationData = specialService.getOperationData();
             int size = operationData.size();

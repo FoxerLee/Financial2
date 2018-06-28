@@ -18,15 +18,15 @@ public class ResearchController {
 
     @GetMapping("/code")
     public Object getResByCode(@Param(value = "code") String code){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
         return researchService.getBriefResearchByCode(code);
     }
 
     @GetMapping("/personal")
     public Object getResByPerson(HttpServletRequest request){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
         return researchService.getPersonalResearch(request);
     }
 }
