@@ -43,37 +43,38 @@ public class StudyController {
 
     @PostMapping("/strategy/create")
     public Object createStrategy(@RequestBody String text, HttpServletRequest request) {
-        if (!Verification.verify()){
-            return "error!";
-        }else{
-            System.out.println(text);
-            JSONObject jsonObject = JSONObject.fromObject(text);
-            String strategyName = jsonObject.getString("name");
-            String brief = jsonObject.getString("brief");
-            String codes = jsonObject.getString("data");
-            JSONArray jsonCodes = JSONArray.fromObject(codes);
-            List<Map<String, Object>> codeData = new ArrayList<>();
-            for (int i = 0; i < jsonCodes.size(); i++) {
-                Map<String, Object> codeMap = new HashMap<>();
-                JSONObject temp_code = JSONObject.fromObject(jsonCodes.get(i));
-                codeMap.put("code_id", temp_code.getString("code_id"));
-                codeMap.put("num", temp_code.getDouble("number"));
-                codeData.add(codeMap);
-            }
-            int user_id = userService.getIDByName(userService.getNameByCookie(request));
-            try{
-                Map<String, Object> value = studyService.createStrategy(strategyName, brief, codeData, user_id);
-                if (Double.parseDouble(value.get("left_storage").toString()) > 0)
-                    value.put("status", 200);
-                else if(Double.parseDouble(value.get("left_storage").toString()) == -1.0)
-                    value.put("status", 300);
-                else
-                    value.put("status", 400);
-                return value;
-            }catch (SQLException e){
-                System.out.println(e);
-                return -1;
-            }
+//        if (!Verification.verify()){
+//            return "error!";
+//        }else{
+//
+//        }
+        System.out.println(text);
+        JSONObject jsonObject = JSONObject.fromObject(text);
+        String strategyName = jsonObject.getString("name");
+        String brief = jsonObject.getString("brief");
+        String codes = jsonObject.getString("data");
+        JSONArray jsonCodes = JSONArray.fromObject(codes);
+        List<Map<String, Object>> codeData = new ArrayList<>();
+        for (int i = 0; i < jsonCodes.size(); i++) {
+            Map<String, Object> codeMap = new HashMap<>();
+            JSONObject temp_code = JSONObject.fromObject(jsonCodes.get(i));
+            codeMap.put("code_id", temp_code.getString("code_id"));
+            codeMap.put("num", temp_code.getDouble("number"));
+            codeData.add(codeMap);
+        }
+        int user_id = userService.getIDByName(userService.getNameByCookie(request));
+        try{
+            Map<String, Object> value = studyService.createStrategy(strategyName, brief, codeData, user_id);
+            if (Double.parseDouble(value.get("left_storage").toString()) > 0)
+                value.put("status", 200);
+            else if(Double.parseDouble(value.get("left_storage").toString()) == -1.0)
+                value.put("status", 300);
+            else
+                value.put("status", 400);
+            return value;
+        }catch (SQLException e){
+            System.out.println(e);
+            return -1;
         }
     }
 

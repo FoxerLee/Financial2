@@ -16,8 +16,8 @@ public class WinnerListController {
 
     @GetMapping(value = "/all")
     public Object getAll(){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
         try{
             return winnerServiceImpl.getWinnerListByCookie();
         } catch (Exception e){

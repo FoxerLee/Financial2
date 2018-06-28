@@ -20,8 +20,8 @@ public class StockController {
 
     @GetMapping("/all")
     public Object GetAllStockInfo(){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
         try{
             Boolean judge = Verification.verify();
             if (!judge)
@@ -35,11 +35,12 @@ public class StockController {
 
     @PostMapping("/one")
     public Object GetSpecificInfo(@RequestBody String content){
-        if (!Verification.verify())
-            return "400";
-        else{
-            return stockService.getStockByNameOrCode(content);
-        }
+//        if (!Verification.verify())
+//            return "400";
+//        else{
+//            return stockService.getStockByNameOrCode(content);
+//        }
+        return stockService.getStockByNameOrCode(content);
     }
 
 
@@ -56,8 +57,8 @@ public class StockController {
 
     @GetMapping(value = "/brief")
     public Object getBrief(@Param(value = "code") String code){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
         try{
             return stockService.getStockBriefInformation(code);
         }catch (Exception e){
@@ -68,8 +69,8 @@ public class StockController {
 
     @GetMapping(value = "/history/days")
     public Object getHistoryDays(@Param(value = "code") String code){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
         try{
             return stockService.getStocksHistory(code, 1);
         }catch (Exception e){
@@ -79,8 +80,8 @@ public class StockController {
 
     @GetMapping(value = "/history/weeks")
     public Object getHistoryWeeks(@Param(value = "code")String code){
-        if(!Verification.verify())
-            return "400";
+//        if(!Verification.verify())
+//            return "400";
         try{
             return stockService.getStocksHistory(code, 2);
         }catch (Exception e){
@@ -90,8 +91,8 @@ public class StockController {
 
     @GetMapping(value = "/history/months")
     public Object getHistoryMonths(@Param(value = "code")String code){
-        if(!Verification.verify())
-            return "400";
+//        if(!Verification.verify())
+//            return "400";
         try{
             return stockService.getStocksHistory(code, 3);
         }catch (Exception e){
@@ -102,8 +103,8 @@ public class StockController {
 
     @GetMapping(value = "/name")
     public Object getStockName(@Param(value = "code") String code){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
         return stockService.getStockNameByCode(code);
     }
 

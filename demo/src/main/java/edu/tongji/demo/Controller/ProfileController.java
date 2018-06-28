@@ -31,43 +31,56 @@ public class ProfileController {
      */
     @GetMapping("/stock/check")
     public Object getPersonalStocks(HttpServletRequest request){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
+//        else{
+//            String name = userService.getNameByCookie(request);
+//            if (name.equals(""))
+//                return null;
+//            int id = userService.getIDByName(name);
+//            if (id < 0)
+//                return null;
+//            else{
+//                try{
+//                    return stockService.getStocksByUserID(id);
+//                }catch (Exception e){
+//                    return null;
+//                }
+//            }
+//        }
+        String name = userService.getNameByCookie(request);
+        if (name.equals(""))
+            return null;
+        int id = userService.getIDByName(name);
+        if (id < 0)
+            return null;
         else{
-            String name = userService.getNameByCookie(request);
-            if (name.equals(""))
+            try{
+                return stockService.getStocksByUserID(id);
+            }catch (Exception e){
                 return null;
-            int id = userService.getIDByName(name);
-            if (id < 0)
-                return null;
-            else{
-                try{
-                    return stockService.getStocksByUserID(id);
-                }catch (Exception e){
-                    return null;
-                }
             }
         }
     }
 
     @GetMapping("/stock/add")
     public Object addSelfStock(@Param(value = "code") String code, HttpServletRequest request){
-        if(!Verification.verify())
-            return "400";
+//        if(!Verification.verify())
+//            return "400";
         return selfStockService.addStockByCode(code, request);
     }
 
     @DeleteMapping("/stock/delete")
     public Object deleteSelfStock(@Param(value = "code") String code, HttpServletRequest request){
-        if(!Verification.verify())
-            return "400";
+//        if(!Verification.verify())
+//            return "400";
         return selfStockService.deleteStockByCode(code, request);
     }
 
     @GetMapping("/check")
     public Object checkUserInformation(HttpServletRequest request){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
         return userService.getUserInformation(request);
     }
 }

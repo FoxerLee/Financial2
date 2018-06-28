@@ -17,16 +17,14 @@ public class NewsController {
 
     @GetMapping("/user")
     public Object getNews(@Param(value = "code") String code){
-        if (!Verification.verify())
-            return "400";
-        else
-            return newsService.getNewsByCode(code);
+        return newsService.getNewsByCode(code);
     }
 
     @GetMapping("/code")
     public Object getBriefNews(@Param(value = "code") String code){
-        if (!Verification.verify())
-            return "400";
+//        if (!Verification.verify())
+//            return "400";
+//        return newsService.getBriefNewsByCode(code);
         return newsService.getBriefNewsByCode(code);
     }
 }
