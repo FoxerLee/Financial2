@@ -336,7 +336,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             title: [{
                 left: 'center',
-                text: '收益率曲线'
+                text: '资产变化曲线'
             }],
             tooltip: {
                 trigger: 'axis'
@@ -385,6 +385,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         for (var y = 0; y < all_number.length; y++) {
             left -= all_number[y]["value"];
         }
+        left = left.toFixed(3);
         all_number.push({"name": "剩余空仓", "value": left});
         option = {
             title : {

@@ -86,8 +86,21 @@ def run():
                 # print date
                 # print inst 
                 # print researcher
-                if date == str(datetime.datetime.now()):
+                f = open('log.txt', "r")
+                l = f.readline()
+                log = ""
+                while l:
+                    log = l
+                    l = f.readline()
+                print(log)
+                print(date)
+
+                if date > log:
+                    print("miao")
                     re.append((id, title, url, date, inst, researcher))
+
+                
+
             except Exception, e:
                 print e
                 print 'get data error ' + id
@@ -99,8 +112,7 @@ def run():
             # config = {'host': '10.60.42.201', 'user': 'root', 'password': '123456', 'port': 13142, 'database': 'javaEE',
           # 'charset': 'utf8'}
             
-            
-
+        
             cursor.executemany(sql, re)
             cursor.execute('Commit;')
             # cursor.close()
@@ -115,16 +127,11 @@ def run():
 
         print 'succeed ' + id
 
-
+    f = open("log.txt", "a")
+    f.write(str(datetime.datetime.now()))
     cursor.close()
     conn.close()
-        # f.write(title + '\n')
-
-
-
-    # f.close()
-
-
+        
 
 
 

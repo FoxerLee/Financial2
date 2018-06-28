@@ -121,7 +121,7 @@ def run():
             news.append((code, re[news_index[i]][0], re[news_index[i]][1], re[news_index[i]][2], re[news_index[i]][3], re[news_index[i]][4]))
 
         
-        cursor.execute('DELETE FROM research WHERE code=\'' + code + '\';')
+        # cursor.execute('DELETE FROM research WHERE code=\'' + code + '\';')
         cursor.executemany(sql, news)
         cursor.execute("Commit;")
         print "replenish " + code + " succeed!"
