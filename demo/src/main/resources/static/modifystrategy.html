@@ -449,7 +449,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         window.location.href = "allstrategy.html";
                     };
                     $scope.check_out = function () {
-                        window.location.href = "login.html";
+                        window.location.href="/login.html";
+                        $http.get("http://localhost:8080/user/logout");
+
                     };
                 });
 
